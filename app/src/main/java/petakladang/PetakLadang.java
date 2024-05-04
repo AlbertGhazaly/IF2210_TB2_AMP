@@ -1,5 +1,7 @@
 package petakladang;
+import java.util.List;
 import java.util.ArrayList;
+import card.*;
 
 class PetakLadang<T extends Card> {
   private List<List<T>> petakLadang;
@@ -7,11 +9,7 @@ class PetakLadang<T extends Card> {
   public static final int MAX_COL = 5;
 
   public PetakLadang() {
-    petakLadang = new ArrayList<T>(MAX_ROW);
-
-    for (int i = 0; i < MAX_ROW; i++) {
-      petakLadang.add(new ArrayList<T>(MAX_COL));
-    }
+    petakLadang = new ArrayList<>(MAX_ROW*MAX_COL);
   }
 
   public void addElement(T element, int row, int col) {
