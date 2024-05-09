@@ -2,7 +2,8 @@ package deck;
 import java.util.List;
 import java.util.ArrayList;
 import card.*;
-class Deck<T extends Card> {
+
+public class Deck<T extends Card> {
   private List<T> deck;
 
   public static final int DECK_SIZE = 40;
@@ -14,6 +15,10 @@ class Deck<T extends Card> {
 
   public Deck(int size) {
     deck = new ArrayList<T>(size);
+  }
+
+  public Deck(Deck<T> deck) {
+    this.deck = new ArrayList<T>(deck.deck);
   }
 
   public void addElement(T element) {
