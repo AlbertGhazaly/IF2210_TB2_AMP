@@ -1,5 +1,7 @@
 package org;
 import deck.*;
+import gamestatus.*;
+
 import card.*;
 import player.*;
 import game.*;
