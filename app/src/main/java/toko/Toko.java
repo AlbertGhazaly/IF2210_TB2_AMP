@@ -1,4 +1,5 @@
 package toko;
+import exception.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,10 +13,28 @@ public class Toko {
     /**
      * getter untuk atribut private stok dalam toko
      *
-     * @return Map<String, Integer> stok toko dalam permainan.
+     * @return int stok toko dalam permainan.
      */
-    public Map<String, Integer> getStok() {
-        return stok;
+    public int getStok(String key) throws KeyNotInMapException {
+        if (!this.stok.containsKey(key)){
+            throw new KeyNotInMapException();
+        }
+        return this.stok.get(key);
+    }
+    /**
+     * menambah item pada stok toko
+     * 
+     * 
+     * @Item belum ada -> daftar item dengan jumlah val
+     * @item sudah ada -> menambah jumlah item menjadi val + jumlah item sekarang
+     */
+    public void addStok(String key, int val){
+        if (this.stok.containsKey(key)){
+            int currStokNum = this.stok.get(key);
+            this.stok.put(key, currStokNum+ val);
+        }else{
+            this.stok.put(key, val);
+        }
     }
 
     /**
