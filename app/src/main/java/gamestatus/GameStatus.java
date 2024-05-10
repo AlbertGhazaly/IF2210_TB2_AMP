@@ -3,12 +3,14 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import exception.*;
+import game.GameObject;
 import toko.*;
-public class GameStatus {
+public class GameStatus extends GameObject {
     private int turn;
     private Toko toko;
     
     public GameStatus(){
+        super();
         this.turn = 0;
         this.toko = new Toko();
     }
@@ -38,7 +40,7 @@ public class GameStatus {
     /**
      * Load State dari file .txt dengan path relatif dari root project
      *@param path relatif terhadap root directory
-     *@throws IOException (untuk sementara)
+     *@throws IOException 
     */
     public void loadState(String path) throws IOException {
             // FileReader declare
