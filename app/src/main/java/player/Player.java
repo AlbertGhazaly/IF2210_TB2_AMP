@@ -48,7 +48,11 @@ public class Player extends Card{
     public void setDeck(Deck<Card> deck){
         this.deck = deck;
     }
-
+    
+    public void addDeck(Card card){
+        this.deck.addElement(card);
+    }
+    
     public List<Card> getKartuLadang(){
         return kartu_ladang;
     }
