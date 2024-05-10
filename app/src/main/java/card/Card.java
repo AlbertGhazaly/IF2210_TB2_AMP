@@ -1,5 +1,6 @@
 package card;
 
+
 public abstract class Card {
     private String name;
     private String imgPath;
@@ -18,5 +19,4 @@ public abstract class Card {
     public String getImgPath(){
         return this.imgPath;
     }
-
 } 
