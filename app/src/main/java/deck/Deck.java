@@ -32,4 +32,8 @@ public class Deck<T extends Card> {
   public T getElement(int index) {
     return deck.get(index);
   }
+
+  public int getSize() {
+    return deck.size();
+  }
 }

@@ -19,6 +19,4 @@ public abstract class Card {
     public String getImgPath(){
         return this.imgPath;
     }
-    
-
 } 

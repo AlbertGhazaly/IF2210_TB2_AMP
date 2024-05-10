@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Hewan extends Card{
+    private int m;
+    private int n;
     private String kategori;
     private int berat;
     private int beratPanen;
@@ -16,9 +18,10 @@ public class Hewan extends Card{
         this.beratPanen = 0;
         this.items = new ArrayList<Item>();
     }
-
-    public Hewan(String nama, String imgPath,String kategori, int berat, int beratPanen, List<Item> items){
+    public Hewan(int m, int n, String nama, String imgPath,String kategori, int berat, int beratPanen, List<Item> items){
         super(nama,imgPath);
+        this.m = m;
+        this.n = n;
         this.kategori = kategori;
         this.berat = berat;
         this.beratPanen = beratPanen;
@@ -26,7 +29,7 @@ public class Hewan extends Card{
     }
 
     public Hewan(final Hewan other){
-        this(other.getName(),
+        this(other.getM(),other.getN(),other.getName(),
             other.getImgPath(),
             other.getKategori(),
             other.getBerat(),
@@ -69,5 +72,17 @@ public class Hewan extends Card{
     }
     public void setItems(List<Item> items){
         this.items = items;
+    }
+    public void setM(int m){
+        this.m = m;
+    }
+    public void setN(int n){
+        this.n = n;
+    }
+    public int getM(){
+        return this.m;
+    }
+    public int getN(){
+        return this.n;
     }
 }
