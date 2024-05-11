@@ -8,7 +8,7 @@
 
 .glowingWhite {
     -fx-background-color: #ffffff; /* Set the background color */
-    -fx-effect: dropshadow(glow, #ffffff, 10, 1, 0, 0); /* Apply the glow effect */
+    /*-fx-effect: dropshadow(glow, #ffffff, 10, 1, 0, 0); !* Apply the glow effect *!*/
 }
 
 .activeField {

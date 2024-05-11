@@ -198,6 +198,11 @@
                   <Font name="Book Antiqua Bold Italic" size="20.0" />
                </font>
             </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="746.0" layoutY="642.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../assets/1.png" />
+               </image>
+            </ImageView>
       </children>
          <effect>
             <Glow />
