@@ -4,6 +4,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <Pane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
     <Pane layoutX="24.0" layoutY="109.0">
         <children>
@@ -41,12 +43,60 @@
     </Pane>
     <Pane layoutX="24.0" layoutY="624.0">
         <children>
-            <Pane prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-            <Pane layoutX="122.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-            <Pane layoutX="244.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-            <Pane layoutX="366.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-            <Pane layoutX="488.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-            <Pane layoutX="609.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
+            <Pane prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+                <children>
+                    <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
+                        <image>
+                            <Image url="@../../../assets/hewan/cow.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
+            <Pane layoutX="122.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+                <children>
+                    <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
+                        <image>
+                            <Image url="@../../../assets/hewan/sheep.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
+            <Pane layoutX="244.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+                <children>
+                    <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
+                        <image>
+                            <Image url="@../../../assets/hewan/horse.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
+            <Pane layoutX="366.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+                <children>
+                    <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
+                        <image>
+                            <Image url="@../../../assets/hewan/chicken.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
+            <Pane layoutX="488.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+                <children>
+                    <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
+                        <image>
+                            <Image url="@../../../assets/hewan/hiu darat.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
+            <Pane layoutX="609.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+                <children>
+                    <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
+                        <image>
+                            <Image url="@../../../assets/hewan/bear.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
         </children>
     </Pane>
 </Pane>
