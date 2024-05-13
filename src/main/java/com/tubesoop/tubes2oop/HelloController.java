@@ -7,7 +7,6 @@ import javafx.scene.layout.AnchorPane;
 public class HelloController {
     @FXML
     private Label welcomeText;
-    @FXML
     private Label turnLabel;
     private static int numberOfTurn = 1;
 
