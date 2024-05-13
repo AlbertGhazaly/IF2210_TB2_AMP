@@ -4,7 +4,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 
-<Pane layoutX="-146.0" layoutY="539.0"  xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tubesoop.tubes2oop.HelloController">
+<Pane layoutX="-146.0" layoutY="539.0"  xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <ImageView fitHeight="493.0" fitWidth="445.0" layoutX="160.0" pickOnBounds="true" preserveRatio="true">
             <image>

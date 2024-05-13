@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<Pane layoutX="25.0" layoutY="17.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tubesoop.tubes2oop.HelloController">
+<Pane layoutX="25.0" layoutY="17.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tubesoop.tubes2oop.PlayerStatusController">
     <children>
 
         <!-- PLAYER 1 -->
@@ -16,7 +16,7 @@
                 <Font name="Book Antiqua Bold" size="16.0" />
             </font>
         </Label>
-        <Label fx:id="player1GuldenLabel" text="20" alignment="CENTER" layoutX="84.0" layoutY="3.0" style="&#10;" textAlignment="CENTER" textFill="WHITE">
+        <Label fx:id="player1Gulden" text="0" alignment="CENTER" layoutX="84.0" layoutY="3.0" style="&#10;" textAlignment="CENTER" textFill="WHITE">
             <font>
                 <Font name="Book Antiqua" size="16.0" />
             </font>
@@ -28,12 +28,12 @@
         </ImageView>
 
         <!-- PLAYER 2 -->
-        <Label fx:id="player2GuldenLabel"  text="10" alignment="CENTER" layoutY="33.0" style="&#10;" textAlignment="CENTER" textFill="WHITE">
+        <Label text="Player 2" alignment="CENTER" layoutY="33.0" style="&#10;" textAlignment="CENTER" textFill="WHITE">
             <font>
                 <Font name="Book Antiqua Bold" size="16.0" />
             </font>
         </Label>
-        <Label alignment="CENTER" layoutX="84.0" layoutY="34.0" style="&#10;" text="25" textAlignment="CENTER" textFill="WHITE">
+        <Label fx:id="player2Gulden" text="0"  alignment="CENTER" layoutX="84.0" layoutY="34.0" style="&#10;" textAlignment="CENTER" textFill="WHITE">
             <font>
                 <Font name="Book Antiqua" size="16.0" />
             </font>

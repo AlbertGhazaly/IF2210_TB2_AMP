@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<Pane layoutX="645.0" layoutY="109.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tubesoop.tubes2oop.HelloController">
+<Pane layoutX="645.0" layoutY="109.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
     <Pane>
         <children>
             <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="activeField" stylesheets="@style.css" text="My Field" textFill="WHITE">
