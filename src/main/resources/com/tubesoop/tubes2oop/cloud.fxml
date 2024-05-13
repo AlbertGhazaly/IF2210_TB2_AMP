@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+
+<Pane layoutX="585.0" layoutY="-168.0">
+    <children>
+        <ImageView fitHeight="177.0" fitWidth="177.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../assets/cloud2.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="428.0" fitWidth="441.0" layoutX="22.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../assets/cloud1.png" />
+            </image>
+        </ImageView>
+    </children>
+</Pane>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<Pane  xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tubesoop.tubes2oop.HelloController" layoutX="231.0" layoutY="26.0" prefHeight="50.0" prefWidth="388.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="glowingWhite" stylesheets="@style.css">
+    <children>
+        <Label alignment="CENTER" layoutX="14.0" layoutY="11.0" style="&#10;" text="Number of Turn : " textAlignment="CENTER">
+            <font>
+                <Font name="Book Antiqua Bold" size="22.0" />
+            </font>
+        </Label>
+        <Button layoutX="293.0" layoutY="10.0" mnemonicParsing="false" onAction="#onNextButtonClick" style="-fx-background-color: #000000; -fx-cursor: pointer;" text="Next Turn" textFill="WHITE">
+            <font>
+                <Font name="Book Antiqua" size="14.0" />
+            </font>
+        </Button>
+        <Label fx:id="turnLabel" layoutX="204.0" layoutY="9.0" text="1">
+            <font>
+                <Font name="Book Antiqua Bold" size="24.0" />
+            </font>
+        </Label>
+    </children>
+</Pane>

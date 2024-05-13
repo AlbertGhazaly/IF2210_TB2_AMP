@@ -14,208 +14,40 @@
 <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tubesoop.tubes2oop.HelloController">
   <children>
     <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="850.0" styleClass="backgroundColor" stylesheets="@style.css" VBox.vgrow="ALWAYS">
-      <children>
-            <Pane layoutX="-146.0" layoutY="539.0">
-               <children>
-                  <ImageView fitHeight="493.0" fitWidth="445.0" layoutX="160.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../assets/rumput.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="493.0" fitWidth="445.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../assets/rumput.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="493.0" fitWidth="445.0" layoutX="314.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../assets/rumput.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="493.0" fitWidth="445.0" layoutX="466.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../assets/rumput.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="493.0" fitWidth="445.0" layoutX="620.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../assets/rumput.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="493.0" fitWidth="445.0" layoutX="779.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../assets/rumput.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-            <Pane layoutX="25.0" layoutY="17.0">
-               <children>
-              <Label alignment="CENTER" layoutY="2.0" style="&#10;" text="Player 1" textAlignment="CENTER" textFill="WHITE">
-                <font>
-                  <Font name="Book Antiqua Bold" size="16.0" />
-                </font>
-              </Label>
-                  <Label alignment="CENTER" layoutY="33.0" style="&#10;" text="Player 2" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font name="Book Antiqua Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="28.0" fitWidth="27.0" layoutX="109.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../assets/gold.png" />
-                     </image>
-                  </ImageView>
-                  <Label alignment="CENTER" layoutX="84.0" layoutY="3.0" style="&#10;" text="20" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font name="Book Antiqua" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="84.0" layoutY="34.0" style="&#10;" text="25" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font name="Book Antiqua" size="16.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="28.0" fitWidth="27.0" layoutX="109.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../assets/gold.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-            <Pane layoutX="24.0" layoutY="109.0">
-               <children>
-                  <Pane prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-                  <Pane layoutX="122.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-                  <Pane layoutX="244.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-                  <Pane layoutX="366.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-                  <Pane layoutX="488.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-                  <Pane layoutY="125.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-                  <Pane layoutX="122.0" layoutY="125.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-                  <Pane layoutX="244.0" layoutY="125.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-                  <Pane layoutX="366.0" layoutY="125.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-                  <Pane layoutX="488.0" layoutY="125.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-                  <Pane layoutY="250.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-                  <Pane layoutX="122.0" layoutY="250.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-                  <Pane layoutX="244.0" layoutY="250.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-                  <Pane layoutX="366.0" layoutY="250.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-                  <Pane layoutX="488.0" layoutY="250.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-                  <Pane layoutY="375.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-                  <Pane layoutX="122.0" layoutY="375.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-                  <Pane layoutX="244.0" layoutY="375.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-                  <Pane layoutX="366.0" layoutY="375.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-                  <Pane layoutX="488.0" layoutY="375.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-               </children>
-            </Pane>
-            <Pane layoutX="231.0" layoutY="26.0" prefHeight="50.0" prefWidth="388.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" styleClass="glowingWhite" stylesheets="@style.css">
-               <children>
-                  <Label alignment="CENTER" layoutX="14.0" layoutY="11.0" style="&#10;" text="Number of Turn : " textAlignment="CENTER">
-                     <font>
-                        <Font name="Book Antiqua Bold" size="22.0" />
-                     </font>
-                  </Label>
-                  <Button layoutX="293.0" layoutY="10.0" mnemonicParsing="false" onAction="#onNextButtonClick" style="-fx-background-color: #000000; -fx-cursor: pointer;" text="Next Turn" textFill="WHITE">
-                     <font>
-                        <Font name="Book Antiqua" size="14.0" />
-                     </font>
-                  </Button>
-                  <Label fx:id="turnLabel" layoutX="204.0" layoutY="9.0" text="1">
-                     <font>
-                        <Font name="Book Antiqua Bold" size="24.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane layoutX="585.0" layoutY="-168.0">
-               <children>
-                  <ImageView fitHeight="177.0" fitWidth="177.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../assets/cloud2.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="428.0" fitWidth="441.0" layoutX="22.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../assets/cloud1.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-            <Pane layoutX="25.0" layoutY="574.0">
-               <children>
-                  <Separator layoutY="28.0" prefHeight="12.0" prefWidth="749.0" />
-                  <Label layoutX="649.0" text="Deck 33/40">
-                     <font>
-                        <Font name="Book Antiqua Bold Italic" size="20.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane layoutX="24.0" layoutY="624.0">
-               <children>
-                  <Pane prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-                  <Pane layoutX="122.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-                  <Pane layoutX="244.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-                  <Pane layoutX="366.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-                  <Pane layoutX="488.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-                  <Pane layoutX="609.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-               </children>
-            </Pane>
-            <ImageView fitHeight="360.0" fitWidth="388.0" layoutX="607.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../assets/branch.png" />
-               </image>
-            </ImageView>
-            <Pane layoutX="645.0" layoutY="109.0">
-               <children>
-                  <Pane>
-                     <children>
-                        <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="activeField" stylesheets="@style.css" text="My Field" textFill="WHITE">
-                           <font>
-                              <Font name="Book Antiqua" size="14.0" />
-                           </font>
-                        </Button>
-                        <Button layoutY="52.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Opponent's Field" textFill="WHITE">
-                           <font>
-                              <Font name="Book Antiqua" size="14.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </Pane>
-                  <Button layoutY="125.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Shop" textFill="WHITE">
-                     <font>
-                        <Font name="Book Antiqua" size="14.0" />
-                     </font>
-                  </Button>
-                  <Pane layoutY="250.0">
-                     <children>
-                        <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Save State" textFill="WHITE">
-                           <font>
-                              <Font name="Book Antiqua" size="14.0" />
-                           </font>
-                        </Button>
-                        <Button layoutY="52.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Load State" textFill="WHITE">
-                           <font>
-                              <Font name="Book Antiqua" size="14.0" />
-                           </font>
-                        </Button>
-                        <Button layoutY="105.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Load Plugin" textFill="WHITE">
-                           <font>
-                              <Font name="Book Antiqua" size="14.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </Pane>
-               </children>
-            </Pane>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="746.0" layoutY="642.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../assets/1.png" />
-               </image>
-            </ImageView>
-      </children>
-         <effect>
-            <Glow />
-         </effect>
+        <!-- CLOUD -->
+        <fx:include source="cloud.fxml"/>
+
+        <!-- GAMBAR RANTING -->
+        <ImageView fitHeight="360.0" fitWidth="388.0" layoutX="607.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../assets/branch.png" />
+            </image>
+        </ImageView>
+
+        <!-- GRASS -->
+        <fx:include source="grass.fxml"/>
+
+        <!-- GAMBAR TUPAI -->
+        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="746.0" layoutY="642.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../assets/1.png" />
+            </image>
+        </ImageView>
+
+        <!-- PLAYER STATUS -->
+        <fx:include source="player_status.fxml"/>
+
+        <!-- FIELD & DECK -->
+        <fx:include source="field.fxml"/>
+
+        <!-- TURN BUTTON -->
+        <fx:include source="turn.fxml"/>
+
+        <!-- ACTIONS BUTTON -->
+        <fx:include source="actions.fxml"/>
+
+         <!-- EFEK GLOWING -->
+         <effect> <Glow /> </effect>
     </AnchorPane>
   </children>
 </VBox>
