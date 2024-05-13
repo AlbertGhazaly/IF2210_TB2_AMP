@@ -6,14 +6,22 @@
 
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
-<Pane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tubesoop.tubes2oop.FieldController">
+<Pane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tubesoop.tubes2oop.FieldController">
     <!-- FIELD -->
     <Pane layoutX="24.0" layoutY="109.0">
         <children>
-            <Pane prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-            <Pane layoutX="122.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+            <Pane fx:id="targetPane1" onDragOver="#onDragOver" onDragDropped="#onDragDropped" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
                 <children>
-                    <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
+                    <ImageView fx:id="targetImageView1" fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
+                        <image>
+                            <Image url="@../../../assets/hewan/horse.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
+            <Pane fx:id="targetPane2" onDragOver="#onDragOver" onDragDropped="#onDragDropped" layoutX="122.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+                <children>
+                    <ImageView fx:id="targetImageView2"  fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
                         <image>
                             <Image url="@../../../assets/hewan/horse.png" />
                         </image>
@@ -202,7 +210,7 @@
         <children>
             <Pane prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
                 <children>
-                    <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
+                    <ImageView fx:id="deckImageView"  fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
                         <image>
                             <Image url="@../../../assets/hewan/cow.png" />
                         </image>
