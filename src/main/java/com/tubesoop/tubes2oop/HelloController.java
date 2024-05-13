@@ -2,13 +2,13 @@ package com.tubesoop.tubes2oop;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
 
 public class HelloController {
     @FXML
     private Label welcomeText;
-    private Label turnLabel;
+    @FXML
     private static int numberOfTurn = 1;
+    private Label turnLabel;
 
     @FXML
     protected void onHelloButtonClick() {
