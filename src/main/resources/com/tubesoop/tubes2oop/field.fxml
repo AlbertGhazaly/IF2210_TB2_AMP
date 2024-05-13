@@ -10,25 +10,177 @@
     <Pane layoutX="24.0" layoutY="109.0">
         <children>
             <Pane prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-            <Pane layoutX="122.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-            <Pane layoutX="244.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-            <Pane layoutX="366.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-            <Pane layoutX="488.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-            <Pane layoutY="125.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-            <Pane layoutX="122.0" layoutY="125.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-            <Pane layoutX="244.0" layoutY="125.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-            <Pane layoutX="366.0" layoutY="125.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-            <Pane layoutX="488.0" layoutY="125.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-            <Pane layoutY="250.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-            <Pane layoutX="122.0" layoutY="250.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-            <Pane layoutX="244.0" layoutY="250.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-            <Pane layoutX="366.0" layoutY="250.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-            <Pane layoutX="488.0" layoutY="250.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-            <Pane layoutY="375.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-            <Pane layoutX="122.0" layoutY="375.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-            <Pane layoutX="244.0" layoutY="375.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-            <Pane layoutX="366.0" layoutY="375.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-            <Pane layoutX="488.0" layoutY="375.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
+            <Pane layoutX="122.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+                <children>
+                    <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
+                        <image>
+                            <Image url="@../../../assets/hewan/horse.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
+            <Pane layoutX="244.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+                <children>
+                    <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
+                        <image>
+                            <Image url="@../../../assets/hewan/horse.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
+            <Pane layoutX="366.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+                <children>
+                    <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
+                        <image>
+                            <Image url="@../../../assets/hewan/horse.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
+            <Pane layoutX="488.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+                <children>
+                    <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
+                        <image>
+                            <Image url="@../../../assets/hewan/horse.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
+            <Pane layoutY="125.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+                <children>
+                    <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
+                        <image>
+                            <Image url="@../../../assets/hewan/horse.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
+            <Pane layoutX="122.0" layoutY="125.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+                <children>
+                    <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
+                        <image>
+                            <Image url="@../../../assets/hewan/horse.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
+            <Pane layoutX="244.0" layoutY="125.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+                <children>
+                    <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
+                        <image>
+                            <Image url="@../../../assets/hewan/horse.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
+            <Pane layoutX="366.0" layoutY="125.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+                <children>
+                    <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
+                        <image>
+                            <Image url="@../../../assets/hewan/horse.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
+            <Pane layoutX="488.0" layoutY="125.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+                <children>
+                    <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
+                        <image>
+                            <Image url="@../../../assets/hewan/horse.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
+            <Pane layoutY="250.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+                <children>
+                    <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
+                        <image>
+                            <Image url="@../../../assets/hewan/horse.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
+            <Pane layoutX="122.0" layoutY="250.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+                <children>
+                    <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
+                        <image>
+                            <Image url="@../../../assets/hewan/horse.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
+            <Pane layoutX="244.0" layoutY="250.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+                <children>
+                    <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
+                        <image>
+                            <Image url="@../../../assets/hewan/horse.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
+            <Pane layoutX="366.0" layoutY="250.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+                <children>
+                    <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
+                        <image>
+                            <Image url="@../../../assets/hewan/horse.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
+            <Pane layoutX="488.0" layoutY="250.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+                <children>
+                    <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
+                        <image>
+                            <Image url="@../../../assets/hewan/horse.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
+            <Pane layoutY="375.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+                <children>
+                    <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
+                        <image>
+                            <Image url="@../../../assets/hewan/horse.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
+            <Pane layoutX="122.0" layoutY="375.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+                <children>
+                    <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
+                        <image>
+                            <Image url="@../../../assets/hewan/horse.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
+            <Pane layoutX="244.0" layoutY="375.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+                <children>
+                    <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
+                        <image>
+                            <Image url="@../../../assets/hewan/horse.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
+            <Pane layoutX="366.0" layoutY="375.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+                <children>
+                    <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
+                        <image>
+                            <Image url="@../../../assets/hewan/horse.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
+            <Pane layoutX="488.0" layoutY="375.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+                <children>
+                    <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
+                        <image>
+                            <Image url="@../../../assets/hewan/horse.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </Pane>
         </children>
     </Pane>
     <Pane layoutX="25.0" layoutY="574.0">
