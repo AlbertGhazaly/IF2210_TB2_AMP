@@ -56,3 +56,12 @@ jlink {
 jlinkZip {
     group = 'distribution'
 }
+
+tasks.register('runAllJava', JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'com.tubesoop.tubes2oop.Main'
+}
+
+tasks.named('runAllJava').configure {
+    dependsOn 'classes'
+}

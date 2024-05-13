@@ -6,16 +6,19 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.text.Font?>
 
+
 <Pane layoutX="25.0" layoutY="17.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tubesoop.tubes2oop.HelloController">
     <children>
+
+        <!-- PLAYER 1 -->
         <Label alignment="CENTER" layoutY="2.0" style="&#10;" text="Player 1" textAlignment="CENTER" textFill="WHITE">
             <font>
                 <Font name="Book Antiqua Bold" size="16.0" />
             </font>
         </Label>
-        <Label alignment="CENTER" layoutY="33.0" style="&#10;" text="Player 2" textAlignment="CENTER" textFill="WHITE">
+        <Label fx:id="player1GuldenLabel" text="20" alignment="CENTER" layoutX="84.0" layoutY="3.0" style="&#10;" textAlignment="CENTER" textFill="WHITE">
             <font>
-                <Font name="Book Antiqua Bold" size="16.0" />
+                <Font name="Book Antiqua" size="16.0" />
             </font>
         </Label>
         <ImageView fitHeight="28.0" fitWidth="27.0" layoutX="109.0" pickOnBounds="true" preserveRatio="true">
@@ -23,9 +26,11 @@
                 <Image url="@../../../assets/gold.png" />
             </image>
         </ImageView>
-        <Label alignment="CENTER" layoutX="84.0" layoutY="3.0" style="&#10;" text="20" textAlignment="CENTER" textFill="WHITE">
+
+        <!-- PLAYER 2 -->
+        <Label fx:id="player2GuldenLabel"  text="10" alignment="CENTER" layoutY="33.0" style="&#10;" textAlignment="CENTER" textFill="WHITE">
             <font>
-                <Font name="Book Antiqua" size="16.0" />
+                <Font name="Book Antiqua Bold" size="16.0" />
             </font>
         </Label>
         <Label alignment="CENTER" layoutX="84.0" layoutY="34.0" style="&#10;" text="25" textAlignment="CENTER" textFill="WHITE">
