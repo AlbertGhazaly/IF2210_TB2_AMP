@@ -1,51 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<Pane layoutX="645.0" layoutY="109.0">
-    <children>
-        <Pane>
-            <children>
-                <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="activeField" stylesheets="@style.css" text="My Field" textFill="WHITE">
-                    <font>
-                        <Font name="Book Antiqua" size="14.0" />
-                    </font>
-                </Button>
-                <Button layoutY="52.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Opponent's Field" textFill="WHITE">
-                    <font>
-                        <Font name="Book Antiqua" size="14.0" />
-                    </font>
-                </Button>
-            </children>
-        </Pane>
-        <Button layoutY="125.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Shop" textFill="WHITE">
-            <font>
-                <Font name="Book Antiqua" size="14.0" />
-            </font>
-        </Button>
-        <Pane layoutY="250.0">
-            <children>
-                <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Save State" textFill="WHITE">
-                    <font>
-                        <Font name="Book Antiqua" size="14.0" />
-                    </font>
-                </Button>
-                <Button layoutY="52.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Load State" textFill="WHITE">
-                    <font>
-                        <Font name="Book Antiqua" size="14.0" />
-                    </font>
-                </Button>
-                <Button layoutY="105.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Load Plugin" textFill="WHITE">
-                    <font>
-                        <Font name="Book Antiqua" size="14.0" />
-                    </font>
-                </Button>
-            </children>
-        </Pane>
-    </children>
+<Pane layoutX="645.0" layoutY="109.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tubesoop.tubes2oop.HelloController">
+    <Pane>
+        <children>
+            <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="activeField" stylesheets="@style.css" text="My Field" textFill="WHITE">
+                <font>
+                    <Font name="Book Antiqua" size="14.0" />
+                </font>
+            </Button>
+            <Button layoutY="52.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Opponent's Field" textFill="WHITE">
+                <font>
+                    <Font name="Book Antiqua" size="14.0" />
+                </font>
+            </Button>
+        </children>
+    </Pane>
+    <Button layoutY="125.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Shop" textFill="WHITE">
+        <font>
+            <Font name="Book Antiqua" size="14.0" />
+        </font>
+    </Button>
+    <Pane layoutY="250.0">
+        <children>
+            <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Save State" textFill="WHITE">
+                <font>
+                    <Font name="Book Antiqua" size="14.0" />
+                </font>
+            </Button>
+            <Button layoutY="52.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Load State" textFill="WHITE">
+                <font>
+                    <Font name="Book Antiqua" size="14.0" />
+                </font>
+            </Button>
+            <Button layoutY="105.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Load Plugin" textFill="WHITE">
+                <font>
+                    <Font name="Book Antiqua" size="14.0" />
+                </font>
+            </Button>
+        </children>
+    </Pane>
 </Pane>
