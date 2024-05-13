@@ -12,7 +12,8 @@ public class App {
     public static void main(String[] args) {
         System.out.println(new App().getGreeting());
         GameObject game = new GameObject();
-        game.muatPlayer1("C:\\Users\\aland\\Desktop\\IF2210_TB2_AMP\\app\\src\\main\\java\\org\\player1.txt");
+        game.muatPlayer("C:\\Users\\aland\\Desktop\\IF2210_TB2_AMP\\app\\src\\main\\java\\org\\player1.txt", "C:\\Users\\aland\\Desktop\\IF2210_TB2_AMP\\app\\src\\main\\java\\org\\player2.txt");
         game.printInfoPlayer1();
+        game.printInfoPlayer2();
     }
 }
