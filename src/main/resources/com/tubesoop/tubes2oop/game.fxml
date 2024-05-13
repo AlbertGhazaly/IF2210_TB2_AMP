@@ -43,7 +43,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml" fx:controller="com.tubesoop.tubes2oop.HelloController">
   <children>
     <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="850.0" styleClass="backgroundColor" stylesheets="@style.css" VBox.vgrow="ALWAYS">
       <children>
@@ -156,12 +156,12 @@
                         <Font name="Book Antiqua Bold" size="22.0" />
                      </font>
                   </Label>
-                  <Button layoutX="293.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: #000000; -fx-cursor: pointer;" text="Next Turn" textFill="WHITE">
+                  <Button layoutX="293.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: #000000; -fx-cursor: pointer;" text="Next Turn" textFill="WHITE" onAction="#onNextButtonClick">
                      <font>
                         <Font name="Book Antiqua" size="14.0" />
                      </font>
                   </Button>
-                  <Label layoutX="204.0" layoutY="9.0" text="1">
+                  <Label layoutX="204.0" layoutY="9.0" fx:id="turnLabel" text="1">
                      <font>
                         <Font name="Book Antiqua Bold" size="24.0" />
                      </font>
