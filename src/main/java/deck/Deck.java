@@ -4,36 +4,40 @@ import java.util.ArrayList;
 import card.*;
 
 public class Deck<T extends Card> {
-  private List<T> deck;
-
+  private List<T> deckPasif;
+  private List<T> deckAktif;
   public static final int DECK_SIZE = 40;
   public static final int DECK_ACTIVE_SIZE = 6;
 
   public Deck() {
-    deck = new ArrayList<T>(DECK_SIZE);
+    this.deckAktif = new ArrayList<>(DECK_ACTIVE_SIZE);
+    this.deckPasif = new ArrayList<>(DECK_SIZE);
   }
 
-  public Deck(int size) {
-    deck = new ArrayList<T>(size);
+  public void addAktifElement(T element) {
+      this.deckAktif.add(element);
+  }
+  public void addPasifElement(T element) {
+    this.deckPasif.add(element);
+  }
+  public void removeAktifElement(T element) {
+    this.deckAktif.remove(element);
+  }
+  public void removePasifElement(T element) {
+    this.deckPasif.remove(element);
   }
 
-  public Deck(Deck<T> deck) {
-    this.deck = new ArrayList<T>(deck.deck);
+  public T getAktifElement(int index) {
+    return this.deckAktif.get(index);
+  }
+  public T getPasifElement(int index) {
+    return this.deckPasif.get(index);
+  }
+  public int getAktifSize() {
+    return this.deckAktif.size();
+  }
+  public int getPasifSize() {
+    return this.deckPasif.size();
   }
 
-  public void addElement(T element) {
-    deck.add(element);
-  }
-
-  public void removeElement(T element) {
-    deck.remove(element);
-  }
-
-  public T getElement(int index) {
-    return deck.get(index);
-  }
-
-  public int getSize() {
-    return deck.size();
-  }
 }

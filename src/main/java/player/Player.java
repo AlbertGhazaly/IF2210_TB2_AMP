@@ -82,6 +82,7 @@ public class Player implements Entity {
             }
         }
     }
+//    @TODO ubah loading nya karena ada atribut position di card
     @Override
     public void load(String path) throws IOException {
 

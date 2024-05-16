@@ -2,6 +2,7 @@ package card;
 
 public class Item extends Card{
     private int harga;
+    private int umur;
 
     public Item(){
         super();
@@ -18,6 +19,6 @@ public class Item extends Card{
     }
 
     public int getHarga(){
-        return harga;
+        return this.harga;
     }
 }
