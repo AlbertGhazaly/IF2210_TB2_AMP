@@ -1,9 +1,16 @@
 package toko;
+import entity.Entity;
 import exception.*;
+import gamestatus.GameStatus;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import entity.Entity;
 
-public class Toko {
+public class Toko implements Entity {
     private Map<String, Integer> stok;
 
     public Toko() {
@@ -54,5 +61,35 @@ public class Toko {
             // Jika belum ada, tambahkan ke stok dengan jumlah 1
             this.stok.put(barang, 1);
         }
+    }
+
+    @Override
+    public void load(String path) throws IOException {
+        // FileReader declare
+        String filePath = Toko.class.getResource(path).getFile();
+        FileReader fileReader = new FileReader(filePath);
+        // Wrap FileReader in BufferedReader
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+        String line;
+        // Parse current turn
+        line = bufferedReader.readLine();
+        GameStatus.turn = Integer.parseInt(line);
+        // Parse stok toko
+        line = bufferedReader.readLine();
+        int nItem = Integer.parseInt(line);
+        for (int i=0;i<nItem;i++){
+            line = bufferedReader.readLine();
+            String[] paresdStr = line.split(" ");
+            this.addStok(paresdStr[0], Integer.parseInt(paresdStr[1]));
+        }
+        // Close FileReader
+        bufferedReader.close();
+
+    }
+
+    @Override
+    public void save(String path) {
+
     }
 }
