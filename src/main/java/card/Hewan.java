@@ -1,5 +1,4 @@
 package card;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +9,6 @@ public class Hewan extends Card{
     private int berat;
     private int beratPanen;
     private List<Item> items;
-
     public Hewan(){
         super();
         this.kategori = "";
@@ -18,6 +16,8 @@ public class Hewan extends Card{
         this.beratPanen = 0;
         this.items = new ArrayList<Item>();
     }
+
+    public Hewan(String nama, String imgPath,String kategori, int berat, int beratPanen, List<Item> items){
     public Hewan(int m, int n, String nama, String imgPath,String kategori, int berat, int beratPanen, List<Item> items){
         super(nama,imgPath);
         this.m = m;
@@ -29,6 +29,7 @@ public class Hewan extends Card{
     }
 
     public Hewan(final Hewan other){
+        this(other.getName(),
         this(other.getM(),other.getN(),other.getName(),
             other.getImgPath(),
             other.getKategori(),
