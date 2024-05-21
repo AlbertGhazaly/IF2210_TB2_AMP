@@ -8,16 +8,16 @@ public abstract class Card {
     private String position;
     public static String convertPositionToString(int row, int col){
         String temp = "";
-        temp += String.valueOf('A' + row);
-        temp += " ";
-        temp += String.valueOf(col);
+        temp += String.valueOf('A' + col);
+        temp += "0";
+        temp += String.valueOf(row + 1);
         return temp;
     }
     public static int convertStringtoCol(String pos){
         return (int) (pos.charAt(0)-'A');
     }
     public static int convertStringtoRow(String pos){
-        return (int) (pos.charAt(2)-'0');
+        return (int) (pos.charAt(2)-'1');
     }
     public Card(){
         this.name = null;
