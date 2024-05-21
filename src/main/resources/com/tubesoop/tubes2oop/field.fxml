@@ -8,7 +8,7 @@
 <?import javafx.scene.image.Image?>
 <Pane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tubesoop.tubes2oop.FieldController">
     <!-- FIELD -->
-    <Pane layoutX="24.0" layoutY="109.0">
+    <Pane fx:id="fieldPane" layoutX="24.0" layoutY="109.0">
         <children>
             <Pane prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
                 <children>
@@ -126,7 +126,7 @@
     </Pane>
 
     <!-- DECK -->
-    <Pane layoutX="24.0" layoutY="624.0">
+    <Pane fx:id="deckPane" layoutX="24.0" layoutY="624.0">
         <children>
             <Pane prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
                 <children>

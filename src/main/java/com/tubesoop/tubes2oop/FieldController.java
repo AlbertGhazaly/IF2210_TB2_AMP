@@ -20,8 +20,9 @@ public class FieldController implements Initializable {
     @FXML private Player player2;
 
     /* Field Pane */
-
+    @FXML private Pane fieldPane;
     /* Deck Pane */
+    @FXML private Pane deckPane;
 
     public void setGameObject(GameObject gameObject) {
         this.gameObject = gameObject;
@@ -31,6 +32,58 @@ public class FieldController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // Initialize the deckPane with draggable items
+        initializeDeck();
 
+        // Set up the fieldPane to accept drops
+        initializeField();
+    }
+
+    private void initializeDeck() {
+        for (Node node : deckPane.getChildren()) {
+            if (node instanceof Pane) {
+                Pane child = (Pane) node;
+                child.setOnDragDetected(event -> {
+                    Dragboard db = child.startDragAndDrop(TransferMode.ANY);
+                    ClipboardContent content = new ClipboardContent();
+                    content.putString(child.getId()); // Use an identifier to find the source node
+                    db.setContent(content);
+                    event.consume();
+                });
+            }
+        }
+    }
+
+    private void initializeField() {
+        for (int i = 0; i < fieldPane.getChildren().size(); i++) {
+            Node node = fieldPane.getChildren().get(i);
+            if (node instanceof Pane) {
+                Pane target = (Pane) node;
+                final int index = i; // Capture the index for later use
+
+                target.setOnDragOver(event -> {
+                    if (event.getGestureSource() != target && event.getDragboard().hasString()) {
+                        event.acceptTransferModes(TransferMode.MOVE);
+                    }
+                    event.consume();
+                });
+
+                target.setOnDragDropped(event -> {
+                    Dragboard db = event.getDragboard();
+                    boolean success = false;
+                    if (db.hasString()) {
+                        String draggedPaneId = db.getString();
+                        Pane draggedPane = (Pane) deckPane.lookup("#" + draggedPaneId);
+                        if (draggedPane != null) {
+                            deckPane.getChildren().remove(draggedPane);
+                            target.getChildren().add(draggedPane); // Add the dragged pane to the target pane
+                            success = true;
+                        }
+                    }
+                    event.setDropCompleted(success);
+                    event.consume();
+                });
+            }
+        }
     }
 }
