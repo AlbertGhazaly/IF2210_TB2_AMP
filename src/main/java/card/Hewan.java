@@ -15,7 +15,7 @@ public class Hewan extends Card{
         this.beratPanen = 0;
     }
     public Hewan(String nama, String imgPath,String kategori, int berat, int beratPanen){
-        super(nama,imgPath,"hewan");
+        super(nama,imgPath);
         this.kategori = kategori;
         this.berat = berat;
         this.beratPanen = beratPanen;

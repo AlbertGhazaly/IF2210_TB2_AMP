@@ -6,12 +6,12 @@ import card.*;
 public class Deck<T extends Card> {
   private List<T> deckPasif;
   private List<T> deckAktif;
-  public static final int DECK_SIZE = 40;
+  public static final int DECK_PASSIVE_ROW_SIZE = 40;
   public static final int DECK_ACTIVE_SIZE = 6;
 
   public Deck() {
-    this.deckAktif = new ArrayList<>(DECK_ACTIVE_SIZE);
-    this.deckPasif = new ArrayList<>(DECK_SIZE);
+    this.deckAktif = new ArrayList<>();
+    this.deckPasif = new ArrayList<>();
   }
 
   public void addAktifElement(T element) {
@@ -23,8 +23,15 @@ public class Deck<T extends Card> {
   public void removeAktifElement(T element) {
     this.deckAktif.remove(element);
   }
+  public void removeAktifElement(int idx) {
+    this.deckAktif.remove(idx);
+  }
+
   public void removePasifElement(T element) {
     this.deckPasif.remove(element);
+  }
+  public void removePasifElement(int idx) {
+    this.deckPasif.remove(idx);
   }
 
   public T getAktifElement(int index) {

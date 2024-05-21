@@ -9,7 +9,7 @@ public class Produk extends Card{
         this.harga = 0;
     }
     public Produk(String name, String imgpath, int harga, int addedBerat) {
-        super(name, imgpath, "produk");
+        super(name, imgpath);
         this.addedBerat = addedBerat;
         this.harga = harga;
     }

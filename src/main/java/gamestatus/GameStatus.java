@@ -1,25 +1,33 @@
 package gamestatus;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
-import exception.*;
-import game.GameObject;
+import state.*;
+import gameobject.GameObject;
 import toko.*;
-public class GameStatus extends GameObject {
+public class GameStatus{
     public static int turn;
-    private Toko toko;
-
+    private State status;
+    private GameObject objek;
     public GameStatus(){
-        super();
-        this.toko = new Toko();
         GameStatus.turn = 0;
+        this.status = new Shuffle();
+        this.objek = new GameObject();
     }
 
     /**
      * Setter untuk atribut turn
     */
-    public void nextTurn(){
-        turn = (turn+1)%2;
+    public void nextState(){
+        if (this.status instanceof Shuffle){
+            this.status = new SeranganBeruang();
+        }else if(this.status instanceof SeranganBeruang){
+            this.status = new AksiBebas();
+        }else{
+            this.status = new Shuffle();
+            GameStatus.turn += 1;
+        }
+    }
+    public void execute(){
+        this.status.execute(this.objek);
     }
     /**
      * getter untuk atribut turn
@@ -32,9 +40,6 @@ public class GameStatus extends GameObject {
      *
      * @return Toko dalam permainan.
     */
-    public Toko geToko(){
-        return this.toko;
-    }
     /**
      * Load State dari file .txt dengan path relatif dari root project
      *@param path relatif terhadap root directory

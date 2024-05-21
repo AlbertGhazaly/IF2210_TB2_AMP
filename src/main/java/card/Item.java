@@ -9,7 +9,7 @@ public class Item extends Card{
     }
 
     public Item(String nama, String imgpath, int harga){
-        super(nama, imgpath,"item");
+        super(nama, imgpath);
         this.harga = harga;
     }
 
@@ -19,5 +19,8 @@ public class Item extends Card{
 
     public int getHarga(){
         return this.harga;
+    }
+    public Item copy(){
+        return new Item(this);
     }
 }
