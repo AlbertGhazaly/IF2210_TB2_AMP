@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="300.0" prefWidth="600.0" styleClass="shuffleCard" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tubesoop.tubes2oop.ShuffleController">
+<AnchorPane fx:id="shuffleCard" prefHeight="300.0" prefWidth="600.0" styleClass="shuffleCard" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tubesoop.tubes2oop.ShuffleController">
    <children>
       <Label layoutX="240.0" layoutY="23.0" text="Pick 4 Cards!" textFill="WHITE">
          <font>
@@ -27,7 +27,12 @@
 
       </Pane>
 
-      <Button fx:id="shuffleButton" layoutX="25.0" layoutY="244.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="125.0" styleClass="shuffleButton" stylesheets="@style.css" text="Shuffle">
+      <Button fx:id="shuffleButton" layoutX="25.0" layoutY="244.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="125.0" styleClass="shuffleButton" stylesheets="@style.css" text="Refresh">
+         <font>
+            <Font name="Book Antiqua" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="shuffleButton1" layoutX="448.0" layoutY="244.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="125.0" styleClass="shuffleButton" stylesheets="@style.css" text="Finish" onAction="#handleFinish">
          <font>
             <Font name="Book Antiqua" size="16.0" />
          </font>

@@ -33,3 +33,13 @@
     -fx-border-radius: 2000px;
     -fx-background-color: #FFFFFF;
 }
+
+.card-shuffle {
+    -fx-layout-x: 50%;
+    -fx-layout-y: 50%;
+    -fx-translate-x: 125px; /* setengah dari lebar prefWidth cardShuffle */
+    -fx-translate-y: 225px; /* setengah dari tinggi prefHeight cardShuffle */
+    -fx-z-index: 50;
+    -fx-border-radius: 100px;/* Atur z-index lebih tinggi dari elemen lain */
+}
+

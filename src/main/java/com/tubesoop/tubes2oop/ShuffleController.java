@@ -7,7 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import player.Player;
-
+import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -25,6 +25,10 @@ public class ShuffleController implements Initializable {
 
     /* Shuffle Button */
     @FXML Button shuffleButton;
+    @FXML Button shuffleButton1;
+
+    /* Shuffle Card Pane */
+    @FXML AnchorPane shuffleCard;
 
     public void setGameObject(GameObject gameObject) {
         this.gameObject = gameObject;
@@ -38,5 +42,11 @@ public class ShuffleController implements Initializable {
 
     public void shuffleCard() {
 
+    }
+
+    @FXML
+    public void handleFinish() {
+        // Hide the shuffleCard pane
+        shuffleCard.setVisible(false);
     }
 }

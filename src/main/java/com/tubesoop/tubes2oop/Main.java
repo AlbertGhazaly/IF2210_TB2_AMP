@@ -1,6 +1,7 @@
 package com.tubesoop.tubes2oop;
 
 import gameobject.GameObject;
+import gamestatus.GameStatus;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,10 +17,17 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         try {
             GameObject gameObject = new GameObject();
+            GameStatus gameStatus = new GameStatus();
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("game.fxml"));
 
             loader.setControllerFactory(controllerClass -> {
+                /* Pasang GameStatus di TurnController */
+                if (controllerClass == TurnController.class) {
+                    TurnController controller = new TurnController();
+                    controller.setGameStatus(gameStatus);
+                    return controller;
+                }
                 /* Pasang GameObject di PlayerStatusController */
                 if (controllerClass == PlayerStatusController.class) {
                     PlayerStatusController controller = new PlayerStatusController();
