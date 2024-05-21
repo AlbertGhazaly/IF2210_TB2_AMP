@@ -248,7 +248,7 @@
                 <children>
                     <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
                         <image>
-                            <Image url="@../../../assets/hewan/hiu darat.png" />
+                            <Image url="@../../../assets/hewan/hiu_darat.png" />
                         </image>
                     </ImageView>
                 </children>
