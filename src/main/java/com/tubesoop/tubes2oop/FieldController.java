@@ -30,7 +30,4 @@ public class FieldController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
     }
-
-
-
 }

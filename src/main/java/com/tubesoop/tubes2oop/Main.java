@@ -17,16 +17,16 @@ public class Main extends Application {
         try {
             GameObject gameObject = new GameObject();
 
-            // Set up the FXMLLoader for the main FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("game.fxml"));
 
-            // Set the controller factory
             loader.setControllerFactory(controllerClass -> {
+                /* Pasang GameObject di PlayerStatusController */
                 if (controllerClass == PlayerStatusController.class) {
                     PlayerStatusController controller = new PlayerStatusController();
                     controller.setGameObject(gameObject);
                     return controller;
                 }
+                /* Pasang GameObject di FieldController */
                 if (controllerClass == FieldController.class ) {
                     FieldController controller = new FieldController();
                     controller.setGameObject(gameObject);
@@ -41,10 +41,8 @@ public class Main extends Application {
                 }
             });
 
-            // Load the main FXML
             Parent root = loader.load();
 
-            // Set up the stage
             primaryStage.setScene(new Scene(root));
             primaryStage.setTitle("Game");
             primaryStage.show();
