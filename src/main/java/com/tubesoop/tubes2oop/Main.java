@@ -26,7 +26,13 @@ public class Main extends Application {
                     PlayerStatusController controller = new PlayerStatusController();
                     controller.setGameObject(gameObject);
                     return controller;
-                } else {
+                }
+                if (controllerClass == FieldController.class ) {
+                    FieldController controller = new FieldController();
+                    controller.setGameObject(gameObject);
+                    return controller;
+                }
+                else {
                     try {
                         return controllerClass.getDeclaredConstructor().newInstance();
                     } catch (Exception e) {
