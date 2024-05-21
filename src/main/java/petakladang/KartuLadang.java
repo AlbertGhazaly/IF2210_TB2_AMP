@@ -5,15 +5,15 @@ import java.util.*;
 public class KartuLadang <T extends Card> {
     private T kartu;
     private List<Item>  items;
-    KartuLadang(){
+    public KartuLadang(){
         this.kartu = null;
         this.items = null;
     }
-    KartuLadang(final T kartu) {
+    public KartuLadang(final T kartu) {
         this.kartu = kartu;
         this.items = new ArrayList<>();
     }
-    KartuLadang(final T kartu, List<Item> items) {
+    public KartuLadang(final T kartu, List<Item> items) {
         if (kartu instanceof Hewan){
             Hewan temp = (Hewan) kartu;
             this.kartu = (T) new Hewan(temp);

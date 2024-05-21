@@ -2,13 +2,11 @@ package deck;
 import java.util.List;
 import java.util.ArrayList;
 import card.*;
-
 public class Deck<T extends Card> {
   private List<T> deckPasif;
   private List<T> deckAktif;
   public static final int DECK_PASSIVE_ROW_SIZE = 40;
   public static final int DECK_ACTIVE_SIZE = 6;
-
   public Deck() {
     this.deckAktif = new ArrayList<>();
     this.deckPasif = new ArrayList<>();

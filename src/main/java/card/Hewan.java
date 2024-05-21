@@ -5,10 +5,9 @@ import java.util.List;
 
 public class Hewan extends Card{
     private String kategori;
-    private int berat;
     private int beratPanen;
 
-    public Hewan(){
+    public Hewan() {
         super();
         this.kategori = null;
         this.berat = 0;
@@ -17,7 +16,6 @@ public class Hewan extends Card{
     public Hewan(String nama, String imgPath,String kategori, int berat, int beratPanen){
         super(nama,imgPath);
         this.kategori = kategori;
-        this.berat = berat;
         this.beratPanen = beratPanen;
     }
 
@@ -30,13 +28,12 @@ public class Hewan extends Card{
         );
         ;
     }
-    public String getKategori(){
+
+    public String getKategori() {
         return this.kategori;
     }
-    public int getBerat(){
-        return this.berat;
-    }
-    public int getBeratPanen(){
+
+    public int getBeratPanen() {
         return this.beratPanen;
     }
     public void addBerat(int addedBerat){
@@ -48,10 +45,8 @@ public class Hewan extends Card{
     public void setKategori(String kategori){
         this.kategori = kategori;
     }
-    public void setBerat(int berat){
-        this.berat = berat;
-    }
-    public void setBeratPanen(int beratPanen){
+
+    public void setBeratPanen(int beratPanen) {
         this.beratPanen = beratPanen;
     }
 }

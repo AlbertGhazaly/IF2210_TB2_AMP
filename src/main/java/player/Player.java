@@ -1,25 +1,22 @@
 package player;
 
 import deck.*;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.*;
+import java.io.IOException;
 import card.*;
-import entity.Entity;
-
-public class Player implements Entity {
+import entity.*;
+import petakladang.*;
+public class Player implements Entity{
     private int gulden;
     private Deck<Card> deck;
-    private List<Card> kartu_ladang;
+    private KartuLadang<Card> kartu_ladang;
     public Player(){
         this.gulden = 0;
         this.deck = new Deck<>();
-        this.kartu_ladang = new ArrayList<>();
+        this.kartu_ladang = new KartuLadang<>();
     }
 
-    public Player(int gulden, Deck<Card> deck, List<Card> kartu_ladang){
+    public Player(int gulden, Deck<Card> deck, KartuLadang<Card> kartu_ladang){
         this.gulden = gulden;
         this.deck = deck;
         this.kartu_ladang = kartu_ladang;
@@ -38,14 +35,14 @@ public class Player implements Entity {
     }
 
     public Deck<Card> getDeck(){
-        return deck;
+        return this.deck;
     }
 
     public void setDeck(Deck<Card> deck){
         this.deck = deck;
     }
 
-    public List<Card> getKartuLadang(){
+    public KartuLadang<Card> getKartuLadang(){
         return kartu_ladang;
     }
 
@@ -138,22 +135,22 @@ public class Player implements Entity {
 
     }
     public void printInfoPlayer(){
-        System.out.println("Gulden Player 1 : " + this.getGulden());
-        System.out.println("Deck Player 1 : ");
-        for(int i = 0; i < this.getDeck().getAktifSize(); i++){
-            System.out.println(this.getDeck().getAktifElement(i).getName());
-        }
-        for(int i = 0; i < this.getDeck().getPasifSize(); i++){
-            System.out.println(this.getDeck().getPasifElement(i).getName());
-        }
-        System.out.println("Kartu Ladang Player 1 : ");
-        for(int i = 0; i < this.getKartuLadang().size(); i++){
-            System.out.println(this.getKartuLadang().get(i).getName());
-            System.out.println("Item : ");
+//        System.out.println("Gulden Player 1 : " + this.getGulden());
+//        System.out.println("Deck Player 1 : ");
+//        for(int i = 0; i < this.getDeck().getAktifSize(); i++){
+//            System.out.println(this.getDeck().getAktifElement(i).getName());
+//        }
+//        for(int i = 0; i < this.getDeck().getPasifSize(); i++){
+//            System.out.println(this.getDeck().getPasifElement(i).getName());
+//        }
+//        System.out.println("Kartu Ladang Player 1 : ");
+//        for(int i = 0; i < this.getKartuLadang().size(); i++){
+//            System.out.println(this.getKartuLadang().get(i).getName());
+//            System.out.println("Item : ");
             // for(int j = 0; j < player1.getKartuLadang().get(i); j++){
             //     System.out.println(player1.getKartuLadang().get(i).getItems().get(j).getName());
             // }
-        }
+
     }
 }
 
