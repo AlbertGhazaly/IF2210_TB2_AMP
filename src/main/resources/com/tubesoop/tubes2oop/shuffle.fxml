@@ -6,10 +6,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="300.0" prefWidth="600.0" styleClass="shuffleCard" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tubesoop.tubes2oop.ShuffleController">
    <children>
-      <Label layoutX="240.0" layoutY="23.0" text="Pick 4 Cards!">
+      <Label layoutX="240.0" layoutY="23.0" text="Pick 4 Cards!" textFill="WHITE">
          <font>
             <Font name="Book Antiqua Bold Italic" size="20.0" />
          </font>

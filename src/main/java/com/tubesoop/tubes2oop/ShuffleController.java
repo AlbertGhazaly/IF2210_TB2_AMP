@@ -15,6 +15,7 @@ public class ShuffleController implements Initializable {
     GameObject gameObject;
     Player player1;
     Player player2;
+    Boolean isPickedFour = false;
 
     /* 4 Random Cards */
     @FXML Pane card1;
@@ -32,6 +33,10 @@ public class ShuffleController implements Initializable {
     }
 
     public void initialize(URL location, ResourceBundle resources) {
+
+    }
+
+    public void shuffleCard() {
 
     }
 }
