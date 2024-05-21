@@ -6,7 +6,6 @@ public abstract class Card {
     private String name;
     private String imgPath;
     private String position;
-    private String tipe;
     public static String convertPositionToString(int row, int col){
         String temp = "";
         temp += String.valueOf('A' + row);
@@ -22,28 +21,24 @@ public abstract class Card {
     }
     public Card(){
         this.name = null;
-        this.tipe = null;
         this.imgPath = null;
         this.position = null;
     }
-    public Card(String name, String imgPath,String tipe){
+    public Card(String name, String imgPath){
         this.name = name;
         this.imgPath = imgPath;
         this.position = null;
-        this.tipe = tipe;
     }
-    public Card(String name, String imgPath,String tipe, String position){
+    public Card(String name, String imgPath, String position){
         this.name = name;
         this.imgPath = imgPath;
         this.position = null;
-        this.tipe = tipe;
         this.position = position;
     }
     public Card(final Card other){
         this.name = other.getName();
         this.imgPath = other.getImgPath();
         this.position = other.getPosition();
-        this.tipe = other.tipe;
     }
     public void setPosition(int row, int col){
         this.position = convertPositionToString(row,col);
@@ -57,5 +52,4 @@ public abstract class Card {
     public String getPosition(){
         return this.position;
     }
-    public String getTipe(){return this.tipe;}
-} 
+}

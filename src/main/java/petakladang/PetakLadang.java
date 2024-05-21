@@ -9,7 +9,13 @@ class PetakLadang <T extends Card>{
   public static final int MAX_COL = 5;
 
   public PetakLadang() {
-    petakLadang = new ArrayList<>(MAX_ROW*MAX_COL);
+    this.petakLadang = new ArrayList<>();
+    for (int i = 0; i < MAX_ROW; i++) {
+      this.petakLadang.add(new ArrayList<>());
+      for (int j = 0; j < MAX_COL; j++) {
+          this.petakLadang.get(i).add(null);
+      }
+    }
   }
 
   public void addElement(T element, int row, int col) {
@@ -23,9 +29,12 @@ class PetakLadang <T extends Card>{
     return this.petakLadang;
   }
   public void removeElement(int row, int col) {
-    if (petakLadang.get(row).get(col)!=null){
-        petakLadang.get(row).remove(col);
+    if (petakLadang.get(row)!=null){
+      if (petakLadang.get(row).get(col)!=null){
+        petakLadang.get(row).set(col,null);
+      }
     }
+
   }
 
 }
