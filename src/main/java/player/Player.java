@@ -10,6 +10,7 @@ import java.io.IOException;
 import card.*;
 import entity.*;
 import gameobject.GameObject;
+import gamestatus.GameStatus;
 import petakladang.*;
 public class Player implements Entity{
     private int gulden;
@@ -117,8 +118,10 @@ public class Player implements Entity{
                 String[] data = line.split(" ");
                 String lokasi = data[0];
                 String kartuDeckAktif = data[1];
-                String firstChar = lokasi.substring(0, 1);
+//                String firstChar = lokasi.substring(0, 1);
                 // Mendapatkan sisa string sebagai string
+
+
 //                String remainingDigits = lokasi.substring(1);
 
                 // Konversi karakter pertama menjadi integer
@@ -128,10 +131,12 @@ public class Player implements Entity{
 //                int secondInt = Integer.parseInt(remainingDigits);
                 // To Do : Implementasikan Find pada data Hewan, Tanaman berdasarkan nama kartu
 
+
                 // Implementasikan cara untuk menambahkan kartu deck aktif ke deck player1
                 if (isIn(GameObject.hewanList,kartuDeckAktif)){
                     for (int j=0;j<GameObject.hewanList.size();j++){
                         if (GameObject.hewanList.get(j).getName().equals(kartuDeckAktif)){
+
                             this.deck.addAktifElement(new Hewan(GameObject.hewanList.get(j)),Card.convertStringtoRow(lokasi),Card.convertStringtoCol(lokasi));
                         }
                     }
