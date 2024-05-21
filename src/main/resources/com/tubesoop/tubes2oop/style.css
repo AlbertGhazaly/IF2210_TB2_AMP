@@ -25,7 +25,7 @@
 }
 
 .shuffleCard {
-    -fx-background-color: linear-gradient(to top right, #BAD80A, #009E49);
+    -fx-background-color: linear-gradient(to top right, #FEE6CB, #FCB8A1);
     -fx-border-radius: 5px;
 }
 
