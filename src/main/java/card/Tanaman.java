@@ -13,7 +13,7 @@ public class Tanaman extends Card{
         this.umur = 0;
     }
     public Tanaman(String nama, String imgpath, int durasiPanen,int umur){
-        super(nama, imgpath,"tanaman");
+        super(nama, imgpath);
         this.durasiPanen = durasiPanen;
         this.umur = umur;
     }
