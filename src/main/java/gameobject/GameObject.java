@@ -8,10 +8,10 @@ public class GameObject {
     private Player player1;
     private Player player2;
     private Toko toko;
-    public static List<Hewan> hewanList;
-    public static List<Tanaman> tanamanList;
-    public static List<Produk> produkList;
-    public static List<Item> itemList;
+    public static ArrayList<Hewan> hewanList = new ArrayList<>();
+    public static ArrayList<Tanaman> tanamanList =  new ArrayList<>();
+    public static ArrayList<Produk> produkList = new ArrayList<>();
+    public static ArrayList<Item> itemList = new ArrayList<>();
 
     public GameObject() {
         this.player1 = new Player();
