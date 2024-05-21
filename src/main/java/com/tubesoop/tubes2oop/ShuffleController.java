@@ -40,6 +40,7 @@ public class ShuffleController implements Initializable {
 
     }
 
+    @FXML
     public void shuffleCard() {
 
     }
