@@ -2,7 +2,6 @@ package card;
 
 public class Item extends Card{
     private int harga;
-    private int umur;
 
     public Item(){
         super();
@@ -10,7 +9,7 @@ public class Item extends Card{
     }
 
     public Item(String nama, String imgpath, int harga){
-        super(nama, imgpath);
+        super(nama, imgpath,"item");
         this.harga = harga;
     }
 

@@ -6,6 +6,7 @@ public abstract class Card {
     private String name;
     private String imgPath;
     private String position;
+    private String tipe;
     public static String convertPositionToString(int row, int col){
         String temp = "";
         temp += String.valueOf('A' + row);
@@ -13,20 +14,36 @@ public abstract class Card {
         temp += String.valueOf(col);
         return temp;
     }
+    public static int convertStringtoCol(String pos){
+        return (int) (pos.charAt(0)-'A');
+    }
+    public static int convertStringtoRow(String pos){
+        return (int) (pos.charAt(2)-'0');
+    }
     public Card(){
-        this.name = "";
-        this.imgPath = "";
+        this.name = null;
+        this.tipe = null;
+        this.imgPath = null;
         this.position = null;
     }
-    public Card(String name, String imgPath){
+    public Card(String name, String imgPath,String tipe){
         this.name = name;
         this.imgPath = imgPath;
         this.position = null;
+        this.tipe = tipe;
     }
-    public Card(Card other){
+    public Card(String name, String imgPath,String tipe, String position){
+        this.name = name;
+        this.imgPath = imgPath;
+        this.position = null;
+        this.tipe = tipe;
+        this.position = position;
+    }
+    public Card(final Card other){
         this.name = other.getName();
         this.imgPath = other.getImgPath();
         this.position = other.getPosition();
+        this.tipe = other.tipe;
     }
     public void setPosition(int row, int col){
         this.position = convertPositionToString(row,col);
@@ -40,4 +57,5 @@ public abstract class Card {
     public String getPosition(){
         return this.position;
     }
+    public String getTipe(){return this.tipe;}
 } 
