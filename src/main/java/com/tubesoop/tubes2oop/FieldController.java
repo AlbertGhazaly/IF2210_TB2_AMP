@@ -12,38 +12,6 @@ import javafx.scene.Node;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-class DraggableImageView extends ImageView {
-    public DraggableImageView(Image image) {
-        super(image);
-
-        setOnDragDetected(event -> {
-            Dragboard db = startDragAndDrop(TransferMode.ANY);
-            ClipboardContent content = new ClipboardContent();
-            content.putImage(getImage());
-            db.setContent(content);
-            event.consume();
-        });
-
-        setOnDragOver(event -> {
-            if (event.getGestureSource() != this && event.getDragboard().hasImage()) {
-                event.acceptTransferModes(TransferMode.ANY);
-            }
-            event.consume();
-        });
-
-        setOnDragDropped(event -> {
-            Dragboard db = event.getDragboard();
-            boolean success = false;
-            if (db.hasImage()) {
-                setImage(db.getImage());
-                success = true;
-            }
-            event.setDropCompleted(success);
-            event.consume();
-        });
-    }
-}
-
 public class FieldController implements Initializable {
     private GameObject gameObject;
 
