@@ -1,41 +1,25 @@
 package card;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Tanaman extends Card{
-    private int durasiPanen;
-    private List<Item> items;
+    private int umurPanen;
+
 
     public Tanaman(){
         super();
-        this.durasiPanen = 0;
-        this.items = new ArrayList<Item>();
+        this.umurPanen = 0;
     }
-    public Tanaman(String nama, String imgpath, int durasiPanen, List<Item> items){ 
+    public Tanaman(String nama, String imgpath, int umurPanen){
         super(nama, imgpath);
-        this.durasiPanen = durasiPanen;
-        this.items = new ArrayList<Item>(items);
+        setdurasiPanen(umurPanen);
     }
     public Tanaman(final Tanaman other) {
-        this(other.getName(), other.getImgPath(), other.getdurasiPanen(), other.items);
+        this(other.getName(), other.getImgPath(), other.getUmurPanen());
     }
-    public int getdurasiPanen() {
-        return durasiPanen;
+    public int getUmurPanen() {
+        return umurPanen;
     }
-    public List<Item> getItems() {
-        return items;
-    }
-    public void addItem(Item item) {
-        this.items.add(item);
-    }
-    public void removeItem(Item item) {
-        this.items.remove(item);
-    }
-    public void setdurasiPanen(int durasiPanen) {
-        this.durasiPanen = durasiPanen;
-    }
-    public void adddurasiPanen(int addedDurasiPanen) {
-        this.durasiPanen += addedDurasiPanen;
+
+    public void setdurasiPanen(int umurPanen) {
+        this.umurPanen = umurPanen;
     }
 }
