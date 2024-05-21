@@ -32,6 +32,12 @@ public class Main extends Application {
                     controller.setGameObject(gameObject);
                     return controller;
                 }
+                /* Pasang GameObject di ShuffleController */
+                if (controllerClass == ShuffleController.class) {
+                    ShuffleController controller = new ShuffleController();
+                    controller.setGameObject(gameObject);
+                    return controller;
+                }
                 else {
                     try {
                         return controllerClass.getDeclaredConstructor().newInstance();

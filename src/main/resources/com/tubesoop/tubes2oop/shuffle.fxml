@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="300.0" prefWidth="600.0" styleClass="shuffleCard" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tubesoop.tubes2oop.Shuffle">
+   <children>
+      <Label layoutX="240.0" layoutY="23.0" text="Pick 4 Cards!">
+         <font>
+            <Font name="Book Antiqua Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <Pane layoutX="166.0" layoutY="75.0" prefHeight="125.0" prefWidth="125.0" styleClass="glassBackground" stylesheets="@style.css" />
+      <Pane layoutX="307.0" layoutY="75.0" prefHeight="125.0" prefWidth="125.0" styleClass="glassBackground" stylesheets="@style.css" />
+      <Pane layoutX="25.0" layoutY="75.0" prefHeight="125.0" prefWidth="125.0" styleClass="glassBackground" stylesheets="@style.css" />
+      <Pane layoutX="448.0" layoutY="75.0" prefHeight="125.0" prefWidth="125.0" styleClass="glassBackground" stylesheets="@style.css" />
+      <Button layoutX="25.0" layoutY="244.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="125.0" styleClass="shuffleButton" stylesheets="@style.css" text="Shuffle">
+         <font>
+            <Font name="Book Antiqua" size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

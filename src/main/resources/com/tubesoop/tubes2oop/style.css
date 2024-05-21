@@ -4,6 +4,7 @@
 
 .glassBackground {
     -fx-background-color: rgba(255, 255, 255, 0.5); /* Adjust the last value (0.5) for the desired opacity */
+    -fx-border-radius: 5px;
 }
 
 .glowingWhite {
@@ -21,4 +22,14 @@
     -fx-background-color: white;
     -fx-background-radius: 5px;
     -fx-text-fill: black; /* Text color for active field */
+}
+
+.shuffleCard {
+    -fx-background-color: linear-gradient(to top right, #BAD80A, #009E49);
+    -fx-border-radius: 5px;
+}
+
+.shuffleButton {
+    -fx-border-radius: 2000px;
+    -fx-background-color: #FFFFFF;
 }
