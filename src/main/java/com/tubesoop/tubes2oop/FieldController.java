@@ -7,18 +7,20 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.Pane;
 import player.Player;
-
+import javafx.scene.Node;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class FieldController implements Initializable {
-    GameObject gameObject;
+    private GameObject gameObject;
 
-    @FXML
-    Player player1;
+    /* Inisiasi Player */
+    @FXML private Player player1;
+    @FXML private Player player2;
 
-    @FXML
-    Player player2;
+    /* Field Pane */
+
+    /* Deck Pane */
 
     public void setGameObject(GameObject gameObject) {
         this.gameObject = gameObject;

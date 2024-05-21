@@ -10,12 +10,12 @@
     <!-- FIELD -->
     <Pane layoutX="24.0" layoutY="109.0">
         <children>
-            <Pane fx:id="targetPane1" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+            <Pane prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
                 <children>
 
                 </children>
             </Pane>
-            <Pane fx:id="targetPane2" layoutX="122.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+            <Pane layoutX="122.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
                 <children>
 
                 </children>
