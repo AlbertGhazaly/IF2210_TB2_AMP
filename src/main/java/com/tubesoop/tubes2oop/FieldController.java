@@ -9,6 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.image.Image;
 import player.Player;
 import javafx.scene.Node;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -21,8 +22,35 @@ public class FieldController implements Initializable {
 
     /* Field Pane */
     @FXML private Pane fieldPane;
+    @FXML private Pane targetPane1;
+    @FXML private Pane targetPane2;
+    @FXML private Pane targetPane3;
+    @FXML private Pane targetPane4;
+    @FXML private Pane targetPane5;
+    @FXML private Pane targetPane6;
+    @FXML private Pane targetPane7;
+    @FXML private Pane targetPane8;
+    @FXML private Pane targetPane9;
+    @FXML private Pane targetPane10;
+    @FXML private Pane targetPane11;
+    @FXML private Pane targetPane12;
+    @FXML private Pane targetPane13;
+    @FXML private Pane targetPane14;
+    @FXML private Pane targetPane15;
+    @FXML private Pane targetPane16;
+    @FXML private Pane targetPane17;
+    @FXML private Pane targetPane18;
+    @FXML private Pane targetPane19;
+    @FXML private Pane targetPane20;
+
     /* Deck Pane */
     @FXML private Pane deckPane;
+    @FXML private Pane pane1;
+    @FXML private Pane pane2;
+    @FXML private Pane pane3;
+    @FXML private Pane pane4;
+    @FXML private Pane pane5;
+
 
     public void setGameObject(GameObject gameObject) {
         this.gameObject = gameObject;
