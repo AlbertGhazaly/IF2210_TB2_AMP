@@ -29,6 +29,12 @@ public class KartuLadang <T extends Card> {
     public void addItems(Item addition){
         this.items.add(addition);
     }
+    public Card getKartu(){
+        return this.kartu;
+    }
+    public List<Item> getItemsList(){
+        return this.items;
+    }
     public KartuLadang getInstance() {
 
         ArrayList<Item> copy = new ArrayList<>();

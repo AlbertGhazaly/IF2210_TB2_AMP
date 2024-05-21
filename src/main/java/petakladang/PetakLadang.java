@@ -17,7 +17,9 @@ public class PetakLadang{
       }
     }
   }
-
+public KartuLadang getElement(int row, int col) {
+    return this.petakLadang.get(row).get(col);
+}
   public void addElement(KartuLadang element, int row, int col) {
     if (petakLadang.get(row)==null){
         petakLadang.set(row,new ArrayList<>());
