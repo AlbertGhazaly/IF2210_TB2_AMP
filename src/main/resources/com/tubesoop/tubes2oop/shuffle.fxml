@@ -5,29 +5,66 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 
-<AnchorPane prefHeight="300.0" prefWidth="600.0" styleClass="shuffleCard" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tubesoop.tubes2oop.ShuffleController">
+<AnchorPane fx:id="shuffleCard" prefHeight="300.0" style="-fx-background-radius: 10;" prefWidth="600.0" styleClass="shuffleCard" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tubesoop.tubes2oop.ShuffleController">
+   <effect>
+      <DropShadow radius="35" offsetX="0" offsetY="0" color="#00000080"/>
+   </effect>
    <children>
-      <Label layoutX="240.0" layoutY="23.0" text="Pick 4 Cards!" textFill="WHITE">
+      <Label layoutX="240.0" layoutY="23.0" text="Pick 4 Cards!" textFill="BLACK">
          <font>
             <Font name="Book Antiqua Bold Italic" size="20.0" />
          </font>
       </Label>
 
-      <Pane fx:id="card1" layoutX="166.0" layoutY="75.0" prefHeight="125.0" prefWidth="125.0" styleClass="glassBackground" stylesheets="@style.css">
-
+      <Pane fx:id="card1" layoutX="166.0" layoutY="75.0" prefHeight="125.0" prefWidth="125.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+         <StackPane alignment="CENTER" prefHeight="125.0" prefWidth="125.0">
+            <ImageView fitWidth="85" fitHeight="85" preserveRatio="true">
+               <image>
+                  <Image url="@/assets/hewan/sheep.png" />
+               </image>
+            </ImageView>
+         </StackPane>
       </Pane>
-      <Pane fx:id="card2" layoutX="307.0" layoutY="75.0" prefHeight="125.0" prefWidth="125.0" styleClass="glassBackground" stylesheets="@style.css">
-
+      <Pane fx:id="card2" layoutX="307.0" layoutY="75.0" prefHeight="125.0" prefWidth="125.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+         <StackPane alignment="CENTER" prefHeight="125.0" prefWidth="125.0">
+            <ImageView fitWidth="85" fitHeight="85" preserveRatio="true">
+               <image>
+                  <Image url="@/assets/hewan/sheep.png" />
+               </image>
+            </ImageView>
+         </StackPane>
       </Pane>
-      <Pane fx:id="card3" layoutX="25.0" layoutY="75.0" prefHeight="125.0" prefWidth="125.0" styleClass="glassBackground" stylesheets="@style.css">
-
+      <Pane fx:id="card3" layoutX="25.0" layoutY="75.0" prefHeight="125.0" prefWidth="125.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+         <StackPane alignment="CENTER" prefHeight="125.0" prefWidth="125.0">
+            <ImageView fitWidth="85" fitHeight="85" preserveRatio="true">
+               <image>
+                  <Image url="@/assets/hewan/sheep.png" />
+               </image>
+            </ImageView>
+         </StackPane>
       </Pane>
-      <Pane fx:id="card4" layoutX="448.0" layoutY="75.0" prefHeight="125.0" prefWidth="125.0" styleClass="glassBackground" stylesheets="@style.css">
-
+      <Pane fx:id="card4" layoutX="448.0" layoutY="75.0" prefHeight="125.0" prefWidth="125.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+         <StackPane alignment="CENTER" prefHeight="125.0" prefWidth="125.0">
+            <ImageView fitWidth="85" fitHeight="85" preserveRatio="true">
+               <image>
+                  <Image url="@/assets/hewan/sheep.png" />
+               </image>
+            </ImageView>
+         </StackPane>
       </Pane>
 
-      <Button fx:id="shuffleButton" layoutX="25.0" layoutY="244.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="125.0" styleClass="shuffleButton" stylesheets="@style.css" text="Shuffle">
+      <Button fx:id="shuffleButton" layoutX="25.0" layoutY="244.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="125.0" styleClass="shuffleButton" stylesheets="@style.css" text="Refresh" onAction="#shuffleCard">
+         <font>
+            <Font name="Book Antiqua" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="shuffleButton1" layoutX="448.0" layoutY="244.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="125.0" styleClass="shuffleButton" stylesheets="@style.css" text="Finish" onAction="#handleFinish">
          <font>
             <Font name="Book Antiqua" size="16.0" />
          </font>

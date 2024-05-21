@@ -7,42 +7,45 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
-  <children>
-    <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="850.0" styleClass="backgroundColor" stylesheets="@style.css" VBox.vgrow="ALWAYS">
-        <!-- CLOUD -->
-        <fx:include source="cloud.fxml"/>
+    <children>
+        <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="775.0" prefWidth="850.0" styleClass="backgroundColor" stylesheets="@style.css" VBox.vgrow="ALWAYS">
+            <!-- CLOUD -->
+            <fx:include source="cloud.fxml"/>
 
-        <!-- GAMBAR RANTING -->
-        <ImageView fitHeight="360.0" fitWidth="388.0" layoutX="607.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../../../assets/branch.png" />
-            </image>
-        </ImageView>
+            <!-- GAMBAR RANTING -->
+            <ImageView fitHeight="360.0" fitWidth="388.0" layoutX="607.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../../../assets/branch.png" />
+                </image>
+            </ImageView>
 
-        <!-- GRASS -->
-        <fx:include source="grass.fxml"/>
+            <!-- GRASS -->
+            <fx:include source="grass.fxml"/>
 
-        <!-- GAMBAR TUPAI -->
-        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="746.0" layoutY="642.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../../../assets/1.png" />
-            </image>
-        </ImageView>
+            <!-- GAMBAR TUPAI -->
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="746.0" layoutY="642.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../../../assets/1.png" />
+                </image>
+            </ImageView>
 
-        <!-- PLAYER STATUS -->
-        <fx:include source="player_status.fxml"/>
+            <!-- PLAYER STATUS -->
+            <fx:include source="player_status.fxml"/>
 
-        <!-- FIELD & DECK -->
-        <fx:include source="field.fxml"/>
+            <!-- FIELD & DECK -->
+            <fx:include source="field.fxml"/>
 
-        <!-- TURN BUTTON -->
-        <fx:include source="turn.fxml"/>
+            <!-- TURN BUTTON -->
+            <fx:include source="turn.fxml"/>
 
-        <!-- ACTIONS BUTTON -->
-        <fx:include source="actions.fxml"/>
+            <!-- ACTIONS BUTTON -->
+            <fx:include source="actions.fxml"/>
 
-         <!-- EFEK GLOWING -->
-         <effect> <Glow /> </effect>
-    </AnchorPane>
-  </children>
+            <!-- Card Shuffle -->
+            <fx:include source="shuffle.fxml" styleClass="card-shuffle" />
+
+            <!-- EFEK GLOWING -->
+            <effect> <Glow /> </effect>
+        </AnchorPane>
+    </children>
 </VBox>
