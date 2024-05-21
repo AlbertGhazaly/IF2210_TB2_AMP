@@ -23,9 +23,7 @@ public class Tanaman extends Card{
     public Tanaman(final Tanaman other) {
         this(other.getName(), other.getImgPath(), other.getdurasiPanen(),other.getUmur());
     }
-    public int getUmurPanen() {
-        return umurPanen;
-    }
+    public int getdurasiPanen(){return this.durasiPanen;}
     public void setdurasiPanen(int durasiPanen) {
         this.durasiPanen = durasiPanen;
     }

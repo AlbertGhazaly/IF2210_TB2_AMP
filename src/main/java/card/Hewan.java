@@ -6,7 +6,7 @@ import java.util.List;
 public class Hewan extends Card{
     private String kategori;
     private int beratPanen;
-
+    private int berat;
     public Hewan() {
         super();
         this.kategori = null;
@@ -32,7 +32,7 @@ public class Hewan extends Card{
     public String getKategori() {
         return this.kategori;
     }
-
+    public int getBerat(){return this.berat;}
     public int getBeratPanen() {
         return this.beratPanen;
     }

@@ -2,6 +2,10 @@ package player;
 
 import deck.*;
 import java.util.*;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.io.BufferedReader;
 import java.io.IOException;
 import card.*;
 import entity.*;
@@ -71,64 +75,75 @@ public class Player implements Entity{
     @Override
     public void load(String path) throws IOException {
 
-//            File file = new File(path);
-//            Scanner scanner = new Scanner(file);
-//
-//            // Baca jumlah gulden
-//            int gulden = Integer.parseInt(scanner.nextLine().trim());
-//            this.setGulden(gulden);
-//
-//            // Baca jumlah deck
-//            int jumlahDeck = Integer.parseInt(scanner.nextLine().trim());
-//            this.setJumlahDeck(jumlahDeck);
-//
-//            // Baca jumlah deck aktif (M)
-//            int jumlahDeckAktif = Integer.parseInt(scanner.nextLine().trim());
-//
-//            // Baca kartu deck aktif
-//            for (int i = 0; i < jumlahDeckAktif; i++) {
-//                String[] data = scanner.nextLine().split(" ");
-//                String lokasi = data[0];
-//                String kartuDeckAktif = data[1];
-//                String firstChar = lokasi.substring(0, 1);
-//                // Mendapatkan sisa string sebagai string
-//                String remainingDigits = lokasi.substring(1);
-//
-//                // Konversi karakter pertama menjadi integer
-//                int firstInt = (int) firstChar.charAt(0) - 'A' + 1;
-//
-//                // Konversi sisa string menjadi integer
-//                int secondInt = Integer.parseInt(remainingDigits);
-//                // To Do : Implementasikan Find pada data Hewan, Tanaman berdasarkan nama kartu
-//
-//                // Implementasikan cara untuk menambahkan kartu deck aktif ke deck player1
-//                this.getDeck().addElement(new Hewan(firstInt, secondInt, kartuDeckAktif, "imgpath", "kategori", 0, 0, null));
-//            }
-//
-//            // Baca jumlah kartu ladang (L)
-//            int jumlahKartuLadang = Integer.parseInt(scanner.nextLine().trim());
-//
-//            // Baca kartu ladang
-//            for (int i = 0; i < jumlahKartuLadang; i++) {
-//                String[] data = scanner.nextLine().split(" ");
-//                String lokasiKartu = data[0];
-//                String firstChar = lokasiKartu.substring(0, 1);
-//                String remainingDigits = lokasiKartu.substring(1);
-//                int firstInt = (int) firstChar.charAt(0) - 'A' + 1;
-//                int secondInt = Integer.parseInt(remainingDigits);
-//                String kartuLadang = data[1];
-//                int umurBerat = Integer.parseInt(data[2]);
-//                Hewan hewan = new Hewan(firstInt, secondInt, kartuLadang, "imgpath", "kategori", umurBerat, 0, null);
-//                this.getKartuLadang().add(hewan);
-//                int jumlahItem = Integer.parseInt(data[3]);
-//                for(int j = 0; j < jumlahItem; j++){
-//                    // To Do : Implementasikan Find berdasarkan nama item
-//                    Item item = new Item(data[4+j],"imgpath",0);
-//                    this.setItemKartuHewan(item, hewan);
-//                }
-//            }
-//
-//            scanner.close();
+        // Obtain the InputStream of the resource
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(path);
+
+        if (inputStream == null) {
+            throw new IOException("Resource not found: " + path);
+        }
+
+        // Wrap InputStream in BufferedReader
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+
+        String line;
+        // Parse current turn
+        line = bufferedReader.readLine();
+        // Baca jumlah gulden
+        int gulden = Integer.parseInt(line);
+        this.setGulden(gulden);
+
+            // Baca jumlah deck
+        line = bufferedReader.readLine();
+            int jumlahDeck = Integer.parseInt(line);
+            this.setJumlahDeck(jumlahDeck);
+
+            // Baca jumlah deck aktif (M)
+            int jumlahDeckAktif = Integer.parseInt(scanner.nextLine().trim());
+
+            // Baca kartu deck aktif
+            for (int i = 0; i < jumlahDeckAktif; i++) {
+                String[] data = scanner.nextLine().split(" ");
+                String lokasi = data[0];
+                String kartuDeckAktif = data[1];
+                String firstChar = lokasi.substring(0, 1);
+                // Mendapatkan sisa string sebagai string
+                String remainingDigits = lokasi.substring(1);
+
+                // Konversi karakter pertama menjadi integer
+                int firstInt = (int) firstChar.charAt(0) - 'A' + 1;
+
+                // Konversi sisa string menjadi integer
+                int secondInt = Integer.parseInt(remainingDigits);
+                // To Do : Implementasikan Find pada data Hewan, Tanaman berdasarkan nama kartu
+
+                // Implementasikan cara untuk menambahkan kartu deck aktif ke deck player1
+                this.getDeck().addElement(new Hewan(firstInt, secondInt, kartuDeckAktif, "imgpath", "kategori", 0, 0, null));
+            }
+
+            // Baca jumlah kartu ladang (L)
+            int jumlahKartuLadang = Integer.parseInt(scanner.nextLine().trim());
+
+            // Baca kartu ladang
+            for (int i = 0; i < jumlahKartuLadang; i++) {
+                String[] data = scanner.nextLine().split(" ");
+                String lokasiKartu = data[0];
+                String firstChar = lokasiKartu.substring(0, 1);
+                String remainingDigits = lokasiKartu.substring(1);
+                int firstInt = (int) firstChar.charAt(0) - 'A' + 1;
+                int secondInt = Integer.parseInt(remainingDigits);
+                String kartuLadang = data[1];
+                int umurBerat = Integer.parseInt(data[2]);
+                Hewan hewan = new Hewan(firstInt, secondInt, kartuLadang, "imgpath", "kategori", umurBerat, 0, null);
+                this.getKartuLadang().add(hewan);
+                int jumlahItem = Integer.parseInt(data[3]);
+                for(int j = 0; j < jumlahItem; j++){
+                    // To Do : Implementasikan Find berdasarkan nama item
+                    Item item = new Item(data[4+j],"imgpath",0);
+                    this.setItemKartuHewan(item, hewan);
+                }
+            }
+
+            scanner.close();
     }
     @Override
     public void save(String path) throws  IOException{
