@@ -24,7 +24,10 @@ public class KartuLadang <T extends Card> {
         this.items = items;
     }
     public List<Item> getItems(){
-        return this.items;
+        return (List<Item>) this.items;
+    }
+    public Item getItemElement(int idx){
+        return this.items.get(idx);
     }
     public void addItems(Item addition){
         this.items.add(addition);
@@ -32,9 +35,7 @@ public class KartuLadang <T extends Card> {
     public Card getKartu(){
         return this.kartu;
     }
-    public List<Item> getItemsList(){
-        return this.items;
-    }
+
     public KartuLadang getInstance() {
 
         ArrayList<Item> copy = new ArrayList<>();

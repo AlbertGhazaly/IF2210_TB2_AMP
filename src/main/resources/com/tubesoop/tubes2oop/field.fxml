@@ -154,15 +154,7 @@
             </Pane>
             <Pane fx:id="pane5" layoutX="488.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
                 <children>
-<<<<<<< HEAD
-                    <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="7.0" layoutY="6.5">
-                        <image>
-                            <Image url="@../../../assets/hewan/hiu_darat.png" />
-                        </image>
-                    </ImageView>
-=======
 
->>>>>>> f49af5c57c8bb15546deb2994b727f396dd2fd70
                 </children>
             </Pane>
             <Pane fx:id="pane6" layoutX="609.0" prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">

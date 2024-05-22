@@ -10,6 +10,7 @@ public class GameStatus{
     public GameStatus(){
         GameStatus.turn = 0;
         this.status = new Shuffle();
+
         this.objek = new GameObject();
     }
 
@@ -28,6 +29,13 @@ public class GameStatus{
     }
     public void execute(){
         this.status.execute(this.objek);
+    }
+
+    public State getStatus() {
+        return status;
+    }
+    public GameObject  getObjek(){
+        return objek;
     }
     /**
      * getter untuk atribut turn

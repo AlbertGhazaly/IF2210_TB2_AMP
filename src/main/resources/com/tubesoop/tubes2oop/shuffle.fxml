@@ -22,39 +22,45 @@
          </font>
       </Label>
 
-      <Pane fx:id="card1" layoutX="166.0" layoutY="75.0" prefHeight="125.0" prefWidth="125.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
-         <StackPane alignment="CENTER" prefHeight="125.0" prefWidth="125.0">
-            <ImageView fitWidth="85" fitHeight="85" preserveRatio="true">
-               <image>
-                  <Image url="@/assets/hewan/sheep.png" />
-               </image>
+      <Pane fx:id="card1" layoutX="166.0" layoutY="75.0" prefHeight="125.0" prefWidth="125.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" >
+         <StackPane alignment="CENTER" prefHeight="125.0" prefWidth="125.0" >
+            <Button onMouseClicked="#selectCard1toDeck" prefWidth="125.0"
+                    prefHeight="125.0" styleClass="glassBackground">
+
+            </Button>
+            <ImageView fx:id="ImageCard1" fitWidth="85" fitHeight="85" preserveRatio="true" >
+
             </ImageView>
          </StackPane>
       </Pane>
       <Pane fx:id="card2" layoutX="307.0" layoutY="75.0" prefHeight="125.0" prefWidth="125.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
          <StackPane alignment="CENTER" prefHeight="125.0" prefWidth="125.0">
-            <ImageView fitWidth="85" fitHeight="85" preserveRatio="true">
-               <image>
-                  <Image url="@/assets/hewan/sheep.png" />
-               </image>
+            <Button onMouseClicked="#selectCard2toDeck" prefWidth="125.0"
+                    prefHeight="125.0" styleClass="glassBackground">
+
+            </Button>
+            <ImageView fx:id="ImageCard2" fitWidth="85" fitHeight="85" preserveRatio="true" >
+
             </ImageView>
          </StackPane>
       </Pane>
       <Pane fx:id="card3" layoutX="25.0" layoutY="75.0" prefHeight="125.0" prefWidth="125.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
          <StackPane alignment="CENTER" prefHeight="125.0" prefWidth="125.0">
-            <ImageView fitWidth="85" fitHeight="85" preserveRatio="true">
-               <image>
-                  <Image url="@/assets/hewan/sheep.png" />
-               </image>
+            <Button onMouseClicked="#selectCard3toDeck" prefWidth="125.0"
+                    prefHeight="125.0" styleClass="glassBackground">
+
+            </Button>
+            <ImageView fx:id="ImageCard3" fitWidth="85" fitHeight="85" preserveRatio="true" >
             </ImageView>
          </StackPane>
       </Pane>
       <Pane fx:id="card4" layoutX="448.0" layoutY="75.0" prefHeight="125.0" prefWidth="125.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
          <StackPane alignment="CENTER" prefHeight="125.0" prefWidth="125.0">
-            <ImageView fitWidth="85" fitHeight="85" preserveRatio="true">
-               <image>
-                  <Image url="@/assets/hewan/sheep.png" />
-               </image>
+            <Button onMouseClicked="#selectCard4toDeck" prefWidth="125.0"
+                    prefHeight="125.0" styleClass="glassBackground">
+
+            </Button>
+            <ImageView fx:id="ImageCard4" fitWidth="85" fitHeight="85" preserveRatio="true" >
             </ImageView>
          </StackPane>
       </Pane>
