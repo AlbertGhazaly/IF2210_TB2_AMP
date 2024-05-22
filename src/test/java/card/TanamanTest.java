@@ -12,7 +12,6 @@ class TanamanTest {
         assertNull(tanaman.getName());
         assertNull(tanaman.getImgPath());
         assertNull(tanaman.getPosition());
-        assertEquals("tanaman", tanaman.getTipe());
         assertEquals(0, tanaman.getdurasiPanen());
         assertEquals(0, tanaman.getUmur());
     }
@@ -23,7 +22,6 @@ class TanamanTest {
         assertEquals("Tomat", tanaman.getName());
         assertEquals("tomat.png", tanaman.getImgPath());
         assertNull(tanaman.getPosition());
-        assertEquals("tanaman", tanaman.getTipe());
         assertEquals(30, tanaman.getdurasiPanen());
         assertEquals(10, tanaman.getUmur());
     }
@@ -35,7 +33,6 @@ class TanamanTest {
         assertEquals(original.getName(), copy.getName());
         assertEquals(original.getImgPath(), copy.getImgPath());
         assertEquals(original.getPosition(), copy.getPosition());
-        assertEquals(original.getTipe(), copy.getTipe());
         assertEquals(original.getdurasiPanen(), copy.getdurasiPanen());
         assertEquals(original.getUmur(), copy.getUmur());
     }

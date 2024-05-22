@@ -14,16 +14,16 @@ public class Tanaman extends Card{
         this.durasiPanen = durasiPanen;
         this.umur = umur;
     }
-    public int getDurasiPanen() { return this.durasiPanen; }
     public void addUmur(int addedUmur){
-        this.umur += addedUmur;
+        this.umur+= addedUmur;
     }
     public int getUmur(){
         return this.umur;
     }
     public Tanaman(final Tanaman other) {
-        this(other.getName(), other.getImgPath(), other.getDurasiPanen(),other.getUmur());
+        this(other.getName(), other.getImgPath(), other.getdurasiPanen(),other.getUmur());
     }
+    public int getdurasiPanen(){return this.durasiPanen;}
     public void setdurasiPanen(int durasiPanen) {
         this.durasiPanen = durasiPanen;
     }
