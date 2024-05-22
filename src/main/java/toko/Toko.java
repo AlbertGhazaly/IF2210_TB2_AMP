@@ -1,4 +1,5 @@
 package toko;
+import card.Produk;
 import entity.Entity;
 import exception.*;
 import gamestatus.GameStatus;
@@ -11,6 +12,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import entity.Entity;
+import player.Player;
+import gameobject.GameObject;
 
 public class Toko implements Entity {
     private Map<String, Integer> stok;
@@ -62,6 +65,51 @@ public class Toko implements Entity {
         } else {
             // Jika belum ada, tambahkan ke stok dengan jumlah 1
             this.stok.put(barang, 1);
+        }
+    }
+
+    /**
+     * Method dengan masukan berupa player dan barang dimana player melakukan pembelian pada toko.
+     * I.S. Barang terinisialisasi pada stok Toko
+     * F.S. Barang diinput ke deck aktif player tersebut
+     *
+     * @param player Pemain yang sedang melakukan pembelian.
+     * @param barang Barang yang ingin dibeli oleh pemain.
+     */
+    public void beli(Player player, String barang) {
+        for(int i = 0; i < GameObject.produkList.size(); i++) {
+            if (GameObject.produkList.get(i).getName().equals(barang)) {
+                // Menambahkan barang ke deck aktif pemain
+                player.getDeck().addAktifElementRandom(new Produk(GameObject.produkList.get(i)));
+                // Mengurangi stok barang
+                stok.put(barang, stok.get(barang) - 1);
+                break;
+            }
+        }
+    }
+
+    /**
+     * Method dengan masukan berupa player dan barang dimana player melakukan penjualan pada toko.
+     * I.S. Barang terinisialisasi pada deck aktif player
+     * F.S. Barang berpindah dari deck aktif player menuju Toko
+     *
+     * @param player Pemain yang sedang melakukan pembelian.
+     * @param barang Barang yang ingin dijual oleh pemain.
+     * @param indeks lokasi deck aktif yang ingin dihapus.
+     */
+    public void jual(Player player, String barang, int indeks){
+        for(int i = 0; i < GameObject.produkList.size(); i++) {
+            if (GameObject.produkList.get(i).getName().equals(barang)) {
+                // Menghapus barang dari deck aktif pemain
+                player.getDeck().removeAktifElement(indeks);
+                // Menambahkan stok barang
+                if (!stok.containsKey(barang)) {
+                    stok.put(barang, 1);
+                } else {
+                    stok.put(barang, stok.get(barang) + 1);
+                }
+                break;
+            }
         }
     }
 

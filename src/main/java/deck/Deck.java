@@ -17,7 +17,13 @@ public class Deck<T extends Card> {
     }
     this.deckPasif = new ArrayList<>();
   }
-
+  public void addAktifElementRandom(T element){
+      for (int i = 0;i<DECK_ACTIVE_SIZE;i++){
+          if (deckAktif.get(i) == null){
+              this.addAktifElement(element,0,i);
+          }
+      }
+  }
   public void addAktifElement(T element) {
       this.deckAktif.add(element);
   }
