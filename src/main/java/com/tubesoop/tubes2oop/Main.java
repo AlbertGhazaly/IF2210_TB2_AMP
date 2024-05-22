@@ -19,11 +19,20 @@ public class Main extends Application {
 
         try {
             GameStatus gameStatus = new GameStatus();
+            gameStatus.getObjek().getPlayer1().load("player1.txt");
+            gameStatus.getObjek().getPlayer2().load("player2.txt");
+            gameStatus.getObjek().geToko().load("gamestate.txt");
+
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("game.fxml"));
             loader.setControllerFactory(controllerClass -> {
                 /* Pasang GameStatus di TurnController */
                 if (controllerClass == TurnController.class) {
+                    TurnController controller = new TurnController();
+                    controller.setGameStatus(gameStatus);
+                    return controller;
+                }
+                if (controllerClass == TokoController.class) {
                     TurnController controller = new TurnController();
                     controller.setGameStatus(gameStatus);
                     return controller;
