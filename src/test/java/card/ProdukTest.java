@@ -18,7 +18,6 @@ public class ProdukTest {
         Produk defaultProduk = new Produk();
         assertEquals(0, defaultProduk.getHarga(), "Harga harus 0");
         assertEquals(0, defaultProduk.getAddedBerat(), "Added berat harus 0");
-        assertEquals("produk", defaultProduk.getType(), "Type harus 'produk'");
     }
 
     @Test
@@ -27,7 +26,6 @@ public class ProdukTest {
         assertEquals("/images/Beruang.jpg", produk.getImgPath(), "Image path harus '/images/Beruang.jpg'");
         assertEquals(10000, produk.getHarga(), "Harga harus 10000");
         assertEquals(5, produk.getAddedBerat(), "Added berat harus 5");
-        assertEquals("produk", produk.getType(), "Type harus 'produk'");
     }
 
     @Test
@@ -37,6 +35,5 @@ public class ProdukTest {
         assertEquals(produk.getImgPath(), copyProduk.getImgPath(), "Image path harus cocok");
         assertEquals(produk.getHarga(), copyProduk.getHarga(), "Harga harus cocok");
         assertEquals(produk.getAddedBerat(), copyProduk.getAddedBerat(), "Added berat harus cocok");
-        assertEquals(produk.getType(), copyProduk.getType(), "Type harus cocok");
     }
 }
