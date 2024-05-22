@@ -4,7 +4,7 @@ import java.util.*;
 
 public class KartuLadang <T extends Card> {
     private Card kartu;
-    private List<Item>  items;
+    private List< Item>  items;
     public KartuLadang(){
         this.kartu = null;
         this.items = null;
@@ -22,6 +22,9 @@ public class KartuLadang <T extends Card> {
             this.kartu =  new Tanaman(temp);
         }
         this.items = items;
+    }
+    public Item getElementItem(int idx){
+        return items.get(idx);
     }
     public List<Item> getItems(){
         return this.items;

@@ -1,12 +1,11 @@
 package player;
 
 import deck.*;
+
+import java.io.*;
 import java.util.*;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.URL;
-import java.io.BufferedReader;
-import java.io.IOException;
+
 import card.*;
 import entity.*;
 import gameobject.GameObject;
@@ -231,8 +230,43 @@ public class Player implements Entity{
         bufferedReader.close();
     }
     @Override
-    public void save(String path) throws  IOException{
+    public void save(String path) throws  IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter(path));
+        writer.write(this.getGulden());
+        writer.newLine();
+        writer.write(this.getDeck().getPasifSize());
+        writer.newLine();
+        writer.write(this.getDeck().getAktifSize());
+        writer.newLine();
+        for (int i = 0; i < deck.getAktifSize(); i++) {
+            writer.write(this.deck.getAktifElement(i).getPosition() + " ");
+            writer.write(this.deck.getAktifElement(i).getName());
+            writer.newLine();
+        }
+        int jumlah_kartu_ladang = 0;
+        for (int i = 0; i < petak_ladang.getPetakLadang().size(); i++) {
+            jumlah_kartu_ladang += petak_ladang.getPetakLadang().get(i).size();
+        }
+        writer.write(jumlah_kartu_ladang);
+        writer.newLine();
+        for (int i = 0; i < petak_ladang.getPetakLadang().size(); i++) {
+            for (int j = 0; j < petak_ladang.getPetakLadang().get(i).size(); j++) {
 
+                writer.write(petak_ladang.getPetakLadang().get(i).get(j).getKartu().getPosition());
+                writer.write(" " + petak_ladang.getPetakLadang().get(i).get(j).getKartu().getName());
+                if (petak_ladang.getElement(i, j).getKartu() instanceof Hewan) {
+                    Hewan card = (Hewan) petak_ladang.getElement(i, j).getKartu();
+                    writer.write(" " + card.getBerat());
+                } else {
+                    Tanaman card = (Tanaman) petak_ladang.getElement(i, j).getKartu();
+                    writer.write(" " + card.getUmur());
+                }
+                writer.write(" " + petak_ladang.getPetakLadang().get(i).get(j).getItemsList().size());
+                for (int k = 0; k < petak_ladang.getPetakLadang().get(i).get(j).getItemsList().size(); i++) {
+                    writer.write(" " + petak_ladang.getElement(i, j).getElementItem(k).getName());
+                }
+            }
+        }
     }
     public void printInfoPlayer(){
 //        System.out.println("Gulden Player 1 : " + this.getGulden());
