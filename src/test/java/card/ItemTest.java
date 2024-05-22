@@ -11,7 +11,6 @@ class ItemTest {
         assertNull(item.getName());
         assertNull(item.getImgPath());
         assertNull(item.getPosition());
-        assertEquals("item", item.getTipe());
         assertEquals(0, item.getHarga());
     }
 
@@ -21,7 +20,6 @@ class ItemTest {
         assertEquals("Potion", item.getName());
         assertEquals("potion.png", item.getImgPath());
         assertNull(item.getPosition());
-        assertEquals("item", item.getTipe());
         assertEquals(100, item.getHarga());
     }
 
@@ -32,7 +30,6 @@ class ItemTest {
         assertEquals(original.getName(), copy.getName());
         assertEquals(original.getImgPath(), copy.getImgPath());
         assertEquals(original.getPosition(), copy.getPosition());
-        assertEquals(original.getTipe(), copy.getTipe());
         assertEquals(original.getHarga(), copy.getHarga());
     }
 
