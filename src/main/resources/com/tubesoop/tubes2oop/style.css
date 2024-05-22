@@ -29,6 +29,11 @@
     -fx-border-radius: 5px;
 }
 
+.tokoDialog {
+    -fx-background-color: linear-gradient(to top right, #ACEFE1, #FABFC0);
+    -fx-border-radius: 5px;
+}
+
 .shuffleButton {
     -fx-border-radius: 2000px;
     -fx-background-color: #FFFFFF;
