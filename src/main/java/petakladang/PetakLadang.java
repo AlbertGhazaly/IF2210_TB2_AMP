@@ -3,8 +3,8 @@ import java.util.List;
 import java.util.ArrayList;
 import card.*;
 
-class PetakLadang <T extends Card>{
-  private List<List<T>> petakLadang;
+public class PetakLadang{
+  private List<List<KartuLadang>> petakLadang;
   public static final int MAX_ROW = 4;
   public static final int MAX_COL = 5;
 
@@ -17,15 +17,17 @@ class PetakLadang <T extends Card>{
       }
     }
   }
-
-  public void addElement(T element, int row, int col) {
+public KartuLadang getElement(int row, int col) {
+    return this.petakLadang.get(row).get(col);
+}
+  public void addElement(KartuLadang element, int row, int col) {
     if (petakLadang.get(row)==null){
         petakLadang.set(row,new ArrayList<>());
     }
 
     petakLadang.get(row).add(col, element);
   }
-  public  List<List<T>> getPetakLadang() {
+  public  List<List<KartuLadang>> getPetakLadang() {
     return this.petakLadang;
   }
   public void removeElement(int row, int col) {

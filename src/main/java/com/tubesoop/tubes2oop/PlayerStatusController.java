@@ -1,20 +1,22 @@
 package com.tubesoop.tubes2oop;
 
+import gameobject.GameObject;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import java.net.URL;
-import java.util.ResourceBundle;
 import player.Player;
 
 import java.net.URL;
+import java.util.ResourceBundle;
 
 public class PlayerStatusController implements Initializable {
-    @FXML
-    Player player1 = new Player();
+    private GameObject gameObject;
 
     @FXML
-    Player player2 = new Player();
+    private Player player1;
+
+    @FXML
+    private Player player2;
 
     @FXML
     private Label player1Gulden;
@@ -24,20 +26,32 @@ public class PlayerStatusController implements Initializable {
 
     @FXML
     public void updatePlayer1Gulden() {
-        player1Gulden.setText(String.valueOf(player1.getGulden()));
+        if (this.player1 != null) {
+            player1Gulden.setText(String.valueOf(this.player1.getGulden()));
+        }
     }
 
     @FXML
     public void updatePlayer2Gulden() {
-        player2Gulden.setText(String.valueOf(player2.getGulden()));
+        if (this.player2 != null) {
+            player2Gulden.setText(String.valueOf(this.player2.getGulden()));
+        }
+    }
+
+    public void setGameObject(GameObject gameObject) {
+        this.gameObject = gameObject;
+        this.player1 = this.gameObject.getPlayer1();
+        this.player2 = this.gameObject.getPlayer2();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        player1.setGulden(30);
-        player2.setGulden(50);
+        // Initialize with default values
 
-        updatePlayer1Gulden();
-        updatePlayer2Gulden();
+        if (player1 != null) this.player1.setGulden(30);
+        if (player2 != null) this.player2.setGulden(50);
+
+        this.updatePlayer1Gulden();
+        this.updatePlayer2Gulden();
     }
 }

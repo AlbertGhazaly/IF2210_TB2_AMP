@@ -2,7 +2,9 @@ package toko;
 import entity.Entity;
 import exception.*;
 import gamestatus.GameStatus;
-
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -66,10 +68,14 @@ public class Toko implements Entity {
     @Override
     public void load(String path) throws IOException {
         // FileReader declare
-        String filePath = Toko.class.getResource(path).getFile();
-        FileReader fileReader = new FileReader(filePath);
-        // Wrap FileReader in BufferedReader
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(path);
+
+        if (inputStream == null) {
+            throw new IOException("Resource not found: " + path);
+        }
+
+        // Wrap InputStream in BufferedReader
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
         String line;
         // Parse current turn

@@ -1,8 +1,5 @@
 package card;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Tanaman extends Card{
     private int durasiPanen;
     private int umur;
@@ -26,9 +23,7 @@ public class Tanaman extends Card{
     public Tanaman(final Tanaman other) {
         this(other.getName(), other.getImgPath(), other.getdurasiPanen(),other.getUmur());
     }
-    public int getdurasiPanen() {
-        return durasiPanen;
-    }
+    public int getdurasiPanen(){return this.durasiPanen;}
     public void setdurasiPanen(int durasiPanen) {
         this.durasiPanen = durasiPanen;
     }
