@@ -10,11 +10,18 @@ public class Shuffle implements State{
     public Shuffle(){
         cards = new ArrayList<>();
     }
-
+    public void insertCardBack(GameObject objek){
+        while (cards.size() > 0){
+            objek.getCurrentPlayer().getDeck().addPasifElement(cards.get(0));
+            cards.remove(0);
+        }
+    }
+    public List<Card> getCards(){
+        return cards;
+    }
     @Override
-    public void execute(GameObject objek) {
+    public void execute(GameObject objek){
         Random random = new Random();
-
         while (cards.size() < 4){
             int x = random.nextInt(objek.getCurrentPlayer().getDeck().getPasifSize());
             cards.add(objek.getCurrentPlayer().getDeck().getPasifElement(x));
