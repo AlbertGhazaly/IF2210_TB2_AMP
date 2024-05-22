@@ -44,6 +44,9 @@
             <!-- Card Shuffle -->
             <fx:include source="shuffle.fxml" styleClass="card-shuffle" />
 
+            <!-- Toko -->
+            <fx:include source="toko.fxml" />
+
             <!-- EFEK GLOWING -->
             <effect> <Glow /> </effect>
         </AnchorPane>
