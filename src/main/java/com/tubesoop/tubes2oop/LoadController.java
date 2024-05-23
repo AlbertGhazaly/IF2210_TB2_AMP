@@ -12,7 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.util.*;
 
-public class SaveController implements Initializable {
+public class LoadController implements Initializable {
     public GameStatus gameStatus;
 
     @FXML
@@ -27,11 +27,11 @@ public class SaveController implements Initializable {
     private Label failed;
 
     @FXML
-    AnchorPane saveModal;
+    AnchorPane LoadModal;
 
     static Label succesStatic;
     static Label failedStatic;
-    static AnchorPane saveModalStatic;
+    static AnchorPane LoadModalStatic;
 
     public void setGameStatus(GameStatus gameStatus) {
         this.gameStatus = gameStatus;
@@ -42,8 +42,8 @@ public class SaveController implements Initializable {
         failedStatic = failed;
         succesStatic.setVisible(false);
         failedStatic.setVisible(false);
-        saveModalStatic = saveModal;
-        saveModalStatic.setVisible(false);
+        LoadModalStatic = LoadModal;
+        LoadModalStatic.setVisible(false);
         ChoiceBox<String> BoxPilihan = choiceBox;
         // Create a HashMap and populate it with some data
         List<String> choice = new ArrayList<>() ;
@@ -59,9 +59,8 @@ public class SaveController implements Initializable {
         }
     }
     public void kembali() {
-        saveModalStatic.setVisible(false);
+        LoadModalStatic.setVisible(false);
         succes.setVisible(false);
-        failed.setVisible(false);
     }
 
     public void execute() {
@@ -71,11 +70,11 @@ public class SaveController implements Initializable {
         String Ext = choiceBox.getSelectionModel().getSelectedItem();
         if (!(folder.length()==0)) {
             try {
-                gameStatus.saveState(folder,Ext);
+                gameStatus.loadState(folder,Ext);
                 succes.setVisible(true);
             } catch (Exception e) {
                 failed.setVisible(true);
-        }
+            }
         } else {
             failed.setVisible(true);
         }

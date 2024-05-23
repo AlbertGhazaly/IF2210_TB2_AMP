@@ -50,6 +50,9 @@
             <!-- Save -->
             <fx:include source="save.fxml" styleClass="card-shuffle" />
 
+            <!-- Load -->
+            <fx:include source="load.fxml" styleClass="card-shuffle" />
+
             <!-- EFEK GLOWING -->
             <effect> <Glow /> </effect>
         </AnchorPane>

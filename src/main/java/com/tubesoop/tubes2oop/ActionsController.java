@@ -9,4 +9,9 @@ public class ActionsController {
         SaveController.succesStatic.setVisible(false);
         SaveController.failedStatic.setVisible(false);
     }
+    public void load() {
+        LoadController.LoadModalStatic.setVisible(true);
+        LoadController.succesStatic.setVisible(false);
+        LoadController.failedStatic.setVisible(false);
+    }
 }

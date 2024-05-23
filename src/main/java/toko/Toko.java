@@ -145,11 +145,7 @@ public class Toko implements Entity {
         BufferedWriter writer = new BufferedWriter(new FileWriter(path));
         writer.write(String.valueOf(GameStatus.turn));
         writer.newLine();
-        int sum = 0;
-        for (Integer value : stok.values()) {
-            sum += value;
-        }
-        writer.write(String.valueOf(sum));
+        writer.write(String.valueOf(stok.size()));
         writer.newLine();
 
         for (Map.Entry<String, Integer> entry : stok.entrySet()) {

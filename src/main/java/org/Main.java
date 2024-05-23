@@ -9,8 +9,7 @@ public class Main {
     public static void main(String[] args) {
             GameStatus gameStatus = new GameStatus();
         try{
-            gameStatus.getObjek().geToko().load("gamestate.txt");
-            gameStatus.getObjek().getPlayer1().load("player1.txt");
+            gameStatus.loadState("andi", "txt");
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -28,7 +27,7 @@ public class Main {
 //        }
         try{
 //            gameStatus.getObjek().getPlayer1().load("player1.txt");
-            gameStatus.saveState("andi", "txt");
+            gameStatus.saveState("", "txt");
         } catch (Exception e){
             e.printStackTrace();
         }
