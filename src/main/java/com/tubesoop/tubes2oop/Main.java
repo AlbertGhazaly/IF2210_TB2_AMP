@@ -30,14 +30,17 @@ public class Main extends Application {
 //            System.out.println("A01: "+gameStatus.getObjek().getPlayer1().getDeck().getAktifSize());
 //            System.out.println("A01: "+gameStatus.getObjek().getPlayer1().getDeck().getAktifElement(0));
 
-//            gameStatus.getObjek().getPlayer2().load("player2.txt");
-
-//            gameStatus.getObjek().getPlayer1().load("player1.txt");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("game.fxml"));
             loader.setControllerFactory(controllerClass -> {
                 /* Pasang GameStatus di TurnController */
                 if (controllerClass == TurnController.class) {
                     TurnController controller = new TurnController();
+                    controller.setGameStatus(gameStatus);
+                    return controller;
+                }
+                /* Pasang GameStatus di TokoController */
+                if (controllerClass == TokoController.class) {
+                    TokoController controller = new TokoController();
                     controller.setGameStatus(gameStatus);
                     return controller;
                 }

@@ -51,3 +51,9 @@
     -fx-border-radius: 100px;/* Atur z-index lebih tinggi dari elemen lain */
 }
 
+.tokoBackground {
+    -fx-background-image: url("../../../assets/bgToko.jpg");
+    -fx-background-size: 850px 775px; /* Lebar 850px, Tinggi 750px */
+    -fx-background-repeat: no-repeat; /* Agar gambar tidak diulang */
+    -fx-background-position: center; /* Posisikan gambar di tengah */
+}
