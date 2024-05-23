@@ -30,7 +30,12 @@ public void addAktifElementRandom(T element){
       }
 }
   public void addAktifElement(T element) {
-      this.deckAktif.add(element);
+      for (int i = 0; i < DECK_ACTIVE_SIZE; i++) {
+          if (this.deckAktif.get(i) == null) {
+              this.deckAktif.set(i, element);
+              break;
+          }
+      }
   }
   public void addAktifElement(T element, int row, int col) {
     element.setPosition(row,col);

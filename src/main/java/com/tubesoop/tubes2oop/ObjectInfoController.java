@@ -17,8 +17,10 @@ import card.Tanaman;
 import petakladang.KartuLadang;
 import javafx.scene.layout.HBox;
 import javafx.scene.control.Alert;
+import com.tubesoop.tubes2oop.FieldController;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
+import javafx.application.Platform;
 
 public class ObjectInfoController implements Initializable {
     GameStatus gameStatus;
@@ -101,6 +103,8 @@ public class ObjectInfoController implements Initializable {
                     Produk produk = convertToProduct(SKartuPilihan);
                     gameStatus.getObjek().getCurrentPlayer().getDeck().addAktifElement(produk);
                     gameStatus.getObjek().getCurrentPlayer().getPetakLadang().removeElement(Srow, Scol);
+
+                    FieldController.reloadImage();
                 } else {
                     // Alert deck aktif sudah penuh
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -119,11 +123,13 @@ public class ObjectInfoController implements Initializable {
             }
         } else if (SKartuPilihan instanceof Tanaman) {
             Tanaman tanaman = (Tanaman) SKartuPilihan;
-            if (tanaman.getUmur() > tanaman.getdurasiPanen()) {
+            if (tanaman.getUmur() >= tanaman.getdurasiPanen()) {
                 if (gameStatus.getObjek().getCurrentPlayer().getDeck().getAktifSize() < 6) {
                     Produk produk = convertToProduct(SKartuPilihan);
                     gameStatus.getObjek().getCurrentPlayer().getDeck().addAktifElement(produk);
                     gameStatus.getObjek().getCurrentPlayer().getPetakLadang().removeElement(Srow, Scol);
+
+                    FieldController.reloadImage();
                 } else {
                     // Alert deck aktif sudah penuh
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -142,32 +148,32 @@ public class ObjectInfoController implements Initializable {
             }
         }
 
+        CardInfo.setVisible(false);
         SKartuPilihan = null;
         Srow = -1;
         Scol = -1;
-        CardInfo.setVisible(false);
     }
 
     public Produk convertToProduct(Card card) {
         switch (card.getName()) {
             case "HIU_DARAT":
-                return new Produk("Sirip Hiu", "@assets/produk/shark-fin.png", 500, 12, "HIU_DARAT");
+                return new Produk("Sirip Hiu", "assets/produk/shark-fin.png", 500, 12, "HIU_DARAT");
             case "SAPI":
-                return new Produk("Susu", "@assets/produk/susu.png", 100, 4, "SAPI");
+                return new Produk("Susu", "assets/produk/susu.png", 100, 4, "SAPI");
             case "DOMBA":
-                return new Produk("Daging Domba", "@assets/produk/Daging_Domba.png", 120, 6, "DOMBA");
+                return new Produk("Daging Domba", "assets/produk/Daging_Domba.png", 120, 6, "DOMBA");
             case "KUDA":
-                return new Produk("Daging Kuda", "@assets/produk/Daging_Kuda.png", 150, 8, "KUDA");
+                return new Produk("Daging Kuda", "assets/produk/Daging_Kuda.png", 150, 8, "KUDA");
             case "AYAM":
-                return new Produk("Telur", "@assets/produk/telur.png", 50, 2, "AYAM");
+                return new Produk("Telur", "assets/produk/telur.png", 50, 2, "AYAM");
             case "BERUANG":
-                return new Produk("Daging Beruang", "@assets/produk/Daging_Beruang.png", 500, 12, "BERUANG");
+                return new Produk("Daging Beruang", "assets/produk/Daging_Beruang.png", 500, 12, "BERUANG");
             case "BIJI_LABU":
-                return new Produk("Labu", "@assets/produk/pumpkin.png", 500, 10, "BIJI_LABU");
+                return new Produk("Labu", "assets/produk/pumpkin.png", 500, 10, "BIJI_LABU");
             case "BIJI_JAGUNG":
-                return new Produk("Jagung", "@assets/produk/corn.png", 150, 3, "BIJI_JAGUNG");
+                return new Produk("Jagung", "assets/produk/corn.png", 150, 3, "BIJI_JAGUNG");
             case "BIJI_STROBERI":
-                return new Produk("Stroberi", "@assets/produk/stawberry.png", 350, 5, "BIJI_STROBERI");
+                return new Produk("Stroberi", "assets/produk/stawberry.png", 350, 5, "BIJI_STROBERI");
             default:
                 return new Produk();
         }
