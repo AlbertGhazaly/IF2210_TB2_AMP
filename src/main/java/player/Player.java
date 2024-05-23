@@ -231,7 +231,7 @@ public class Player implements Entity{
     }
     @Override
     public void save(String filename) throws  IOException, NullPointerException{
-        String path = "C:/Andi/4/oop/Tubes2/IF2210_TB2_AMP/src/main/resources/" + filename;
+        String path = "src/main/resources/" + filename;
         BufferedWriter writer = new BufferedWriter(new FileWriter(path));
         writer.write(String.valueOf(getGulden()));
         writer.newLine();
