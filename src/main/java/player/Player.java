@@ -244,11 +244,8 @@ public class Player implements Entity{
             writer.write(this.deck.getAktifElement(i).getName());
             writer.newLine();
         }
-        int jumlah_kartu_ladang = 0;
-        for (int i = 0; i < petak_ladang.getPetakLadang().size(); i++) {
-            jumlah_kartu_ladang += petak_ladang.getPetakLadang().get(i).size();
-        }
-        writer.write(String.valueOf(jumlah_kartu_ladang));
+
+        writer.write(String.valueOf(petak_ladang.getNEff()));
         writer.newLine();
 
         for (int i = 0; i < petak_ladang.getPetakLadang().size(); i++) {
@@ -271,6 +268,7 @@ public class Player implements Entity{
                     for (int k = 0; k < elm.getItems().size(); k++) {
                         writer.write(" " + elm.getElementItem(k).getName());
                     }
+                    writer.newLine();
 
                 }
             }
