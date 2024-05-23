@@ -8,7 +8,7 @@ public class GameStatus{
     private State status;
     private GameObject objek;
     public GameStatus(){
-        GameStatus.turn = 0;
+        GameStatus.turn = 1;
         this.status = new Shuffle();
 
         this.objek = new GameObject();

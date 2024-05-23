@@ -2,6 +2,7 @@ package deck;
 import java.util.List;
 import java.util.ArrayList;
 import card.*;
+import com.tubesoop.tubes2oop.FieldController;
 import gameobject.GameObject;
 
 import java.util.Random;
@@ -23,6 +24,8 @@ public void addAktifElementRandom(T element){
       for (int i = 0;i<DECK_ACTIVE_SIZE;i++){
           if (deckAktif.get(i) == null){
               this.addAktifElement(element,0,i);
+              return;
+
           }
       }
 }
@@ -61,7 +64,8 @@ public void addAktifElementRandom(T element){
   public int getAktifSize() {
       int n = 0;
       for (int i = 0;i<DECK_ACTIVE_SIZE;i++){
-          if (this.deckAktif.get(i) != null) {
+          Card temp = (Card) this.deckAktif.get(i);
+          if (temp!= null) {
               n += 1;
           }
       }
@@ -87,5 +91,11 @@ public void addAktifElementRandom(T element){
             this.deckPasif.add( new Item(GameObject.itemList.get(x-18)));
           }
       }
+  }
+  public void swapIndex(int i, int j){
+      Card temp = this.deckAktif.get(i);
+      this.deckAktif.set(i,this.deckAktif.get(j));
+      this.deckAktif.set(j,temp);
+      FieldController.reloadImage();
   }
 }
