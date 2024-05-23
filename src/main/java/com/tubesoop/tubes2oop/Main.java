@@ -32,8 +32,9 @@ public class Main extends Application {
                     controller.setGameStatus(gameStatus);
                     return controller;
                 }
+                /* Pasang GameStatus di TokoController */
                 if (controllerClass == TokoController.class) {
-                    TurnController controller = new TurnController();
+                    TokoController controller = new TokoController();
                     controller.setGameStatus(gameStatus);
                     return controller;
                 }

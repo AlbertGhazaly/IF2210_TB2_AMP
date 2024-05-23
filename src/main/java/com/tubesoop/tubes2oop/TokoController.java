@@ -1,5 +1,6 @@
 package com.tubesoop.tubes2oop;
-import gamestatus.GameStatus;
+
+import gamestatus.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -34,7 +35,5 @@ public class TokoController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         TokoPane.setVisible(false);
         alandToko = TokoPane;
-
-
     }
 }

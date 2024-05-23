@@ -59,42 +59,12 @@
       <Pane layoutX="647.0" layoutY="411.0" prefHeight="150.0" prefWidth="125.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
 
 
-      <Pane layoutX="82.0" layoutY="627.0" prefHeight="100.0" prefWidth="100.0" styleClass="glassBackground" stylesheets="@style.css">
-         <ImageView fx:id="deck1">
-            <image>
-               <Image  />
-            </image>
-         </ImageView>
-      </Pane>
-      <Pane layoutX="200.0" layoutY="627.0" prefHeight="100.0" prefWidth="100.0" styleClass="glassBackground" stylesheets="@style.css">
-         <ImageView fx:id="deck2">
-            <image>
-               <Image  />
-            </image>
-         </ImageView>
-      </Pane>
-      <Pane layoutX="325.0" layoutY="627.0" prefHeight="100.0" prefWidth="100.0" styleClass="glassBackground" stylesheets="@style.css">
-         <ImageView fx:id="deck3">
-            <image>
-               <Image />
-            </image>
-         </ImageView>
-      </Pane>
-      <Pane layoutX="438.0" layoutY="627.0" prefHeight="100.0" prefWidth="100.0" styleClass="glassBackground" stylesheets="@style.css">
-         <ImageView fx:id="deck4">
-            <image>
-               <Image />
-            </image>
-         </ImageView>
-      </Pane>
-      <Pane layoutX="555.0" layoutY="627.0" prefHeight="100.0" prefWidth="100.0" styleClass="glassBackground" stylesheets="@style.css">
-         <ImageView fx:id="deck5">
-            <image>
-               <Image  />
-            </image>
-         </ImageView>
-      </Pane>
-
+      <Pane layoutX="82.0" layoutY="627.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
+      <Pane layoutX="200.0" layoutY="627.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
+      <Pane layoutX="325.0" layoutY="627.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
+      <Pane layoutX="438.0" layoutY="627.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
+      <Pane layoutX="555.0" layoutY="627.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
+      <Pane layoutX="673.0" layoutY="627.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
 
       <Button layoutY="26.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="125.0" style="-fx-background-color: transparent;" stylesheets="@style.css" text="Tutup Toko" fx:id="CloseButton" onAction="#closeToko">
          <font>
