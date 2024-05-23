@@ -8,7 +8,7 @@ public abstract class Card {
     private String position;
     public static String convertPositionToString(int row, int col){
         String temp = "";
-        temp += String.valueOf('A' + col);
+        temp += String.valueOf((char) ((int)'A' + col));
         temp += "0";
         temp += String.valueOf(row + 1);
         return temp;
