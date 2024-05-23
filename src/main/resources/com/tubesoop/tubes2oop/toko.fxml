@@ -56,9 +56,9 @@
          </font>
       </Button>
       <Separator layoutX="82.0" layoutY="601.0" prefHeight="0.0" prefWidth="687.0" />
-      <Pane layoutX="79.0" layoutY="81.0" prefHeight="150.0" prefWidth="207.0" style="-fx-background-radius: 10;" styleClass="etalaseBackground" stylesheets="@style.css">
+      <Pane layoutX="79.0" layoutY="81.0" prefHeight="150.0" prefWidth="207.0" style="-fx-background-radius: 10;" styleClass="etalaseBackground" onMouseClicked="#beliSiripHiu" stylesheets="@style.css">
          <children>
-            <Pane layoutX="14.0" layoutY="14.0" prefHeight="121.0" prefWidth="91.0" style="-fx-background-radius: 10;" styleClass="gambarBackground" stylesheets="@style.css">
+            <Pane layoutX="14.0" layoutY="14.0" prefHeight="121.0" prefWidth="91.0" style="-fx-background-radius: 10;" styleClass="gambarBackground"  stylesheets="@style.css">
                <children>
                   <ImageView fitHeight="81.0" fitWidth="73.0" layoutX="10.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -86,7 +86,7 @@
             <Label layoutX="118.0" layoutY="37.0" text="500" textFill="WHITE" />
          </children>
       </Pane>
-      <Pane layoutX="322.0" layoutY="81.0" prefHeight="150.0" prefWidth="207.0" style="-fx-background-radius: 10;" styleClass="etalaseBackground" stylesheets="@style.css">
+      <Pane layoutX="322.0" layoutY="81.0" prefHeight="150.0" prefWidth="207.0" style="-fx-background-radius: 10;" styleClass="etalaseBackground" onMouseClicked="#beliDagingBeruang" stylesheets="@style.css">
          <children>
             <Pane layoutX="14.0" layoutY="15.0" prefHeight="121.0" prefWidth="91.0" style="-fx-background-radius: 10;" styleClass="gambarBackground" stylesheets="@style.css">
                <children>
@@ -116,7 +116,7 @@
             <Label fx:id="jumlahDagingBeruang" layoutX="120.0" layoutY="83.0" text="0" textFill="WHITE" />
          </children>
       </Pane>
-      <Pane layoutX="562.0" layoutY="81.0" prefHeight="150.0" prefWidth="207.0" style="-fx-background-radius: 10;" styleClass="etalaseBackground" stylesheets="@style.css">
+      <Pane layoutX="562.0" layoutY="81.0" prefHeight="150.0" prefWidth="207.0" style="-fx-background-radius: 10;" styleClass="etalaseBackground" onMouseClicked="#beliSusu" stylesheets="@style.css">
          <children>
             <Pane layoutX="14.0" layoutY="14.0" prefHeight="121.0" prefWidth="91.0" style="-fx-background-radius: 10;" styleClass="gambarBackground" stylesheets="@style.css">
                <children>
@@ -146,7 +146,7 @@
             <Label layoutX="118.0" layoutY="37.0" text="100" textFill="WHITE" />
          </children>
       </Pane>
-      <Pane layoutX="83.0" layoutY="246.0" prefHeight="150.0" prefWidth="207.0" style="-fx-background-radius: 10;" styleClass="etalaseBackground" stylesheets="@style.css">
+      <Pane layoutX="83.0" layoutY="246.0" prefHeight="150.0" prefWidth="207.0" style="-fx-background-radius: 10;" styleClass="etalaseBackground" onMouseClicked="#beliDagingDomba" stylesheets="@style.css">
          <children>
             <Pane layoutX="14.0" layoutY="14.0" prefHeight="121.0" prefWidth="91.0" style="-fx-background-radius: 10;" styleClass="gambarBackground" stylesheets="@style.css">
                <children>
@@ -176,7 +176,7 @@
             <Label layoutX="118.0" layoutY="37.0" text="120" textFill="WHITE" />
          </children>
       </Pane>
-      <Pane layoutX="322.0" layoutY="246.0" prefHeight="150.0" prefWidth="207.0" style="-fx-background-radius: 10;" styleClass="etalaseBackground" stylesheets="@style.css">
+      <Pane layoutX="322.0" layoutY="246.0" prefHeight="150.0" prefWidth="207.0" style="-fx-background-radius: 10;" styleClass="etalaseBackground" onMouseClicked="#beliDagingKuda" stylesheets="@style.css">
          <children>
             <Pane layoutX="14.0" layoutY="14.0" prefHeight="121.0" prefWidth="91.0" style="-fx-background-radius: 10;" styleClass="gambarBackground" stylesheets="@style.css">
                <children>
@@ -206,7 +206,7 @@
             <Label layoutX="118.0" layoutY="37.0" text="150" textFill="WHITE" />
          </children>
       </Pane>
-      <Pane layoutX="562.0" layoutY="246.0" prefHeight="150.0" prefWidth="207.0" style="-fx-background-radius: 10;" styleClass="etalaseBackground" stylesheets="@style.css">
+      <Pane layoutX="562.0" layoutY="246.0" prefHeight="150.0" prefWidth="207.0" style="-fx-background-radius: 10;" styleClass="etalaseBackground" onMouseClicked="#beliTelur" stylesheets="@style.css">
          <children>
             <Pane layoutX="14.0" layoutY="14.0" prefHeight="121.0" prefWidth="91.0" style="-fx-background-radius: 10;" styleClass="gambarBackground" stylesheets="@style.css">
                <children>
@@ -236,7 +236,7 @@
             <Label layoutX="118.0" layoutY="37.0" text="50" textFill="WHITE" />
          </children>
       </Pane>
-      <Pane layoutX="83.0" layoutY="411.0" prefHeight="150.0" prefWidth="207.0" style="-fx-background-radius: 10;" styleClass="etalaseBackground" stylesheets="@style.css">
+      <Pane layoutX="83.0" layoutY="411.0" prefHeight="150.0" prefWidth="207.0" style="-fx-background-radius: 10;" styleClass="etalaseBackground" onMouseClicked="#beliJagung" stylesheets="@style.css">
          <children>
             <Pane layoutX="14.0" layoutY="14.0" prefHeight="121.0" prefWidth="91.0" style="-fx-background-radius: 10;" styleClass="gambarBackground" stylesheets="@style.css">
                <children>
@@ -266,7 +266,7 @@
             <Label layoutX="118.0" layoutY="37.0" text="150" textFill="WHITE" />
          </children>
       </Pane>
-      <Pane layoutX="322.0" layoutY="411.0" prefHeight="150.0" prefWidth="207.0" style="-fx-background-radius: 10;" styleClass="etalaseBackground" stylesheets="@style.css">
+      <Pane layoutX="322.0" layoutY="411.0" prefHeight="150.0" prefWidth="207.0" style="-fx-background-radius: 10;" styleClass="etalaseBackground" onMouseClicked="#beliLabu" stylesheets="@style.css">
          <children>
             <Pane layoutX="14.0" layoutY="14.0" prefHeight="121.0" prefWidth="91.0" style="-fx-background-radius: 10;" styleClass="gambarBackground" stylesheets="@style.css">
                <children>
@@ -296,7 +296,7 @@
             <Label layoutX="118.0" layoutY="37.0" text="500" textFill="WHITE" />
          </children>
       </Pane>
-      <Pane layoutX="562.0" layoutY="411.0" prefHeight="150.0" prefWidth="207.0" style="-fx-background-radius: 10;" styleClass="etalaseBackground" stylesheets="@style.css">
+      <Pane layoutX="562.0" layoutY="411.0" prefHeight="150.0" prefWidth="207.0" style="-fx-background-radius: 10;" styleClass="etalaseBackground" onMouseClicked="#beliStroberi" stylesheets="@style.css">
          <children>
             <Pane layoutX="14.0" layoutY="14.0" prefHeight="121.0" prefWidth="91.0" style="-fx-background-radius: 10;" styleClass="gambarBackground" stylesheets="@style.css">
                <children>

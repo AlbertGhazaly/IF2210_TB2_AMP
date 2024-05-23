@@ -108,5 +108,31 @@ public class TokoController implements Initializable {
     public void clickDeck6(){
         gameStatus.getObjek().geToko().jual(gameStatus.getObjek().getCurrentPlayer(), 5);
     }
-
+    public void beliSiripHiu(){
+        gameStatus.getObjek().geToko().beli(gameStatus.getObjek().getCurrentPlayer(), "SIRIP_HIU");
+    }
+    public void beliDagingBeruang(){
+        gameStatus.getObjek().geToko().beli(gameStatus.getObjek().getCurrentPlayer(), "DAGING_BERUANG");
+    }
+    public void beliSusu(){
+        gameStatus.getObjek().geToko().beli(gameStatus.getObjek().getCurrentPlayer(), "SUSU");
+    }
+    public void beliDagingDomba(){
+        gameStatus.getObjek().geToko().beli(gameStatus.getObjek().getCurrentPlayer(), "DAGING_DOMBA");
+    }
+    public void beliDagingKuda(){
+        gameStatus.getObjek().geToko().beli(gameStatus.getObjek().getCurrentPlayer(), "DAGING_KUDA");
+    }
+    public void beliTelur(){
+        gameStatus.getObjek().geToko().beli(gameStatus.getObjek().getCurrentPlayer(), "TELUR");
+    }
+    public void beliJagung(){
+        gameStatus.getObjek().geToko().beli(gameStatus.getObjek().getCurrentPlayer(), "JAGUNG");
+    }
+    public void beliLabu(){
+        gameStatus.getObjek().geToko().beli(gameStatus.getObjek().getCurrentPlayer(), "LABU");
+    }
+    public void beliStroberi(){
+        gameStatus.getObjek().geToko().beli(gameStatus.getObjek().getCurrentPlayer(), "STROBERI");
+    }
 }
