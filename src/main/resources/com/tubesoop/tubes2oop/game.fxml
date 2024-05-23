@@ -47,6 +47,12 @@
             <!-- Toko -->
             <fx:include source="toko.fxml" />
 
+            <!-- Save -->
+            <fx:include source="save.fxml" styleClass="card-shuffle" />
+
+            <!-- Load -->
+            <fx:include source="load.fxml" styleClass="card-shuffle" />
+            
             <!-- Object Info -->
             <fx:include source="object_info.fxml" styleClass="card-shuffle" />
 

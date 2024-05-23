@@ -26,12 +26,12 @@
     </Button>
     <Pane layoutY="250.0">
         <children>
-            <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Save State" textFill="WHITE">
+            <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Save State" textFill="WHITE" onAction="#save">
                 <font>
                     <Font name="Book Antiqua" size="14.0" />
                 </font>
             </Button>
-            <Button layoutY="52.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Load State" textFill="WHITE">
+            <Button layoutY="52.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Load State" textFill="WHITE" onAction="#load">
                 <font>
                     <Font name="Book Antiqua" size="14.0" />
                 </font>

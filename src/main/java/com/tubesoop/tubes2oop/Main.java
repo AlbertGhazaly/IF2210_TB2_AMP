@@ -32,12 +32,28 @@ public class Main extends Application {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("game.fxml"));
             loader.setControllerFactory(controllerClass -> {
+
                 /* Pasang GameStatus di TurnController */
                 if (controllerClass == TurnController.class) {
                     TurnController controller = new TurnController();
                     controller.setGameStatus(gameStatus);
                     return controller;
                 }
+
+                /* Pasang GameStatus di SaveController */
+                if (controllerClass == SaveController.class) {
+                    SaveController controller = new SaveController();
+                    controller.setGameStatus(gameStatus);
+                    return controller;
+                }
+
+                /* Pasang GameStatus di LoadController */
+                if (controllerClass == LoadController.class) {
+                    LoadController controller = new LoadController();
+                    controller.setGameStatus(gameStatus);
+                    return controller;
+                }
+
                 /* Pasang GameStatus di TokoController */
                 if (controllerClass == TokoController.class) {
                     TokoController controller = new TokoController();
