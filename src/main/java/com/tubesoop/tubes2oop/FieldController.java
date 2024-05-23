@@ -17,13 +17,14 @@ import javax.crypto.spec.PSource;
 import java.net.URL;
 import java.io.InputStream;
 import java.util.ResourceBundle;
+import java.util.regex.*;
 
 public class FieldController implements Initializable {
-    private GameObject gameObject;
+    private static GameObject gameObject;
     public static Player currPlayer;
     /* Inisiasi Player */
-    @FXML private Player player1;
-    @FXML private Player player2;
+    @FXML private static Player player1;
+    @FXML private static Player player2;
 
     /* Field Pane */
     @FXML private Pane fieldPane;
@@ -131,6 +132,7 @@ public class FieldController implements Initializable {
     }
 
     public static void reloadImage(){
+        currPlayer = gameObject.getCurrentPlayer();
             for (int i = 0; i < 6; i++){
                 Pane parent = ((Pane) Main.deckPane.getChildren().get(i));
                 if (parent!=null){
@@ -228,16 +230,52 @@ public class FieldController implements Initializable {
                                 Pane hvs = (Pane) nampan_sumber.getChildren().get(0);
 
                                 // var pane adalah nampan target
-                                Pane temp = null;
-                                if (!pane.getChildren().isEmpty()){
-                                    temp = (Pane) pane.getChildren().get(0);
+                                Pane sumber_parent = (Pane) nampan_sumber.getParent();
+                                Pane target_parent = (Pane) pane.getParent();
+                                if (sumber_parent.getChildren().size()==6 && target_parent.getChildren().size()==20){
+//                                    tanam
+                                }else if (sumber_parent.getChildren().size()==20 && target_parent.getChildren().size()==6){
+                                    return;
+                                }else if (sumber_parent.getChildren().size()==6 && target_parent.getChildren().size()==6){
+//                                  swap deck to deck
+                                    Pattern pattern = Pattern.compile("pane(\\d+)");
+                                    Matcher matcher = pattern.matcher(pane.getId());
+                                    int id1,id2;
+                                    matcher.find();
+                                    String number = matcher.group(1);
+                                    id1 = Integer.parseInt(number);
+                                    matcher = pattern.matcher(nampan_sumber.getId());
+                                    matcher.find();
+                                    number = matcher.group(1);
+                                    id2 = Integer.parseInt(number);
+                                    System.out.println(id1+" "+id2);
+                                    this.currPlayer.getDeck().swapIndex(id1-1,id2-1);
+                                }else{
+//                                    swap petakLadang to PetakLadang
+                                    Pattern pattern = Pattern.compile("Pane(\\d+)");
+                                    Matcher matcher = pattern.matcher(pane.getId());
+                                    int id1,id2;
+                                    matcher.find();
+                                    String number = matcher.group(1);
+                                    id1 = Integer.parseInt(number);
+                                    matcher = pattern.matcher(nampan_sumber.getId());
+                                    matcher.find();
+                                    number = matcher.group(1);
+                                    id2 = Integer.parseInt(number);
+                                    System.out.println(id1+" "+id2);
+                                    this.currPlayer.getPetakLadang().swapElement(id1-1,id2-1);
                                 }
-                                pane.getChildren().add(hvs);
-
-                                draggedPane.getChildren().clear();// Add the dragged pane to the target pane
-                                if (temp != null) {
-                                    draggedPane.getChildren().add(temp);
-                                }
+//                                Pane temp = null;
+//                                if (!pane.getChildren().isEmpty()){
+////                                    if ((Pane) nampan_sumber.getParent().)
+//                                    temp = (Pane) pane.getChildren().get(0);
+//                                }
+//                                pane.getChildren().add(hvs);
+//
+//                                draggedPane.getChildren().clear();// Add the dragged pane to the target pane
+//                                if (temp != null) {
+//                                    draggedPane.getChildren().add(temp);
+//                                }
                                 success = true;
                             }
                         }

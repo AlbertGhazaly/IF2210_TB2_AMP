@@ -2,6 +2,7 @@ package deck;
 import java.util.List;
 import java.util.ArrayList;
 import card.*;
+import com.tubesoop.tubes2oop.FieldController;
 import gameobject.GameObject;
 
 import java.util.Random;
@@ -90,5 +91,11 @@ public void addAktifElementRandom(T element){
             this.deckPasif.add( new Item(GameObject.itemList.get(x-18)));
           }
       }
+  }
+  public void swapIndex(int i, int j){
+      Card temp = this.deckAktif.get(i);
+      this.deckAktif.set(i,this.deckAktif.get(j));
+      this.deckAktif.set(j,temp);
+      FieldController.reloadImage();
   }
 }

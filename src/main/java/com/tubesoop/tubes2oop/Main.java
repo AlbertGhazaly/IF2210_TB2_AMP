@@ -22,8 +22,10 @@ public class Main extends Application {
 
         try {
             GameStatus gameStatus = new GameStatus();
-//            gameStatus.getObjek().geToko().load("gamestate.txt");
+            gameStatus.getObjek().geToko().load("gamestate.txt");
             gameStatus.getObjek().getPlayer1().load("player1.txt");
+            gameStatus.getObjek().getPlayer2().load("player2.txt");
+
 //            System.out.println(gameStatus.turn);
 //            System.out.println("A01: "+gameStatus.getObjek().getPlayer1().getDeck().getAktifSize());
 //            System.out.println("A01: "+gameStatus.getObjek().getPlayer1().getDeck().getAktifElement(0));

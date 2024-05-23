@@ -21,7 +21,7 @@ public class TurnController implements Initializable {
     public void updateTurnLabel() {
 //        turnLabel.setText(String.valueOf(numberOfTurn));
         turnLabel.setText(String.valueOf(numberOfTurn));
-
+        FieldController.reloadImage();
     }
 
     @FXML
