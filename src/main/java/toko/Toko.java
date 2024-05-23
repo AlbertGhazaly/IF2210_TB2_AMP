@@ -14,9 +14,22 @@ import gameobject.GameObject;
 
 public class Toko implements Entity {
     private Map<String, Integer> stok;
+    private Map<String, Integer> hargaBarang;
 
     public Toko() {
         stok = new HashMap<String, Integer>();
+        hargaBarang = new HashMap<String, Integer>();
+
+        // Inisialisasi harga barang
+        hargaBarang.put("SIRIP_HIU", 500);
+        hargaBarang.put("SUSU", 100);
+        hargaBarang.put("DAGING_DOMBA", 120);
+        hargaBarang.put("DAGING_KUDA", 150);
+        hargaBarang.put("TELUR", 50);
+        hargaBarang.put("DAGING_BERUANG", 500);
+        hargaBarang.put("JAGUNG", 150);
+        hargaBarang.put("LABU", 500);
+        hargaBarang.put("STROBERI", 350);
     }
 
     /**
@@ -91,21 +104,22 @@ public class Toko implements Entity {
      * F.S. Barang berpindah dari deck aktif player menuju Toko
      *
      * @param player Pemain yang sedang melakukan pembelian.
-     * @param barang Barang yang ingin dijual oleh pemain.
      * @param indeks lokasi deck aktif yang ingin dihapus.
      */
-    public void jual(Player player, String barang, int indeks){
-        for(int i = 0; i < GameObject.produkList.size(); i++) {
-            if (GameObject.produkList.get(i).getName().equals(barang)) {
+    public void jual(Player player, int indeks){
+        if (player.getDeck().getAktifElement(indeks) != null) {
+            System.out.println("gaLAKU");
+            String barang = player.getDeck().getAktifElement(indeks).getName();
+            System.out.println(barang);
+            // Cek apakah barang ada dalam stok dan hargaBarang
+            if (hargaBarang.containsKey(barang)) {
+                System.out.println("LAKU");
                 // Menghapus barang dari deck aktif pemain
                 player.getDeck().removeAktifElement(indeks);
                 // Menambahkan stok barang
-                if (!stok.containsKey(barang)) {
-                    stok.put(barang, 1);
-                } else {
-                    stok.put(barang, stok.get(barang) + 1);
-                }
-                break;
+                stok.put(barang, stok.getOrDefault(barang, 0) + 1);
+                int harga = hargaBarang.get(barang);
+                player.setGulden(player.getGulden()+harga);
             }
         }
     }

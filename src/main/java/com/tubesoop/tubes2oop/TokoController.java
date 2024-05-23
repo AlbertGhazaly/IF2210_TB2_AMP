@@ -89,4 +89,24 @@ public class TokoController implements Initializable {
         timeline.play();
     }
 
+    public void clickDeck1(){
+        gameStatus.getObjek().geToko().jual(gameStatus.getObjek().getCurrentPlayer(), 0);
+    }
+
+    public void clickDeck2(){
+        gameStatus.getObjek().geToko().jual(gameStatus.getObjek().getCurrentPlayer(), 1);
+    }
+    public void clickDeck3(){
+        gameStatus.getObjek().geToko().jual(gameStatus.getObjek().getCurrentPlayer(), 2);
+    }
+    public void clickDeck4(){
+        gameStatus.getObjek().geToko().jual(gameStatus.getObjek().getCurrentPlayer(), 3);
+    }
+    public void clickDeck5(){
+        gameStatus.getObjek().geToko().jual(gameStatus.getObjek().getCurrentPlayer(), 4);
+    }
+    public void clickDeck6(){
+        gameStatus.getObjek().geToko().jual(gameStatus.getObjek().getCurrentPlayer(), 5);
+    }
+
 }
