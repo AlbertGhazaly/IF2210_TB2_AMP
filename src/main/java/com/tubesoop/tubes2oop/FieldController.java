@@ -25,11 +25,13 @@ import exception.*;
 public class FieldController implements Initializable {
     private static GameObject gameObject;
     public static Player currPlayer;
+
     /* Inisiasi Player */
     @FXML private static Player player1;
     @FXML private static Player player2;
     public static Deck deckCurr;
     public static PetakLadang petakLadangCurr;
+
     /* Field Pane */
     @FXML private Pane fieldPane;
     @FXML private Pane targetPane1;
@@ -62,6 +64,12 @@ public class FieldController implements Initializable {
     @FXML private Pane pane5;
     @FXML private Pane pane6;
 
+    private static FieldController instance;
+
+    public FieldController() {
+        // Assign the instance to this
+        instance = this;
+    }
 
     public void setGameObject(GameObject gameObject) {
         this.gameObject = gameObject;
@@ -138,31 +146,48 @@ public class FieldController implements Initializable {
     }
 
     public static void reloadImage(){
-
-            for (int i = 0; i < 6; i++){
-                Pane parent = ((Pane) Main.deckPane.getChildren().get(i));
-                if (parent!=null){
-                    parent.getChildren().clear();
-                    Pane kartu = new Pane();
-                    kartu.setPrefSize(103,104);
-                    parent.getChildren().add(kartu);
-                    Card insideCard =  (Card) currPlayer.getDeck().getAktifElement(i);
-                    if (insideCard != null) {
-                        parent = (Pane) parent.getChildren().get(0);
-                        InputStream img = Main.class.getClassLoader().getResourceAsStream(insideCard.getImgPath());
-                        if (img != null) {
-                            parent.getChildren().add(new ImageView(new
-                                    Image(
-                                    img)));
-                            ( (ImageView) parent.getChildren().get(0)).setFitHeight(85);
-                            ( (ImageView) parent.getChildren().get(0)).setFitWidth(85);
-
-                        }
+//        for (int i = 0; i < 6; i++) {
+//            Pane parent = ((Pane) Main.deckPane.getChildren().get(i));
+//            if (parent != null) {
+//                parent.setOnMouseClicked(event -> {
+//                    showObjectDataDialog(parent);
+//                });
+//            }
+//        }
+//        for (int i = 0; i < 4; i++) {
+//            for (int j = 0; j < 5; j++) {
+//                Pane parent = ((Pane) Main.fieldPane.getChildren().get(i * 5 + j));
+//                if (parent != null) {
+//                    parent.setOnMouseClicked(event -> {
+//                        showObjectDataDialog(parent);
+//                    });
+//                }
+//            }
+//        }
+        for (int i = 0; i < 6; i++){
+            Pane parent = ((Pane) Main.deckPane.getChildren().get(i));
+            if (parent!=null){
+                parent.getChildren().clear();
+                Pane kartu = new Pane();
+                kartu.setPrefSize(103,104);
+                parent.getChildren().add(kartu);
+                Card insideCard =  (Card) currPlayer.getDeck().getAktifElement(i);
+                if (insideCard != null) {
+                    parent = (Pane) parent.getChildren().get(0);
+                    InputStream img = Main.class.getClassLoader().getResourceAsStream(insideCard.getImgPath());
+                    if (img != null) {
+                        parent.getChildren().add(new ImageView(new
+                                Image(
+                                img)));
+                        ( (ImageView) parent.getChildren().get(0)).setFitHeight(85);
+                        ( (ImageView) parent.getChildren().get(0)).setFitWidth(85);
 
                     }
-                }
 
+                }
             }
+
+        }
         for (int i=0;i<4;i++){
             for (int j=0;j<5;j++){
                 Pane kartu = new Pane();
@@ -181,10 +206,9 @@ public class FieldController implements Initializable {
                     ( (ImageView) parent.getChildren().get(0)).setFitWidth(85);
                 }
             }
-
         }
-
     }
+
     public static void showErrorDialog(Exception e) {
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Error Dialog");
@@ -196,6 +220,7 @@ public class FieldController implements Initializable {
 
         alert.showAndWait();
     }
+
     private void initializeDragAndDrop(Pane parent) {
         Pane parentPane = (Pane) parent;
         if (parentPane != null){
@@ -422,9 +447,52 @@ public class FieldController implements Initializable {
                         event.setDropCompleted(success);
                         event.consume();
                     });
+
+                    // Setiap pane akan memiliki fungsi ketika di klik
+                    pane.setOnMouseClicked(event -> {
+                        showObjectDataDialog(pane);
+                    });
                 }
             }
         }
-        }
+    }
 
+    private void showObjectDataDialog(Pane pane) {
+        int index = ((Pane) pane.getParent()).getChildren().indexOf(pane);
+        int row = index / 5;
+        int col = index % 5;
+
+        KartuLadang kartuLadang = (KartuLadang) petakLadangCurr.getElement(row, col);
+        if (kartuLadang != null) {
+            Card card = kartuLadang.getKartu();
+            if (card != null) {
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Object Data");
+                alert.setHeaderText("Object Data for Pane: " + pane.getId());
+
+                StringBuilder content = new StringBuilder("Name: " + card.getName() + "\nImage Path: " + card.getImgPath());
+
+                if (card instanceof Hewan) {
+                    Hewan hewan = (Hewan) card;
+                    content.append("\nKategori: ").append(hewan.getKategori())
+                            .append("\nBerat: ").append(hewan.getBerat())
+                            .append("\nBerat Panen: ").append(hewan.getBeratPanen());
+                } else if (card instanceof Tanaman) {
+                    Tanaman tanaman = (Tanaman) card;
+                    content.append("\nDurasi Panen: ").append(tanaman.getdurasiPanen())
+                            .append("\nUmur: ").append(tanaman.getUmur());
+                }
+
+                alert.setContentText(content.toString());
+                alert.showAndWait();
+            }
+        } else {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Object Data");
+            alert.setHeaderText("Object Data for Pane: " + pane.getId());
+            alert.setContentText("No object data available.");
+            alert.showAndWait();
+        }
+    }
 }
+
