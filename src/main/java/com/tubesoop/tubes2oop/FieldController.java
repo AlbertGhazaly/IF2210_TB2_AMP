@@ -480,13 +480,20 @@ public class FieldController implements Initializable {
         int col = index % 5;
 
         KartuLadang kartuLadang = (KartuLadang) petakLadangCurr.getElement(row, col);
-        if (kartuLadang != null) {
+        if (kartuLadang != null && (kartuLadang.getKartu() instanceof Hewan || kartuLadang.getKartu() instanceof Tanaman)) {
             ObjectInfoController.ObjectInfoCardOnClicked(kartuLadang);
         } else {
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Data Tidak Ditemukan");
             alert.setHeaderText("Tidak Dapat Melihat Informasi Petak ");
-            alert.setContentText("Petak Kosong! atau Ini Adalah Petak Deck!");
+
+            if (kartuLadang == null) {
+                alert.setContentText("Petak Kosong!");
+            }
+            else if (!(kartuLadang.getKartu() instanceof Hewan) && !(kartuLadang.getKartu() instanceof Tanaman)) {
+                alert.setContentText("Kartu Bukan Merupakan Hewan atau Tumbuhan");
+            }
+
             alert.showAndWait();
         }
     }

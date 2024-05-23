@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import card.Hewan;
 import card.Tanaman;
 import petakladang.KartuLadang;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
 public class ObjectInfoController implements Initializable {
@@ -23,18 +24,20 @@ public class ObjectInfoController implements Initializable {
     @FXML Label Nama;
     @FXML ImageView ImagePath;
     @FXML Label BeratOrUmur;
-    @FXML Pane ItemAktif;
+    @FXML HBox ItemAktif;
     @FXML Button BackButton;
     @FXML Button PanenButton;
     @FXML Label Panen;
     @FXML Label Kategori;
+    @FXML Card KartuPilihan;
 
     static Label SNama;
     static ImageView SImagePath;
     static Label SBeratOrUmur;
-    static Pane SItemAktif;
+    static HBox SItemAktif;
     static Label SPanen;
     static Label SKategori;
+    static Card SKartuPilihan;
 
     static AnchorPane CardInfo;
 
@@ -47,6 +50,7 @@ public class ObjectInfoController implements Initializable {
         SItemAktif = ItemAktif;
         SPanen = Panen;
         SKategori = Kategori;
+        SKartuPilihan = KartuPilihan;
     }
 
     public void setGameStatus(GameStatus gameStatus) {
@@ -71,14 +75,34 @@ public class ObjectInfoController implements Initializable {
         for (int i=0;i<ladangCard.getItems().size();i++){
             ImageView newImg = new ImageView(new Image(ladangCard.getItemElement(i).getImgPath()));
             newImg.setFitWidth(50);
-            newImg.setFitWidth(50);
+            newImg.setFitHeight(50);
             SItemAktif.getChildren().add(newImg);
 
         }
+
+        SKartuPilihan = ladangCard.getKartu();
         CardInfo.setVisible(true);
     }
 
+    public void panenKartu() {
+        if (SKartuPilihan instanceof Hewan) {
+            if (((Hewan) SKartuPilihan).getBerat() >= ((Hewan) SKartuPilihan).getBeratPanen()) {
+
+            }
+        }
+
+        else if (SKartuPilihan instanceof Tanaman) {
+            if (((Tanaman) SKartuPilihan).getUmur() > ((Tanaman) SKartuPilihan).getdurasiPanen()) {
+
+            }
+        }
+
+        SKartuPilihan = null;
+        CardInfo.setVisible(false);
+    }
+
     public void closeInfoCard() {
+        SKartuPilihan = null;
         CardInfo.setVisible(false);
     }
 }
