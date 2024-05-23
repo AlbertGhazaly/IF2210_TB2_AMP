@@ -47,6 +47,9 @@
             <!-- Toko -->
             <fx:include source="toko.fxml" />
 
+            <!-- Save -->
+            <fx:include source="save.fxml" />
+
             <!-- EFEK GLOWING -->
             <effect> <Glow /> </effect>
         </AnchorPane>
