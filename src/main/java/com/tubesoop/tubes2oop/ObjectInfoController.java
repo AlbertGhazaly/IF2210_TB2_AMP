@@ -31,7 +31,7 @@ public class ObjectInfoController implements Initializable {
     }
 
     /*
-    * Paramter :
+    * Parameter :
     * 1. Nama Objek
     * 2. Umur atau Berat (Tergantung Tipenya; Hewan atau Tumbuhan)
     * 3. Item Aktif
