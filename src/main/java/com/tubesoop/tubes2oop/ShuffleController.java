@@ -50,6 +50,8 @@ public class ShuffleController implements Initializable {
     /* Shuffle Card Pane */
     @FXML AnchorPane shuffleCard;
 
+    static AnchorPane SshuffleCard;
+
     public void setGameObject(GameStatus gameStatus) {
         this.gameStatus = gameStatus;
         this.gameObject = this.gameStatus.getObjek();
@@ -59,6 +61,7 @@ public class ShuffleController implements Initializable {
     }
 
     public void initialize(URL location, ResourceBundle resources) {
+        SshuffleCard = shuffleCard;
 
         try {
             this.shuffleCard.setVisible(true);
@@ -76,8 +79,10 @@ public class ShuffleController implements Initializable {
         } catch (Exception ex) {
             System.out.println("Invalid URL or unable to load image.");
         }
+    }
 
-
+    public static void openShuffleCard() {
+        SshuffleCard.setVisible(true);
     }
 
     @FXML
@@ -195,6 +200,10 @@ public class ShuffleController implements Initializable {
 //        }
         System.out.println(this.gameObject.getCurrentPlayer().getDeck().getAktifSize());
         FieldController.reloadImage();
+        card1.setStyle("-fx-border-color: none;");
+        card2.setStyle("-fx-border-color: none;");
+        card3.setStyle("-fx-border-color: none;");
+        card4.setStyle("-fx-border-color: none;");
         shuffleCard.setVisible(false);
 //        this.gameObject.getCurrentPlayer().
     }

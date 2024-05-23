@@ -3,7 +3,7 @@ package com.tubesoop.tubes2oop;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-
+import com.tubesoop.tubes2oop.ShuffleController;
 import gamestatus.*;
 
 import java.net.URL;
@@ -29,12 +29,15 @@ public class TurnController implements Initializable {
 
     @FXML
     protected void onNextButtonClick() {
-        gameStatus.turn ++;
-        numberOfTurn = gameStatus.turn;
-//        numberOfTurn++;
-        updateTurnLabel();
+        if (numberOfTurn < 20) {
+            gameStatus.turn ++;
+            numberOfTurn = gameStatus.turn;
+            updateTurnLabel();
 
-
+            ShuffleController.openShuffleCard();
+        } else {
+            // TO DO : Handle Kemenangan
+        }
     }
 
     public void setGameStatus(GameStatus gameStatus){
