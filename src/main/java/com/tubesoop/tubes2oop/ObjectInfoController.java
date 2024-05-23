@@ -1,10 +1,10 @@
 package com.tubesoop.tubes2oop;
 
 import card.Card;
+import card.Produk;
 import gamestatus.GameStatus;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.scene.control.Label;
@@ -30,6 +30,7 @@ public class ObjectInfoController implements Initializable {
     @FXML Label Panen;
     @FXML Label Kategori;
     @FXML Card KartuPilihan;
+    @FXML int IndexKartu;
 
     static Label SNama;
     static ImageView SImagePath;
@@ -38,6 +39,7 @@ public class ObjectInfoController implements Initializable {
     static Label SPanen;
     static Label SKategori;
     static Card SKartuPilihan;
+    static int SIndexKartu;
 
     static AnchorPane CardInfo;
 
@@ -51,15 +53,18 @@ public class ObjectInfoController implements Initializable {
         SPanen = Panen;
         SKategori = Kategori;
         SKartuPilihan = KartuPilihan;
+        SIndexKartu = IndexKartu;
     }
 
     public void setGameStatus(GameStatus gameStatus) {
         this.gameStatus = gameStatus;
     }
 
-    public static void ObjectInfoCardOnClicked(KartuLadang ladangCard) {
+    public static void ObjectInfoCardOnClicked(KartuLadang ladangCard, int index) {
         SItemAktif.getChildren().clear();
         SNama.setText(ladangCard.getKartu().getName());
+
+        SIndexKartu = index;
 
         Image objectImage = new Image(ladangCard.getKartu().getImgPath());
         SImagePath.setImage(objectImage);
@@ -86,19 +91,53 @@ public class ObjectInfoController implements Initializable {
 
     public void panenKartu() {
         if (SKartuPilihan instanceof Hewan) {
-            if (((Hewan) SKartuPilihan).getBerat() >= ((Hewan) SKartuPilihan).getBeratPanen()) {
+            if (((Hewan) SKartuPilihan).getBerat() >= ((Hewan) SKartuPilihan).getBeratPanen() || ((Tanaman) SKartuPilihan).getUmur() > ((Tanaman) SKartuPilihan).getdurasiPanen()) {
+                if (gameStatus.getObjek().getCurrentPlayer().getDeck().getAktifSize() < 6) {
+                    Produk produk = convertToProduct(SKartuPilihan);
 
-            }
-        }
-
-        else if (SKartuPilihan instanceof Tanaman) {
-            if (((Tanaman) SKartuPilihan).getUmur() > ((Tanaman) SKartuPilihan).getdurasiPanen()) {
-
+                }
+                else {
+                    // Alert deck aktif sudah penuh
+                }
+            } else {
+                // Alert tidak cukup umur atau berat untuk panen
             }
         }
 
         SKartuPilihan = null;
         CardInfo.setVisible(false);
+    }
+
+    public Produk convertToProduct(Card card) {
+        if (card.getName().equals("HIU_DARAT")) {
+            return new Produk();
+        }
+        else if (card.getName().equals("SAPI")) {
+
+        }
+        else if (card.getName().equals("DOMBA")) {
+
+        }
+        else if (card.getName().equals("KUDA")) {
+
+        }
+        else if (card.getName().equals("AYAM")) {
+
+        }
+        else if (card.getName().equals("BERUANG")) {
+
+        }
+        else if (card.getName().equals("BIJI_LABU")) {
+
+        }
+        else if (card.getName().equals("BIJI_JAGUNG")) {
+
+        }
+        else if (card.getName().equals("BIJI_STROBERI")) {
+
+        }
+
+        return new Produk();
     }
 
     public void closeInfoCard() {
