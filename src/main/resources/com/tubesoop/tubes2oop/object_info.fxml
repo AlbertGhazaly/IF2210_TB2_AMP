@@ -6,42 +6,59 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.image.Image?>
 <AnchorPane fx:id="StatusCard" prefHeight="300.0" prefWidth="600.0" style="-fx-background-radius: 10;" styleClass="objectInfoBackground" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tubesoop.tubes2oop.ObjectInfoController">
    <children>
 
       <!-- Nama Item -->
-      <Label layoutX="275.0" layoutY="26.0">
+      <Label layoutX="275.0" layoutY="26.0" fx:id="Nama">
          <font>
             <Font name="Book Antiqua" size="20.0" />
          </font>
       </Label>
 
       <!-- Gambar Item -->
-      <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="404.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" styleClass="glassBackground" />
+      <ImageView fx:id="ImagePath" fitHeight="150.0" fitWidth="150.0" layoutX="404.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" styleClass="glassBackground">
+
+      </ImageView>
 
       <!-- Back Button  -->
-      <Button layoutX="24.0" layoutY="26.0" mnemonicParsing="false" styleClass="backButton" stylesheets="@style.css" text="Back" onAction="#closeInfoCard">
+      <Button fx:id="BackButton" layoutX="24.0" layoutY="26.0" mnemonicParsing="false" styleClass="panenButton" stylesheets="@style.css" text="Back" onAction="#closeInfoCard">
          <font>
             <Font name="Book Antiqua" size="12.0" />
          </font>
       </Button>
 
+      <!-- Kategori -->
+      <Label fx:id="Kategori" layoutX="24.0" layoutY="63.0">
+         <font>
+            <Font name="Book Antiqua" size="18.0" />
+         </font>
+      </Label>
+
       <!-- Berat atau Umur -->
-      <Label layoutX="24.0" layoutY="120.0">
+      <Label fx:id="BeratOrUmur" layoutX="24.0" layoutY="100.0">
+         <font>
+            <Font name="Book Antiqua" size="18.0" />
+         </font>
+      </Label>
+
+      <!-- Berat Panen atau Durasi Panen -->
+      <Label fx:id="Panen" layoutX="24.0" layoutY="137.0">
          <font>
             <Font name="Book Antiqua" size="18.0" />
          </font>
       </Label>
 
       <!-- Item Aktif -->
-      <Label layoutX="24.0" layoutY="157.0" text="Item Aktif : ">
+      <Label fx:id="ItemAktif" layoutX="24.0" layoutY="174.0" text="Item Aktif : ">
          <font>
             <Font name="Book Antiqua" size="18.0" />
          </font>
       </Label>
 
       <!-- Panen Button -->
-      <Button layoutX="237.0" layoutY="250.0" mnemonicParsing="false" styleClass="panenButton" stylesheets="@style.css" text="Panen">
+      <Button fx:id="PanenButton" layoutX="237.0" layoutY="250.0" mnemonicParsing="false" styleClass="panenButton" stylesheets="@style.css" text="Panen">
          <font>
             <Font name="Book Antiqua" size="12.0" />
          </font>

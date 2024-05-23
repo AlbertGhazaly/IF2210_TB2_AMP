@@ -18,10 +18,11 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.regex.*;
-
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import exception.*;
+import com.tubesoop.tubes2oop.ObjectInfoController;
+
 public class FieldController implements Initializable {
     private static GameObject gameObject;
     public static Player currPlayer;
@@ -466,25 +467,7 @@ public class FieldController implements Initializable {
         if (kartuLadang != null) {
             Card card = kartuLadang.getKartu();
             if (card != null) {
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Object Data");
-                alert.setHeaderText("Object Data for Pane: " + pane.getId());
-
-                StringBuilder content = new StringBuilder("Name: " + card.getName() + "\nImage Path: " + card.getImgPath());
-
-                if (card instanceof Hewan) {
-                    Hewan hewan = (Hewan) card;
-                    content.append("\nKategori: ").append(hewan.getKategori())
-                            .append("\nBerat: ").append(hewan.getBerat())
-                            .append("\nBerat Panen: ").append(hewan.getBeratPanen());
-                } else if (card instanceof Tanaman) {
-                    Tanaman tanaman = (Tanaman) card;
-                    content.append("\nDurasi Panen: ").append(tanaman.getdurasiPanen())
-                            .append("\nUmur: ").append(tanaman.getUmur());
-                }
-
-                alert.setContentText(content.toString());
-                alert.showAndWait();
+                ObjectInfoController.ObjectInfoCardOnClicked(card);
             }
         } else {
             Alert alert = new Alert(AlertType.INFORMATION);
