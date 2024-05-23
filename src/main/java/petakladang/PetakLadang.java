@@ -23,17 +23,20 @@ public KartuLadang getElement(int row, int col) {
 }
   public void addElement(KartuLadang element, int row, int col) {
     if (petakLadang.get(row)==null){
-        petakLadang.set(row,new ArrayList<>());
+        petakLadang.set(row,null);
     }
 
     petakLadang.get(row).set(col, element);
+  }
+  public boolean isElementEmpty(int row, int col) {
+    return this.getElement(row,col)==null;
   }
   public  List<List<KartuLadang>> getPetakLadang() {
     return this.petakLadang;
   }
   public void removeElement(int row, int col) {
     if (petakLadang.get(row)!=null){
-      if (petakLadang.get(row).get(col)!=null){
+      if (!this.isElementEmpty(row,col)){
         petakLadang.get(row).set(col,null);
       }
     }
@@ -45,6 +48,18 @@ public KartuLadang getElement(int row, int col) {
         KartuLadang temp = (KartuLadang) this.getElement(i,j);
         if (temp!=null){
             n+=1;
+        }
+      }
+    }
+    return n;
+  }
+  public int getNEff(){
+    int n = 0;
+    for (int i=0;i<MAX_ROW;i++){
+      for (int j=0;j<MAX_COL;j++){
+        KartuLadang temp = (KartuLadang) this.getElement(i,j);
+        if (temp!=null){
+          n+=1;
         }
       }
     }

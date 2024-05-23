@@ -3,15 +3,12 @@ import card.Produk;
 import entity.Entity;
 import exception.*;
 import gamestatus.GameStatus;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
-import entity.Entity;
+import java.util.concurrent.atomic.AtomicInteger;
+
 import player.Player;
 import gameobject.GameObject;
 
@@ -143,7 +140,27 @@ public class Toko implements Entity {
     }
 
     @Override
-    public void save(String path) {
-
+    public void save(String filename) throws IOException {
+        String path = "src/main/resources/" + filename;
+        BufferedWriter writer = new BufferedWriter(new FileWriter(path));
+        writer.write(String.valueOf(GameStatus.turn));
+        writer.newLine();
+        int sum = 0;
+        for (Integer value : stok.values()) {
+            sum += value;
+        }
+        writer.write(String.valueOf(sum));
+        writer.newLine();
+        int count = 0;
+        for (Map.Entry<String, Integer> entry : stok.entrySet()) {
+            count++;
+            writer.write(entry.getKey() + " ");
+            writer.write(String.valueOf(entry.getValue()));
+            // Add a newline except for the last entry
+            if (count < stok.size()) {
+                writer.newLine();
+            }
+        }
+        writer.close();
     }
 }
