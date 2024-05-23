@@ -47,18 +47,6 @@ public KartuLadang getElement(int row, int col) {
       for (int j=0;j<MAX_COL;j++){
         KartuLadang temp = (KartuLadang) this.getElement(i,j);
         if (temp!=null){
-            n+=1;
-        }
-      }
-    }
-    return n;
-  }
-  public int getNEff(){
-    int n = 0;
-    for (int i=0;i<MAX_ROW;i++){
-      for (int j=0;j<MAX_COL;j++){
-        KartuLadang temp = (KartuLadang) this.getElement(i,j);
-        if (temp!=null){
           n+=1;
         }
       }
