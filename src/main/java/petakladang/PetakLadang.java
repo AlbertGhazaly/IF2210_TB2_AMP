@@ -22,17 +22,20 @@ public KartuLadang getElement(int row, int col) {
 }
   public void addElement(KartuLadang element, int row, int col) {
     if (petakLadang.get(row)==null){
-        petakLadang.set(row,new ArrayList<>());
+        petakLadang.set(row,null);
     }
 
-    petakLadang.get(row).add(col, element);
+    petakLadang.get(row).set(col, element);
+  }
+  public boolean isElementEmpty(int row, int col) {
+    return this.getElement(row,col)==null;
   }
   public  List<List<KartuLadang>> getPetakLadang() {
     return this.petakLadang;
   }
   public void removeElement(int row, int col) {
     if (petakLadang.get(row)!=null){
-      if (petakLadang.get(row).get(col)!=null){
+      if (!this.isElementEmpty(row,col)){
         petakLadang.get(row).set(col,null);
       }
     }
