@@ -151,15 +151,13 @@ public class Toko implements Entity {
         }
         writer.write(String.valueOf(sum));
         writer.newLine();
-        int count = 0;
+
         for (Map.Entry<String, Integer> entry : stok.entrySet()) {
-            count++;
             writer.write(entry.getKey() + " ");
             writer.write(String.valueOf(entry.getValue()));
             // Add a newline except for the last entry
-            if (count < stok.size()) {
-                writer.newLine();
-            }
+            writer.newLine();
+
         }
         writer.close();
     }
