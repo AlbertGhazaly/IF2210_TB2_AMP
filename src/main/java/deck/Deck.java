@@ -23,6 +23,8 @@ public void addAktifElementRandom(T element){
       for (int i = 0;i<DECK_ACTIVE_SIZE;i++){
           if (deckAktif.get(i) == null){
               this.addAktifElement(element,0,i);
+              return;
+
           }
       }
 }
@@ -61,7 +63,8 @@ public void addAktifElementRandom(T element){
   public int getAktifSize() {
       int n = 0;
       for (int i = 0;i<DECK_ACTIVE_SIZE;i++){
-          if (this.deckAktif.get(i) != null) {
+          Card temp = (Card) this.deckAktif.get(i);
+          if (temp!= null) {
               n += 1;
           }
       }

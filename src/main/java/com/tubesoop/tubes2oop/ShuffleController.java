@@ -171,18 +171,30 @@ public class ShuffleController implements Initializable {
         // Hide the shuffleCard pane
         if (isCard1Selected){
             System.out.println("insert card 1");
+            System.out.println(this.gameShuffle.getCards().get(0).getName());
             this.gameObject.getCurrentPlayer().getDeck().addAktifElementRandom(this.gameShuffle.getCards().get(0));
         }
         if (isCard2Selected){
+            System.out.println("insert card 2");
+            System.out.println(this.gameShuffle.getCards().get(1).getName());
             this.gameObject.getCurrentPlayer().getDeck().addAktifElementRandom(this.gameShuffle.getCards().get(1));
         }
         if (isCard3Selected){
+            System.out.println("insert card 3");
+            System.out.println(this.gameShuffle.getCards().get(2).getName());
             this.gameObject.getCurrentPlayer().getDeck().addAktifElementRandom(this.gameShuffle.getCards().get(2));
         }
         if (isCard4Selected){
+            System.out.println("insert card 4");
+            System.out.println(this.gameShuffle.getCards().get(3).getName());
             this.gameObject.getCurrentPlayer().getDeck().addAktifElementRandom(this.gameShuffle.getCards().get(3));
 
         }
+//        for (int i=0;i<this.gameObject.getCurrentPlayer().getDeck().getAktifSize();i++){
+//            System.out.println(this.gameObject.getCurrentPlayer().getDeck().getAktifElement(i).getName());
+//        }
+        System.out.println(this.gameObject.getCurrentPlayer().getDeck().getAktifSize());
+        FieldController.reloadImage();
         shuffleCard.setVisible(false);
 //        this.gameObject.getCurrentPlayer().
     }

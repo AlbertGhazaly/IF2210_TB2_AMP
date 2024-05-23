@@ -6,7 +6,10 @@
     -fx-background-color: rgba(255, 255, 255, 0.5); /* Adjust the last value (0.5) for the desired opacity */
     -fx-border-radius: 5px;
 }
-
+.hasCardGlassBackground {
+    -fx-background-color: rgba(255, 255, 255, 0.5); /* Adjust the last value (0.5) for the desired opacity */
+    -fx-border-radius: 5px;
+}
 .glowingWhite {
     -fx-background-color: #ffffff; /* Set the background color */
     /*-fx-effect: dropshadow(glow, #ffffff, 10, 1, 0, 0); !* Apply the glow effect *!*/
@@ -44,7 +47,7 @@
     -fx-layout-y: 50%;
     -fx-translate-x: 125px; /* setengah dari lebar prefWidth cardShuffle */
     -fx-translate-y: 225px; /* setengah dari tinggi prefHeight cardShuffle */
-    -fx-z-index: 50;
+    /*-fx-z-index: 50;*/
     -fx-border-radius: 100px;/* Atur z-index lebih tinggi dari elemen lain */
 }
 

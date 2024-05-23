@@ -20,13 +20,16 @@ public class TurnController implements Initializable {
     @FXML
     public void updateTurnLabel() {
 //        turnLabel.setText(String.valueOf(numberOfTurn));
+        turnLabel.setText(String.valueOf(numberOfTurn));
 
     }
 
     @FXML
     protected void onNextButtonClick() {
+        gameStatus.turn ++;
+        numberOfTurn = gameStatus.turn;
 //        numberOfTurn++;
-//        updateTurnLabel();
+        updateTurnLabel();
 
 
     }
@@ -37,5 +40,6 @@ public class TurnController implements Initializable {
 
     public void initialize(URL location, ResourceBundle resources) {
         this.numberOfTurn = gameStatus.turn;
+        turnLabel.setText(String.valueOf(numberOfTurn));
     }
 }
