@@ -64,7 +64,7 @@ public class ShuffleController implements Initializable {
         SshuffleCard = shuffleCard;
 
         try {
-            this.shuffleCard.setVisible(true);
+            this.shuffleCard.setVisible(false);
             this.gameStatus.execute();
 
             this.selectedNum = 0;

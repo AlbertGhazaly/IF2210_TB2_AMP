@@ -100,3 +100,7 @@
     -fx-translate-x: 125px; /* setengah dari lebar prefWidth cardShuffle */
     -fx-translate-y: 225px; /* setengah dari tinggi prefHeight cardShuffle */
 }
+
+.startBackground {
+    -fx-background-color: linear-gradient(to top right, #EEA5E9, #B7F0F5);
+}

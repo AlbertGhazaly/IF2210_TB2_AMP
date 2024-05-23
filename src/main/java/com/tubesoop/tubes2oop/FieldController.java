@@ -65,10 +65,12 @@ public class FieldController implements Initializable {
     @FXML private Pane pane5;
     @FXML private Pane pane6;
 
+    @FXML Pane FieldMain;
+    static Pane SFieldMain;
+
     private static FieldController instance;
 
     public FieldController() {
-        // Assign the instance to this
         instance = this;
     }
 
@@ -83,30 +85,16 @@ public class FieldController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Initialize the deckPane and fieldPane with draggable items
-//        for (int i=0;i<20;i++){
-//            Pane pane = (Pane) fieldPane.lookup("#targetPane"+(i+1));
-//            setUpDragAndDrop(pane);
-//        }
-//        for (int i=0;i<6;i++){
-//            Pane pane = (Pane) deckPane.lookup("#pane"+(i+1));
-//            setUpDragAndDrop(pane);
-//        }
+        SFieldMain = FieldMain;
+        SFieldMain.setVisible(false);
 
         initializeDragAndDrop(fieldPane);
         initializeDragAndDrop(deckPane);
-//        for (int i=0;i<4;i++){
-//            for (int j=0;j<5;j++){
-//                Pane pane = (Pane) fieldPane.lookup("#targetPane"+(i*5+j));
-//                ImageView imgv = (ImageView) pane.getChildren()[0];
-//            }
-//        }
+
             for (int i = 0; i < 6; i++){
                 Pane kartu = new Pane();
                 kartu.setPrefSize(103,104);
-//            prefHeight="103.0" prefWidth="104.0" style="-fx-background-radius: 10;" styleClass="glassBackground"
-//            kartu.setStyle("-fx-background-radius: 10;-fx-background-color: rgba(255, 255, 255, 1)" );
-                // tambahin kartu ke deck
+
                 Pane parent = ((Pane) deckPane.getChildren().get(i));
                 if (parent!=null){
                     parent.getChildren().add(kartu);
