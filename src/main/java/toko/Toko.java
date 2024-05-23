@@ -5,10 +5,10 @@ import exception.*;
 import gamestatus.GameStatus;
 
 import java.io.*;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import entity.Entity;
+import java.util.concurrent.atomic.AtomicInteger;
+
 import player.Player;
 import gameobject.GameObject;
 
@@ -151,16 +151,16 @@ public class Toko implements Entity {
         }
         writer.write(String.valueOf(sum));
         writer.newLine();
-        stok.forEach((key, value) -> {
-            try {
-                writer.write(key + " ");
-                writer.write(String.valueOf(value));
+        int count = 0;
+        for (Map.Entry<String, Integer> entry : stok.entrySet()) {
+            count++;
+            writer.write(entry.getKey() + " ");
+            writer.write(String.valueOf(entry.getValue()));
+            // Add a newline except for the last entry
+            if (count < stok.size()) {
                 writer.newLine();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
             }
-
-        });
+        }
         writer.close();
     }
 }

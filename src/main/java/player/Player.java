@@ -247,10 +247,11 @@ public class Player implements Entity{
 
         writer.write(String.valueOf(petak_ladang.getNEff()));
         writer.newLine();
-
+        int count = 0;
         for (int i = 0; i < petak_ladang.getPetakLadang().size(); i++) {
             List<KartuLadang> row = petak_ladang.getPetakLadang().get(i);
             for (KartuLadang elm : row) {
+                count++;
                 if (elm != null) {
                     writer.write(elm.getKartu().getPosition());
                     writer.write(" " + elm.getKartu().getName());
@@ -268,7 +269,9 @@ public class Player implements Entity{
                     for (int k = 0; k < elm.getItems().size(); k++) {
                         writer.write(" " + elm.getElementItem(k).getName());
                     }
-                    writer.newLine();
+                    if (count < petak_ladang.getNEff()) {
+                        writer.newLine();
+                    }
 
                 }
             }
