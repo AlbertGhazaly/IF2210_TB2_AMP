@@ -7,6 +7,7 @@
 <?import javafx.scene.text.Font?>
 
 <?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.Pane?>
 <AnchorPane fx:id="StatusCard" prefHeight="300.0" prefWidth="600.0" style="-fx-background-radius: 10;" styleClass="objectInfoBackground" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tubesoop.tubes2oop.ObjectInfoController">
    <children>
 
@@ -51,11 +52,13 @@
       </Label>
 
       <!-- Item Aktif -->
-      <Label fx:id="ItemAktif" layoutX="24.0" layoutY="174.0" text="Item Aktif : ">
+      <Pane fx:id="ItemAktif"  layoutX="24.0" layoutY="174.0" >
+      <Label text="Item Aktif : ">
          <font>
             <Font name="Book Antiqua" size="18.0" />
          </font>
       </Label>
+      </Pane>
 
       <!-- Panen Button -->
       <Button fx:id="PanenButton" layoutX="237.0" layoutY="250.0" mnemonicParsing="false" styleClass="panenButton" stylesheets="@style.css" text="Panen">

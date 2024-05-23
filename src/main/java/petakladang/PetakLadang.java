@@ -22,10 +22,12 @@ public KartuLadang getElement(int row, int col) {
     return this.petakLadang.get(row).get(col);
 }
   public void addElement(KartuLadang element, int row, int col) {
-    if (petakLadang.get(row)==null){
-        petakLadang.set(row,null);
-    }
 
+//    if (element.getKartu() instanceof Hewan){
+//      System.out.println("Berat hewan: "+((Hewan) element.getKartu()).getBerat());
+//    }else if (element.getKartu() instanceof  Tanaman){
+//      System.out.println("Berat tanam: "+((Tanaman) element.getKartu()).getUmur());
+//    }
     petakLadang.get(row).set(col, element);
   }
   public boolean isElementEmpty(int row, int col) {
@@ -61,12 +63,25 @@ public KartuLadang getElement(int row, int col) {
     KartuLadang temp;
     if (this.getElement(row1,col1)!=null){
       temp = (KartuLadang) this.getElement(row1,col1).getInstance();
+      if (temp.getKartu() instanceof Hewan){
+        System.out.println("Berat hewan: "+((Hewan) temp.getKartu()).getBerat());
+      }else if (temp.getKartu() instanceof  Tanaman){
+        System.out.println("Berat tanam: "+((Tanaman) temp.getKartu()).getUmur());
+      }
+      System.out.println("size item: "+temp.getItems().size());
     }else{
       temp = null;
     }
     KartuLadang temp2;
     if (this.getElement(row2,col2)!=null){
       temp2 = (KartuLadang) this.getElement(row2,col2).getInstance();
+      if (temp2.getKartu() instanceof Hewan){
+        System.out.println("Berat hewan: "+((Hewan) temp2.getKartu()).getBerat());
+      }else if (temp2.getKartu() instanceof  Tanaman){
+        System.out.println("Berat tanam: "+((Tanaman) temp2.getKartu()).getUmur());
+      }
+      System.out.println("size item: "+temp2.getItems().size());
+
     }else{
       temp2 = null;
     }

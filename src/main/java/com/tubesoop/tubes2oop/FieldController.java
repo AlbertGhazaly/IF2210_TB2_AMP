@@ -376,6 +376,7 @@ public class FieldController implements Initializable {
                                                         }else if (ladangCard.getKartu() instanceof Tanaman){
                                                             ((Tanaman) ladangCard.getKartu()).addUmur(2);
                                                         }
+                                                        deckCurr.removeAktifElement(id1-1);
                                                     }else {
                                                         if (petakLadangCurr != currPlayer.getPetakLadang()){
                                                             throw new FieldInAccessible();
@@ -478,10 +479,7 @@ public class FieldController implements Initializable {
 
         KartuLadang kartuLadang = (KartuLadang) petakLadangCurr.getElement(row, col);
         if (kartuLadang != null) {
-            Card card = kartuLadang.getKartu();
-            if (card != null) {
-                ObjectInfoController.ObjectInfoCardOnClicked(card);
-            }
+            ObjectInfoController.ObjectInfoCardOnClicked(kartuLadang);
         } else {
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Object Data");

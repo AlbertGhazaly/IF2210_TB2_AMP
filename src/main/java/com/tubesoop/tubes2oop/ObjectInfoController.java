@@ -14,6 +14,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.image.Image;
 import card.Hewan;
 import card.Tanaman;
+import petakladang.KartuLadang;
+import javafx.scene.layout.Pane;
 
 public class ObjectInfoController implements Initializable {
     GameStatus gameStatus;
@@ -21,7 +23,7 @@ public class ObjectInfoController implements Initializable {
     @FXML Label Nama;
     @FXML ImageView ImagePath;
     @FXML Label BeratOrUmur;
-    @FXML Label ItemAktif;
+    @FXML Pane ItemAktif;
     @FXML Button BackButton;
     @FXML Button PanenButton;
     @FXML Label Panen;
@@ -30,7 +32,7 @@ public class ObjectInfoController implements Initializable {
     static Label SNama;
     static ImageView SImagePath;
     static Label SBeratOrUmur;
-    static Label SItemAktif;
+    static Pane SItemAktif;
     static Label SPanen;
     static Label SKategori;
 
@@ -51,21 +53,27 @@ public class ObjectInfoController implements Initializable {
         this.gameStatus = gameStatus;
     }
 
-    public static void ObjectInfoCardOnClicked(Card card) {
-        SNama.setText(card.getName());
+    public static void ObjectInfoCardOnClicked(KartuLadang ladangCard) {
+        SNama.setText(ladangCard.getKartu().getName());
 
-        Image objectImage = new Image(card.getImgPath());
+        Image objectImage = new Image(ladangCard.getKartu().getImgPath());
         SImagePath.setImage(objectImage);
 
-        if (card instanceof Hewan) {
-            SBeratOrUmur.setText("Berat : " + ((Hewan) card).getBerat());
-            SPanen.setText("Berat Panen : " + ((Hewan) card).getBeratPanen());
+        if (ladangCard.getKartu() instanceof Hewan) {
+            SBeratOrUmur.setText("Berat : " + ((Hewan) ladangCard.getKartu()).getBerat());
+            SPanen.setText("Berat Panen : " + ((Hewan) ladangCard.getKartu()).getBeratPanen());
         }
-        else if (card instanceof Tanaman) {
-            SBeratOrUmur.setText("Umur : " + ((Tanaman) card).getUmur());
-            SPanen.setText("Durasi Panen : " + ((Tanaman) card).getdurasiPanen());
+        else if (ladangCard.getKartu() instanceof Tanaman) {
+            SBeratOrUmur.setText("Umur : " + ((Tanaman) ladangCard.getKartu()).getUmur());
+            SPanen.setText("Durasi Panen : " + ((Tanaman) ladangCard.getKartu()).getdurasiPanen());
         }
+        for (int i=0;i<ladangCard.getItems().size();i++){
+            ImageView newImg = new ImageView(new Image(ladangCard.getItemElement(i).getImgPath()));
+            newImg.setFitWidth(50);
+            newImg.setFitWidth(50);
+            SItemAktif.getChildren().add(newImg);
 
+        }
         CardInfo.setVisible(true);
     }
 

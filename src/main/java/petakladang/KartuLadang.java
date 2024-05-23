@@ -15,11 +15,9 @@ public class KartuLadang <T extends Card> {
     }
     public KartuLadang(final T kartu, List<Item> items) {
         if (kartu instanceof Hewan){
-            Hewan temp = (Hewan) kartu;
-            this.kartu =  new Hewan(temp);
+            this.kartu =  (Hewan) kartu;
         }else if (kartu instanceof Tanaman){
-            Tanaman temp = (Tanaman) kartu;
-            this.kartu =  new Tanaman(temp);
+            this.kartu =  (Tanaman) kartu;
         }
         this.items = items;
     }
@@ -45,7 +43,16 @@ public class KartuLadang <T extends Card> {
         for (Item item : this.items){
             copy.add(item.copy());
         }
-        return new KartuLadang(this.kartu,copy);
+        if (this.kartu instanceof Hewan){
+            Hewan temp = (Hewan) this.kartu;
+            return new KartuLadang((Hewan)temp,copy);
+
+        }else{
+            Tanaman temp = (Tanaman) this.kartu;
+            return new KartuLadang((Tanaman)temp,copy);
+
+        }
+
     }
 
 }

@@ -2,6 +2,6 @@ package exception;
 
 public class InappropriateFood extends Exception{
     public InappropriateFood() {
-        super("'Yaiks...', they seem to not like the food !");
+        super("'Yikes...', they seem to not like the food !");
     }
 }
