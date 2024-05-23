@@ -9,23 +9,26 @@ import javafx.scene.layout.Pane;
 import javafx.scene.image.Image;
 import player.Player;
 import javafx.scene.Node;
-import java.util.*;
 import petakladang.*;
 import deck.*;
 import card.*;
-import javax.crypto.spec.PSource;
+
 import java.net.URL;
 import java.io.InputStream;
 import java.util.ResourceBundle;
 import java.util.regex.*;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import exception.*;
 public class FieldController implements Initializable {
     private static GameObject gameObject;
     public static Player currPlayer;
     /* Inisiasi Player */
     @FXML private static Player player1;
     @FXML private static Player player2;
-
+    public static Deck deckCurr;
+    public static PetakLadang petakLadangCurr;
     /* Field Pane */
     @FXML private Pane fieldPane;
     @FXML private Pane targetPane1;
@@ -64,6 +67,8 @@ public class FieldController implements Initializable {
         this.player1 = this.gameObject.getPlayer1();
         this.player2 = this.gameObject.getPlayer2();
         currPlayer = gameObject.getCurrentPlayer();
+        deckCurr = currPlayer.getDeck();
+        petakLadangCurr = currPlayer.getPetakLadang();
     }
 
     @Override
@@ -132,7 +137,7 @@ public class FieldController implements Initializable {
     }
 
     public static void reloadImage(){
-        currPlayer = gameObject.getCurrentPlayer();
+
             for (int i = 0; i < 6; i++){
                 Pane parent = ((Pane) Main.deckPane.getChildren().get(i));
                 if (parent!=null){
@@ -164,7 +169,7 @@ public class FieldController implements Initializable {
                 Pane parent = ((Pane) Main.fieldPane.getChildren().get(i*5+j));
                 parent.getChildren().clear();
                 parent.getChildren().add(kartu);
-                KartuLadang insideCard = (KartuLadang) currPlayer.getPetakLadang().getElement(i,j);
+                KartuLadang insideCard = (KartuLadang) petakLadangCurr.getElement(i,j);
                 if (insideCard != null) {
                     parent = (Pane) parent.getChildren().get(0);
                     parent.getChildren().add(new ImageView(new
@@ -178,6 +183,17 @@ public class FieldController implements Initializable {
 
         }
 
+    }
+    public static void showErrorDialog(Exception e) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Error Dialog");
+        alert.setHeaderText("An Exception Occurred");
+        alert.setContentText(e.getMessage());
+
+        // Print the stack trace to the console (optional)
+        e.printStackTrace();
+
+        alert.showAndWait();
     }
     private void initializeDragAndDrop(Pane parent) {
         Pane parentPane = (Pane) parent;
@@ -234,6 +250,48 @@ public class FieldController implements Initializable {
                                 Pane target_parent = (Pane) pane.getParent();
                                 if (sumber_parent.getChildren().size()==6 && target_parent.getChildren().size()==20){
 //                                    tanam
+                                        Pattern pattern = Pattern.compile("pane(\\d+)");
+                                        Matcher matcher = pattern.matcher(nampan_sumber.getId());
+                                        int id1,id2;
+                                        matcher.find();
+                                        String number = matcher.group(1);
+                                        id1 = Integer.parseInt(number);
+                                        pattern = Pattern.compile("Pane(\\d+)");
+                                        matcher = pattern.matcher(pane.getId());
+                                        matcher.find();
+                                        number = matcher.group(1);
+                                        id2 = Integer.parseInt(number);
+                                        Card deckCard = (Card) deckCurr.getAktifElement(id1-1);
+                                        KartuLadang ladangCard = (KartuLadang) petakLadangCurr.getElement((id2-1)/5,(id2-1)%5);
+                                        try{
+                                            System.out.println(ladangCard);
+                                            if (ladangCard == null) {
+//                                                tanam
+                                                if (deckCard instanceof Item || deckCard instanceof Produk){
+                                                    throw new InappropriateObjectInsertion();
+                                                }else{
+                                                    if (petakLadangCurr != gameObject.getCurrentPlayer().getPetakLadang()){
+                                                        throw new FieldInAccessible();
+                                                    }
+                                                    KartuLadang newLadangCard = new KartuLadang(deckCard);
+                                                    petakLadangCurr.addElement(newLadangCard,(id2-1)/5,(id2-1)%5);
+                                                    deckCurr.removeAktifElement(id1-1);
+                                                }
+                                            }else{
+//                                                insert item
+                                                if (deckCard instanceof Item){
+                                                    petakLadangCurr.getElement((id2-1)/5,(id2-1)%5).addItems((Item) deckCard);
+                                                    deckCurr.removeAktifElement(id1-1);
+                                                }else{
+                                                    throw new InsertNonItemException();
+                                                }
+                                            }
+                                        }catch (Exception e){
+                                            e.printStackTrace();
+                                            showErrorDialog(e);
+                                        }
+                                        reloadImage();
+
                                 }else if (sumber_parent.getChildren().size()==20 && target_parent.getChildren().size()==6){
                                     return;
                                 }else if (sumber_parent.getChildren().size()==6 && target_parent.getChildren().size()==6){
@@ -249,7 +307,7 @@ public class FieldController implements Initializable {
                                     number = matcher.group(1);
                                     id2 = Integer.parseInt(number);
                                     System.out.println(id1+" "+id2);
-                                    this.currPlayer.getDeck().swapIndex(id1-1,id2-1);
+                                    deckCurr.swapIndex(id1-1,id2-1);
                                 }else{
 //                                    swap petakLadang to PetakLadang
                                     Pattern pattern = Pattern.compile("Pane(\\d+)");
@@ -263,7 +321,7 @@ public class FieldController implements Initializable {
                                     number = matcher.group(1);
                                     id2 = Integer.parseInt(number);
                                     System.out.println(id1+" "+id2);
-                                    this.currPlayer.getPetakLadang().swapElement(id1-1,id2-1);
+                                    petakLadangCurr.swapElement(id1-1,id2-1);
                                 }
 //                                Pane temp = null;
 //                                if (!pane.getChildren().isEmpty()){

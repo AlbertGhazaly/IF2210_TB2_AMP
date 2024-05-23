@@ -21,6 +21,9 @@ public class TurnController implements Initializable {
     public void updateTurnLabel() {
 //        turnLabel.setText(String.valueOf(numberOfTurn));
         turnLabel.setText(String.valueOf(numberOfTurn));
+        FieldController.currPlayer = gameStatus.getObjek().getCurrentPlayer();
+        FieldController.petakLadangCurr = gameStatus.getObjek().getCurrentPlayer().getPetakLadang();
+        FieldController.deckCurr = gameStatus.getObjek().getCurrentPlayer().getDeck();
         FieldController.reloadImage();
     }
 
