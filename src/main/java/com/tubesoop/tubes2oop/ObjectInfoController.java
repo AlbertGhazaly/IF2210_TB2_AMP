@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import card.Hewan;
 import card.Tanaman;
 import petakladang.KartuLadang;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
 public class ObjectInfoController implements Initializable {
@@ -23,7 +24,7 @@ public class ObjectInfoController implements Initializable {
     @FXML Label Nama;
     @FXML ImageView ImagePath;
     @FXML Label BeratOrUmur;
-    @FXML Pane ItemAktif;
+    @FXML HBox ItemAktif;
     @FXML Button BackButton;
     @FXML Button PanenButton;
     @FXML Label Panen;
@@ -32,7 +33,7 @@ public class ObjectInfoController implements Initializable {
     static Label SNama;
     static ImageView SImagePath;
     static Label SBeratOrUmur;
-    static Pane SItemAktif;
+    static HBox SItemAktif;
     static Label SPanen;
     static Label SKategori;
 
@@ -71,7 +72,7 @@ public class ObjectInfoController implements Initializable {
         for (int i=0;i<ladangCard.getItems().size();i++){
             ImageView newImg = new ImageView(new Image(ladangCard.getItemElement(i).getImgPath()));
             newImg.setFitWidth(50);
-            newImg.setFitWidth(50);
+            newImg.setFitHeight(50);
             SItemAktif.getChildren().add(newImg);
 
         }
