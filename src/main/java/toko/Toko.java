@@ -113,6 +113,7 @@ public class Toko implements Entity {
     @Override
     public void load(String path) throws IOException {
         // FileReader declare
+        this.stok.clear();
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream(path);
 
         if (inputStream == null) {
