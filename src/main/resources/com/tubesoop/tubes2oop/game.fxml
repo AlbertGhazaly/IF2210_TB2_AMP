@@ -48,7 +48,7 @@
             <fx:include source="toko.fxml" />
 
             <!-- Save -->
-            <fx:include source="save.fxml" />
+            <fx:include source="save.fxml" styleClass="card-shuffle" />
 
             <!-- EFEK GLOWING -->
             <effect> <Glow /> </effect>

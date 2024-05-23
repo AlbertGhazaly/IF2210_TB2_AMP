@@ -26,7 +26,7 @@
     </Button>
     <Pane layoutY="250.0">
         <children>
-            <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Save State" textFill="WHITE">
+            <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Save State" textFill="WHITE" onAction="#save">
                 <font>
                     <Font name="Book Antiqua" size="14.0" />
                 </font>

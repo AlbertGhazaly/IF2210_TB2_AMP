@@ -28,8 +28,7 @@ public class Main {
 //        }
         try{
 //            gameStatus.getObjek().getPlayer1().load("player1.txt");
-            gameStatus.getObjek().getPlayer1().save("save.txt");
-            gameStatus.getObjek().geToko().save("savetoko.txt");
+            gameStatus.saveState("andi", "txt");
         } catch (Exception e){
             e.printStackTrace();
         }

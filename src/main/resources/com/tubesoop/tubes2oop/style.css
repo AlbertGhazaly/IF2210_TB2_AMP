@@ -57,6 +57,11 @@
     -fx-background-repeat: no-repeat; /* Agar gambar tidak diulang */
     -fx-background-position: center; /* Posisikan gambar di tengah */
 }
+.saveload{
+    -fx-background-color: #FFFFFF;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
 
 .etalaseBackground {
     -fx-background-color: rgba(0, 0, 0, 0.5); /* Adjust the last value (0.5) for the desired opacity */
