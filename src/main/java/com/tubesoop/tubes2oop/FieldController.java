@@ -481,7 +481,7 @@ public class FieldController implements Initializable {
 
         KartuLadang kartuLadang = (KartuLadang) petakLadangCurr.getElement(row, col);
         if (kartuLadang != null && (kartuLadang.getKartu() instanceof Hewan || kartuLadang.getKartu() instanceof Tanaman)) {
-            ObjectInfoController.ObjectInfoCardOnClicked(kartuLadang, index);
+            ObjectInfoController.ObjectInfoCardOnClicked(kartuLadang, row, col);
         } else {
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Data Tidak Ditemukan");

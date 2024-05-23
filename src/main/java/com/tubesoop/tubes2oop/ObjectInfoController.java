@@ -16,6 +16,8 @@ import card.Hewan;
 import card.Tanaman;
 import petakladang.KartuLadang;
 import javafx.scene.layout.HBox;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
 
 public class ObjectInfoController implements Initializable {
@@ -30,7 +32,8 @@ public class ObjectInfoController implements Initializable {
     @FXML Label Panen;
     @FXML Label Kategori;
     @FXML Card KartuPilihan;
-    @FXML int IndexKartu;
+    @FXML int row;
+    @FXML int col;
 
     static Label SNama;
     static ImageView SImagePath;
@@ -39,7 +42,8 @@ public class ObjectInfoController implements Initializable {
     static Label SPanen;
     static Label SKategori;
     static Card SKartuPilihan;
-    static int SIndexKartu;
+    static int Srow;
+    static int Scol;
 
     static AnchorPane CardInfo;
 
@@ -53,18 +57,17 @@ public class ObjectInfoController implements Initializable {
         SPanen = Panen;
         SKategori = Kategori;
         SKartuPilihan = KartuPilihan;
-        SIndexKartu = IndexKartu;
+        Srow = row;
+        Scol = col;
     }
 
     public void setGameStatus(GameStatus gameStatus) {
         this.gameStatus = gameStatus;
     }
 
-    public static void ObjectInfoCardOnClicked(KartuLadang ladangCard, int index) {
+    public static void ObjectInfoCardOnClicked(KartuLadang ladangCard, int row, int col) {
         SItemAktif.getChildren().clear();
         SNama.setText(ladangCard.getKartu().getName());
-
-        SIndexKartu = index;
 
         Image objectImage = new Image(ladangCard.getKartu().getImgPath());
         SImagePath.setImage(objectImage);
@@ -82,62 +85,92 @@ public class ObjectInfoController implements Initializable {
             newImg.setFitWidth(50);
             newImg.setFitHeight(50);
             SItemAktif.getChildren().add(newImg);
-
         }
 
+        Srow = row;
+        Scol = col;
         SKartuPilihan = ladangCard.getKartu();
         CardInfo.setVisible(true);
     }
 
     public void panenKartu() {
         if (SKartuPilihan instanceof Hewan) {
-            if (((Hewan) SKartuPilihan).getBerat() >= ((Hewan) SKartuPilihan).getBeratPanen() || ((Tanaman) SKartuPilihan).getUmur() > ((Tanaman) SKartuPilihan).getdurasiPanen()) {
+            Hewan hewan = (Hewan) SKartuPilihan;
+            if (hewan.getBerat() >= hewan.getBeratPanen()) {
                 if (gameStatus.getObjek().getCurrentPlayer().getDeck().getAktifSize() < 6) {
                     Produk produk = convertToProduct(SKartuPilihan);
-
-                }
-                else {
+                    gameStatus.getObjek().getCurrentPlayer().getDeck().addAktifElement(produk);
+                    gameStatus.getObjek().getCurrentPlayer().getPetakLadang().removeElement(Srow, Scol);
+                } else {
                     // Alert deck aktif sudah penuh
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Error Menyimpan Produk");
+                    alert.setHeaderText("Tidak Dapat Menyimpan Produk");
+                    alert.setContentText("Tidak ada slot tersisa di deck aktif!");
+                    alert.showAndWait();
                 }
             } else {
-                // Alert tidak cukup umur atau berat untuk panen
+                // Alert tidak cukup berat untuk panen
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Error Panen");
+                alert.setHeaderText("Tidak Dapat Memanen Hewan");
+                alert.setContentText("Berat Hewan Tidak Cukup Untuk Dipanen");
+                alert.showAndWait();
+            }
+        } else if (SKartuPilihan instanceof Tanaman) {
+            Tanaman tanaman = (Tanaman) SKartuPilihan;
+            if (tanaman.getUmur() > tanaman.getdurasiPanen()) {
+                if (gameStatus.getObjek().getCurrentPlayer().getDeck().getAktifSize() < 6) {
+                    Produk produk = convertToProduct(SKartuPilihan);
+                    gameStatus.getObjek().getCurrentPlayer().getDeck().addAktifElement(produk);
+                    gameStatus.getObjek().getCurrentPlayer().getPetakLadang().removeElement(Srow, Scol);
+                } else {
+                    // Alert deck aktif sudah penuh
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Error Menyimpan Produk");
+                    alert.setHeaderText("Tidak Dapat Menyimpan Produk");
+                    alert.setContentText("Tidak ada slot tersisa di deck aktif!");
+                    alert.showAndWait();
+                }
+            } else {
+                // Alert tidak cukup umur untuk panen
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Error Panen");
+                alert.setHeaderText("Tidak Dapat Memanen Tanaman");
+                alert.setContentText("Umur Tanaman Tidak Cukup Untuk Dipanen");
+                alert.showAndWait();
             }
         }
 
         SKartuPilihan = null;
+        Srow = -1;
+        Scol = -1;
         CardInfo.setVisible(false);
     }
 
     public Produk convertToProduct(Card card) {
-        if (card.getName().equals("HIU_DARAT")) {
-            return new Produk();
+        switch (card.getName()) {
+            case "HIU_DARAT":
+                return new Produk("Sirip Hiu", "@assets/produk/shark-fin.png", 500, 12, "HIU_DARAT");
+            case "SAPI":
+                return new Produk("Susu", "@assets/produk/susu.png", 100, 4, "SAPI");
+            case "DOMBA":
+                return new Produk("Daging Domba", "@assets/produk/Daging_Domba.png", 120, 6, "DOMBA");
+            case "KUDA":
+                return new Produk("Daging Kuda", "@assets/produk/Daging_Kuda.png", 150, 8, "KUDA");
+            case "AYAM":
+                return new Produk("Telur", "@assets/produk/telur.png", 50, 2, "AYAM");
+            case "BERUANG":
+                return new Produk("Daging Beruang", "@assets/produk/Daging_Beruang.png", 500, 12, "BERUANG");
+            case "BIJI_LABU":
+                return new Produk("Labu", "@assets/produk/pumpkin.png", 500, 10, "BIJI_LABU");
+            case "BIJI_JAGUNG":
+                return new Produk("Jagung", "@assets/produk/corn.png", 150, 3, "BIJI_JAGUNG");
+            case "BIJI_STROBERI":
+                return new Produk("Stroberi", "@assets/produk/stawberry.png", 350, 5, "BIJI_STROBERI");
+            default:
+                return new Produk();
         }
-        else if (card.getName().equals("SAPI")) {
-
-        }
-        else if (card.getName().equals("DOMBA")) {
-
-        }
-        else if (card.getName().equals("KUDA")) {
-
-        }
-        else if (card.getName().equals("AYAM")) {
-
-        }
-        else if (card.getName().equals("BERUANG")) {
-
-        }
-        else if (card.getName().equals("BIJI_LABU")) {
-
-        }
-        else if (card.getName().equals("BIJI_JAGUNG")) {
-
-        }
-        else if (card.getName().equals("BIJI_STROBERI")) {
-
-        }
-
-        return new Produk();
     }
 
     public void closeInfoCard() {
