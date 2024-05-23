@@ -54,6 +54,7 @@ public class ObjectInfoController implements Initializable {
     }
 
     public static void ObjectInfoCardOnClicked(KartuLadang ladangCard) {
+        SItemAktif.getChildren().clear();
         SNama.setText(ladangCard.getKartu().getName());
 
         Image objectImage = new Image(ladangCard.getKartu().getImgPath());

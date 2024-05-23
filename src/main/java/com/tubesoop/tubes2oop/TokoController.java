@@ -2,6 +2,9 @@ package com.tubesoop.tubes2oop;
 
 import card.Card;
 import gamestatus.*;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -11,6 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 import  javafx.scene.control.Label;
+import javafx.util.Duration;
 
 public class TokoController implements Initializable {
     GameStatus gameStatus;
@@ -50,57 +54,39 @@ public class TokoController implements Initializable {
     }
 
     public void updateToko() {
-        // Contoh: mengambil data dari model stok toko
+        Label[] jumlahLabels = {jumlahHiu, jumlahDagingBeruang, jumlahSusu, jumlahDagingDomba, jumlahDagingKuda, jumlahTelur, jumlahJagung, jumlahLabu, jumlahStroberi};
+        ImageView[] imageDecks = {imageDeck1, imageDeck2, imageDeck3, imageDeck4, imageDeck5, imageDeck6};
         int gulden = gameStatus.getObjek().getCurrentPlayer().getGulden();
         guldenCurrentPlayer.setText(String.valueOf(gulden));
-        int jumlahStokSiripHiu = gameStatus.getObjek().geToko().getStok("SIRIP_HIU"); // Misalkan "namaProduk" adalah kunci produk yang relevan
-        jumlahHiu.setText(String.valueOf(jumlahStokSiripHiu));
-        int jumlahStokDagingBeruang = gameStatus.getObjek().geToko().getStok("DAGING_BERUANG");
-        jumlahDagingBeruang.setText(String.valueOf(jumlahStokDagingBeruang));
-        int jumlahStokSusu = gameStatus.getObjek().geToko().getStok("SUSU");
-        jumlahSusu.setText(String.valueOf(jumlahStokSusu));
-        int jumlahStokDagingDomba = gameStatus.getObjek().geToko().getStok("DAGING_DOMBA");
-        jumlahDagingDomba.setText(String.valueOf(jumlahStokDagingDomba));
-        int jumlahStokDagingKuda = gameStatus.getObjek().geToko().getStok("DAGING_KUDA");
-        jumlahDagingKuda.setText(String.valueOf(jumlahStokDagingKuda));
-        int jumlahStokTelur = gameStatus.getObjek().geToko().getStok("TELUR");
-        jumlahTelur.setText(String.valueOf(jumlahStokTelur));
-        int jumlahStokJagung = gameStatus.getObjek().geToko().getStok("JAGUNG");
-        jumlahJagung.setText(String.valueOf(jumlahStokJagung));
-        int jumlahStokLabu = gameStatus.getObjek().geToko().getStok("LABU");
-        jumlahLabu.setText(String.valueOf(jumlahStokLabu));
-        int jumlahStokStroberi = gameStatus.getObjek().geToko().getStok("STROBERI");
-        jumlahLabu.setText(String.valueOf(jumlahStokStroberi));
-        Card card1 = gameStatus.getObjek().getCurrentPlayer().getDeck().getAktifElement(0);
-        if (card1 != null){
-            imageDeck1.setImage(new Image(card1.getImgPath()));
+
+        // Assume jumlahLabels order matches the order of stock keys
+        String[] stockKeys = new String[] {"SIRIP_HIU", "DAGING_BERUANG", "SUSU", "DAGING_DOMBA", "DAGING_KUDA", "TELUR", "JAGUNG", "LABU", "STROBERI"};
+        for (int i = 0; i < jumlahLabels.length; i++) {
+            int stock = gameStatus.getObjek().geToko().getStok(stockKeys[i]);
+            jumlahLabels[i].setText(String.valueOf(stock));
         }
-        Card card2 = gameStatus.getObjek().getCurrentPlayer().getDeck().getAktifElement(1);
-        if (card2 != null){
-            imageDeck1.setImage(new Image(card2.getImgPath()));
-        }
-        Card card3 = gameStatus.getObjek().getCurrentPlayer().getDeck().getAktifElement(2);
-        if (card3 != null){
-            imageDeck1.setImage(new Image(card3.getImgPath()));
-        }
-        Card card4 = gameStatus.getObjek().getCurrentPlayer().getDeck().getAktifElement(3);
-        if (card4 != null){
-            imageDeck1.setImage(new Image(card4.getImgPath()));
-        }
-        Card card5 = gameStatus.getObjek().getCurrentPlayer().getDeck().getAktifElement(4);
-        if (card5 != null){
-            imageDeck1.setImage(new Image(card5.getImgPath()));
-        }
-        Card card6 = gameStatus.getObjek().getCurrentPlayer().getDeck().getAktifElement(5);
-        if (card6 != null){
-            imageDeck1.setImage(new Image(card6.getImgPath()));
+
+        // Update images for decks
+        for (int i = 0; i < imageDecks.length; i++) {
+            Card card = gameStatus.getObjek().getCurrentPlayer().getDeck().getAktifElement(i);
+            if (card != null) {
+                imageDecks[i].setImage(new Image(card.getImgPath()));
+            }
+            else{
+                imageDecks[i].setImage(null);
+            }
         }
     }
-
 
     public void initialize(URL location, ResourceBundle resources) {
+
         TokoPane.setVisible(false);
         alandToko = TokoPane;
-        updateToko();
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
+            updateToko();
+        }));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
     }
+
 }

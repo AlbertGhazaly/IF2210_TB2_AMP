@@ -303,7 +303,9 @@ public class FieldController implements Initializable {
                                                 }else{
                                                     KartuLadang newLadangCard = new KartuLadang(deckCard);
                                                     petakLadangCurr.addElement(newLadangCard,(id2-1)/5,(id2-1)%5);
+//                                                    System.out.println("Item size: "+newLadangCard.getItems().size());
                                                 }
+
                                                 deckCurr.removeAktifElement(id1-1);
 
                                             }else{
@@ -482,9 +484,9 @@ public class FieldController implements Initializable {
             ObjectInfoController.ObjectInfoCardOnClicked(kartuLadang);
         } else {
             Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("Object Data");
-            alert.setHeaderText("Object Data for Pane: " + pane.getId());
-            alert.setContentText("No object data available.");
+            alert.setTitle("Data Tidak Ditemukan");
+            alert.setHeaderText("Tidak Dapat Melihat Informasi Petak ");
+            alert.setContentText("Petak Kosong! atau Ini Adalah Petak Deck!");
             alert.showAndWait();
         }
     }
