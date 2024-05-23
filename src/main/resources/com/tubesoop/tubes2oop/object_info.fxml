@@ -64,7 +64,7 @@
       </Pane>
 
       <!-- Panen Button -->
-      <Button fx:id="PanenButton" layoutX="237.0" layoutY="250.0" mnemonicParsing="false" styleClass="panenButton" stylesheets="@style.css" text="Panen">
+      <Button fx:id="PanenButton" onAction="#panenKartu" layoutX="237.0" layoutY="250.0" mnemonicParsing="false" styleClass="panenButton" stylesheets="@style.css" text="Panen">
          <font>
             <Font name="Book Antiqua" size="12.0" />
          </font>
