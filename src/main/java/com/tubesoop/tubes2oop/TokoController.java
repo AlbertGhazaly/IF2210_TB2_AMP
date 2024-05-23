@@ -16,6 +16,7 @@ import java.util.ResourceBundle;
 import  javafx.scene.control.Label;
 import javafx.util.Duration;
 import com.tubesoop.tubes2oop.FieldController;
+import com.tubesoop.tubes2oop.PlayerStatusController;
 
 public class TokoController implements Initializable {
     GameStatus gameStatus;
@@ -49,6 +50,7 @@ public class TokoController implements Initializable {
     public void  closeToko() {
         TokoPane.setVisible(false);
         FieldController.reloadImage();
+        PlayerStatusController.updatePlayersGulden();
     }
 
     public void setGameStatus(GameStatus gameStatus) {

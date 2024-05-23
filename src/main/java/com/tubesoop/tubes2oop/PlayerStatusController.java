@@ -12,17 +12,15 @@ import java.util.ResourceBundle;
 public class PlayerStatusController implements Initializable {
     private GameObject gameObject;
 
-    @FXML
-    private Player player1;
+    @FXML private Player player1;
+    @FXML private Player player2;
+    @FXML private Label player1Gulden;
+    @FXML private Label player2Gulden;
 
-    @FXML
-    private Player player2;
-
-    @FXML
-    private Label player1Gulden;
-
-    @FXML
-    private Label player2Gulden;
+    static Player SPlayer1;
+    static Player SPlayer2;
+    static Label Splayer1Gulden;
+    static Label Splayer2Gulden;
 
     @FXML
     public void updatePlayer1Gulden() {
@@ -44,12 +42,18 @@ public class PlayerStatusController implements Initializable {
         this.player2 = this.gameObject.getPlayer2();
     }
 
+    @FXML
+    public static void updatePlayersGulden() {
+        Splayer1Gulden.setText(String.valueOf(SPlayer1.getGulden()));
+        Splayer2Gulden.setText(String.valueOf(SPlayer2.getGulden()));
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Initialize with default values
-
-        if (player1 != null) this.player1.setGulden(30);
-        if (player2 != null) this.player2.setGulden(50);
+        SPlayer1 = player1;
+        SPlayer2 = player2;
+        Splayer1Gulden = player1Gulden;
+        Splayer2Gulden = player2Gulden;
 
         this.updatePlayer1Gulden();
         this.updatePlayer2Gulden();
