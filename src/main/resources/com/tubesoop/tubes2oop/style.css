@@ -72,3 +72,26 @@
     -fx-background-color: rgba(128, 128, 128, 1); /* Sesuaikan nilai terakhir (0.5) untuk kekeruhan yang diinginkan */
     -fx-border-radius: 3px;
 }
+
+.objectInfoBackground {
+    -fx-background-color: linear-gradient(to top right, #FEE6CB, #FCB8A1);
+}
+
+.backButton {
+    -fx-background-color: white;
+    -fx-pref-width: 75;
+    -fx-pref-height: 25;
+}
+
+.panenButton {
+    -fx-background-color: white;
+    -fx-pref-width: 125;
+    -fx-pref-height: 30;
+}
+
+.objectInfoPanel {
+    -fx-layout-x: 50%;
+    -fx-layout-y: 50%;
+    -fx-translate-x: 125px; /* setengah dari lebar prefWidth cardShuffle */
+    -fx-translate-y: 225px; /* setengah dari tinggi prefHeight cardShuffle */
+}

@@ -19,12 +19,36 @@
       </Label>
 
 
-      <Pane layoutX="82.0" layoutY="627.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-      <Pane layoutX="200.0" layoutY="627.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-      <Pane layoutX="325.0" layoutY="627.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-      <Pane layoutX="438.0" layoutY="627.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-      <Pane layoutX="555.0" layoutY="627.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-      <Pane layoutX="673.0" layoutY="627.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
+      <Pane layoutX="82.0" layoutY="627.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+         <children>
+            <ImageView fx:id="imageDeck1" fitHeight="100.0" fitWidth="100.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="200.0" layoutY="627.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+         <children>
+            <ImageView fx:id="imageDeck2" fitHeight="100.0" fitWidth="100.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="325.0" layoutY="627.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+         <children>
+            <ImageView fx:id="imageDeck3" fitHeight="100.0" fitWidth="100.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="438.0" layoutY="627.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+         <children>
+            <ImageView fx:id="imageDeck4" fitHeight="100.0" fitWidth="100.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="555.0" layoutY="627.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+         <children>
+            <ImageView fx:id="imageDeck5" fitHeight="100.0" fitWidth="100.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="675.0" layoutY="627.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css">
+         <children>
+            <ImageView fx:id="imageDeck6" fitHeight="100.0" fitWidth="100.0" />
+         </children>
+      </Pane>
 
       <Button fx:id="CloseButton" layoutX="728.0" layoutY="33.0" mnemonicParsing="false" onAction="#closeToko" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: ff0000; -fx-background-radius: 100;" stylesheets="@style.css" text="Tutup Toko" textFill="WHITE">
          <font>
@@ -58,7 +82,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="118.0" layoutY="81.0" text="0" textFill="WHITE" />
+            <Label fx:id="jumlahHiu" layoutX="118.0" layoutY="81.0" text="0" textFill="WHITE" />
             <Label layoutX="118.0" layoutY="37.0" text="500" textFill="WHITE" />
          </children>
       </Pane>
@@ -89,7 +113,7 @@
                </font>
             </Label>
             <Label layoutX="117.0" layoutY="38.0" text="500" textFill="WHITE" />
-            <Label layoutX="120.0" layoutY="83.0" text="0" textFill="WHITE" />
+            <Label fx:id="jumlahDagingBeruang" layoutX="120.0" layoutY="83.0" text="0" textFill="WHITE" />
          </children>
       </Pane>
       <Pane layoutX="562.0" layoutY="81.0" prefHeight="150.0" prefWidth="207.0" style="-fx-background-radius: 10;" styleClass="etalaseBackground" stylesheets="@style.css">
@@ -118,7 +142,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="118.0" layoutY="81.0" text="0" textFill="WHITE" />
+            <Label fx:id="jumlahSusu" layoutX="118.0" layoutY="81.0" text="0" textFill="WHITE" />
             <Label layoutX="118.0" layoutY="37.0" text="100" textFill="WHITE" />
          </children>
       </Pane>
@@ -148,7 +172,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="118.0" layoutY="81.0" text="0" textFill="WHITE" />
+            <Label fx:id="jumlahDagingDomba" layoutX="118.0" layoutY="81.0" text="0" textFill="WHITE" />
             <Label layoutX="118.0" layoutY="37.0" text="120" textFill="WHITE" />
          </children>
       </Pane>
@@ -178,7 +202,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="118.0" layoutY="81.0" text="0" textFill="WHITE" />
+            <Label fx:id="jumlahDagingKuda" layoutX="118.0" layoutY="81.0" text="0" textFill="WHITE" />
             <Label layoutX="118.0" layoutY="37.0" text="150" textFill="WHITE" />
          </children>
       </Pane>
@@ -208,7 +232,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="118.0" layoutY="81.0" text="0" textFill="WHITE" />
+            <Label fx:id="jumlahTelur" layoutX="118.0" layoutY="81.0" text="0" textFill="WHITE" />
             <Label layoutX="118.0" layoutY="37.0" text="50" textFill="WHITE" />
          </children>
       </Pane>
@@ -238,7 +262,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="118.0" layoutY="81.0" text="0" textFill="WHITE" />
+            <Label fx:id="jumlahJagung" layoutX="118.0" layoutY="81.0" text="0" textFill="WHITE" />
             <Label layoutX="118.0" layoutY="37.0" text="150" textFill="WHITE" />
          </children>
       </Pane>
@@ -268,7 +292,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="118.0" layoutY="81.0" text="0" textFill="WHITE" />
+            <Label fx:id="jumlahLabu" layoutX="118.0" layoutY="81.0" text="0" textFill="WHITE" />
             <Label layoutX="118.0" layoutY="37.0" text="500" textFill="WHITE" />
          </children>
       </Pane>
@@ -298,11 +322,11 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="118.0" layoutY="81.0" text="0" textFill="WHITE" />
+            <Label fx:id="jumlahStroberi" layoutX="118.0" layoutY="81.0" text="0" textFill="WHITE" />
             <Label layoutX="118.0" layoutY="37.0" text="350" textFill="WHITE" />
          </children>
       </Pane>
-      <Label layoutX="26.0" layoutY="25.0" text="0" textFill="WHITE">
+      <Label fx:id="guldenCurrentPlayer" layoutX="26.0" layoutY="25.0" text="0" textFill="WHITE">
          <font>
             <Font name="Book Antiqua" size="12.0" />
          </font>
