@@ -268,26 +268,20 @@ public class FieldController implements Initializable {
                                             System.out.println(ladangCard);
                                             if (ladangCard == null) {
 //                                                tanam
-                                                if (deckCard instanceof Item){
+                                                if (deckCard instanceof Item || deckCard instanceof Produk){
                                                     throw new InappropriateObjectInsertion();
-                                                }else{
-                                                    if (deckCard instanceof Produk){
-                                                        if (ladangCard.getKartu() instanceof Hewan){
-                                                            ((Hewan)((KartuLadang) petakLadangCurr.getElement((id2-1)/5,(id2-1)%5)).getKartu()).addBerat(((Produk) deckCard).getAddedBerat());
-                                                        }else{
-                                                            throw new InappropriateObjectInsertion();
-                                                        }
-                                                    }
-                                                    if (petakLadangCurr != gameObject.getCurrentPlayer().getPetakLadang()){
-                                                        throw new FieldInAccessible();
-                                                    }else{
-                                                        KartuLadang newLadangCard = new KartuLadang(deckCard);
-                                                        petakLadangCurr.addElement(newLadangCard,(id2-1)/5,(id2-1)%5);
-                                                    }
-                                                    deckCurr.removeAktifElement(id1-1);
                                                 }
+
+                                                if (petakLadangCurr != gameObject.getCurrentPlayer().getPetakLadang()){
+                                                    throw new FieldInAccessible();
+                                                }else{
+                                                    KartuLadang newLadangCard = new KartuLadang(deckCard);
+                                                    petakLadangCurr.addElement(newLadangCard,(id2-1)/5,(id2-1)%5);
+                                                }
+                                                deckCurr.removeAktifElement(id1-1);
+
                                             }else{
-//                                              insert item
+//                                              insert item/ makan
                                                 if (deckCard instanceof Item){
                                                     if (((Item) deckCard).getName().equals("INSTANT_HARVEST")){
                                                         if (petakLadangCurr != currPlayer.getPetakLadang()){
@@ -364,6 +358,25 @@ public class FieldController implements Initializable {
                                                         deckCurr.removeAktifElement(id1-1);
                                                     }
 
+                                                }else if(deckCard instanceof Produk){
+
+                                                        if (ladangCard.getKartu() instanceof Hewan){
+                                                            if (((Hewan) ladangCard.getKartu()).getKategori().equals("karnivora")) {
+                                                                if (deckCard.getName().equals("JAGUNG") || deckCard.getName().equals("LABU") || deckCard.getName().equals("STROBERI")) {
+                                                                    throw new InappropriateFood();
+                                                                }
+
+                                                            }
+                                                            if(((Hewan) ladangCard.getKartu()).getKategori().equals("herbivora")){
+                                                                if (!(deckCard.getName().equals("JAGUNG") || deckCard.getName().equals("LABU") || deckCard.getName().equals("STROBERI"))){
+                                                                    throw new InappropriateFood();
+                                                                }
+                                                            }
+                                                            ((Hewan)((KartuLadang) petakLadangCurr.getElement((id2-1)/5,(id2-1)%5)).getKartu()).addBerat(((Produk) deckCard).getAddedBerat());
+                                                            deckCurr.removeAktifElement(id1-1);
+                                                        }else{
+                                                            throw new InappropriateObjectInsertion();
+                                                        }
                                                 }else{
                                                     throw new InsertNonItemException();
                                                 }
