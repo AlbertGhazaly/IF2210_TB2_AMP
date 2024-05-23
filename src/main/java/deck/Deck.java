@@ -80,7 +80,7 @@ public void addAktifElementRandom(T element){
       while (this.deckPasif.size()<n){
           int x = random.nextInt(24);
           if (x<6){
-              if (!GameObject.hewanList.get(x).getName().equals("Beruang")){
+              if (!GameObject.hewanList.get(x).getName().equals("BERUANG")){
                   this.deckPasif.add( new Hewan(GameObject.hewanList.get(x)));
               }
           }else if (x>=6 && x<15){

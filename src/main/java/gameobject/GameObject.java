@@ -33,7 +33,7 @@ public class GameObject {
         return this.player1;
     }
     public static void initiateCard(){
-        GameObject.hewanList.add(new Hewan("HIU DARAT",
+        GameObject.hewanList.add(new Hewan("HIU_DARAT",
                 "assets/hewan/hiu_darat.png",
                 "karnivora",
                 0,20
@@ -72,7 +72,7 @@ public class GameObject {
                 "assets/item/Delay.png"
         ));
         GameObject.itemList.add(new Item(
-                "INSTANT HARVEST",
+                "INSTANT_HARVEST",
                 "assets/item/Instant_Harvest.png"
         ));
         GameObject.itemList.add(new Item(
@@ -88,65 +88,65 @@ public class GameObject {
                 "assets/item/bear_trap.png"
         ));
         GameObject.tanamanList.add(new Tanaman(
-                "BIJI JAGUNG",
+                "BIJI_JAGUNG",
                 "assets/tanaman/corn_seeds.png",
                 3,0
         ));
         GameObject.tanamanList.add(new Tanaman(
-                "BIJI LABU",
+                "BIJI_LABU",
                 "assets/tanaman/pumpkin_seeds.png",
                 5,0
         ));
         GameObject.tanamanList.add(new Tanaman(
-                "BIJI STROBERI",
+                "BIJI_STROBERI",
                 "assets/tanaman/strawberry_seeds.png",
                 4,0
 
         ));
         GameObject.produkList.add(new Produk(
-                "SIRIP HIU",
+                "SIRIP_HIU",
                 "assets/produk/shark-fin.png",
-                500,12,"Hiu Darat"
+                500,12,"HIU_DARAT"
         ));
         GameObject.produkList.add(new Produk(
                 "SUSU",
                 "assets/produk/susu.png",
-                100,4,"Sapi"
+                100,4,"SAPI"
         ));
         GameObject.produkList.add(new Produk(
-                "DAGING DOMBA",
+                "DAGING_DOMBA",
                 "assets/produk/Daging_Domba.png",
-                120,6,"Domba"
+                120,6,"DOMBA"
         ));
         GameObject.produkList.add(new Produk(
-                "DAGING KUDA",
+                "DAGING_KUDA",
                 "assets/produk/Daging_Kuda.png",
-                150,8,"Kuda"
+                150,8,"KUDA"
         ));
         GameObject.produkList.add(new Produk(
                 "TELUR",
                 "assets/produk/telur.png",
-                50,2,"Ayam"
+                50,2,"AYAM"
         ));
         GameObject.produkList.add(new Produk(
-                "DAGING BERUANG",
+                "DAGING_BERUANG",
                 "assets/produk/Daging_Beruang.png",
-                500,12,"Beruang"
+                500,12,"BERUANG"
         ));
         GameObject.produkList.add(new Produk(
                 "JAGUNG",
                 "assets/produk/corn.png",
-                150,3,"Biji Jagung"
+                150,3,"BIJI_JAGUNG"
         ));
         GameObject.produkList.add(new Produk(
                 "LABU",
                 "assets/produk/pumpkin.png",
-                500,10,"Biji Labu"
+                500,10,"BIJI_LABU"
         ));
         GameObject.produkList.add(new Produk(
                 "STROBERI",
                 "assets/produk/strawberry.png",
-                350,5,"Biji Stroberi"
+                350,5,"BIJI_STROBERI"
         ));
     }
 }

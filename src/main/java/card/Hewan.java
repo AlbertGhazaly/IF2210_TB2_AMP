@@ -39,6 +39,9 @@ public class Hewan extends Card{
     public void addBerat(int addedBerat){
         this.berat += addedBerat;
     }
+    public void setBerat(int berat){
+        this.berat = berat;
+    }
     public void addBeratPanen(int addedBeratPanen){
         this.beratPanen += addedBeratPanen;
     }

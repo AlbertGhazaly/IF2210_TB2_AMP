@@ -12,9 +12,10 @@ import javafx.scene.Node;
 import petakladang.*;
 import deck.*;
 import card.*;
-
+import java.util.List;
 import java.net.URL;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.regex.*;
 
@@ -267,21 +268,102 @@ public class FieldController implements Initializable {
                                             System.out.println(ladangCard);
                                             if (ladangCard == null) {
 //                                                tanam
-                                                if (deckCard instanceof Item || deckCard instanceof Produk){
+                                                if (deckCard instanceof Item){
                                                     throw new InappropriateObjectInsertion();
                                                 }else{
+                                                    if (deckCard instanceof Produk){
+                                                        if (ladangCard.getKartu() instanceof Hewan){
+                                                            ((Hewan)((KartuLadang) petakLadangCurr.getElement((id2-1)/5,(id2-1)%5)).getKartu()).addBerat(((Produk) deckCard).getAddedBerat());
+                                                        }else{
+                                                            throw new InappropriateObjectInsertion();
+                                                        }
+                                                    }
                                                     if (petakLadangCurr != gameObject.getCurrentPlayer().getPetakLadang()){
                                                         throw new FieldInAccessible();
+                                                    }else{
+                                                        KartuLadang newLadangCard = new KartuLadang(deckCard);
+                                                        petakLadangCurr.addElement(newLadangCard,(id2-1)/5,(id2-1)%5);
                                                     }
-                                                    KartuLadang newLadangCard = new KartuLadang(deckCard);
-                                                    petakLadangCurr.addElement(newLadangCard,(id2-1)/5,(id2-1)%5);
                                                     deckCurr.removeAktifElement(id1-1);
                                                 }
                                             }else{
-//                                                insert item
+//                                              insert item
                                                 if (deckCard instanceof Item){
-                                                    petakLadangCurr.getElement((id2-1)/5,(id2-1)%5).addItems((Item) deckCard);
-                                                    deckCurr.removeAktifElement(id1-1);
+                                                    if (((Item) deckCard).getName().equals("INSTANT_HARVEST")){
+                                                        if (petakLadangCurr != currPlayer.getPetakLadang()){
+                                                            throw new FieldInAccessible();
+                                                        }
+                                                        List<Produk> produkHasil= new ArrayList<>();
+                                                        for (int i=0;i<GameObject.produkList.size();i++){
+                                                            if (GameObject.produkList.get(i).getOrisinil().equals(ladangCard.getKartu().getName())){
+                                                                produkHasil.add(new Produk((Produk) GameObject.produkList.get(i)));
+                                                            }
+                                                        }
+                                                        if (produkHasil.size()>(7-deckCurr.getAktifSize())){
+                                                            throw new DeckAktifFullException();
+                                                        }
+                                                        deckCurr.removeAktifElement(id1-1);
+                                                        for (int n=0;n<produkHasil.size();n++){
+                                                            deckCurr.addAktifElementRandom(produkHasil.get(n));
+                                                        }
+
+                                                    }else if (deckCard.getName().equals("DESTROY")){
+                                                        if (petakLadangCurr == currPlayer.getPetakLadang()){
+                                                            throw new FieldInAccessible();
+                                                        }
+                                                        List<Item> itemInCard= ladangCard.getItems();
+                                                        for (int k=0;k<itemInCard.size();k++){
+                                                            if (itemInCard.get(k).getName().equals("PROTECT")){
+                                                                ladangCard.getItems().remove(k);
+                                                                deckCurr.removeAktifElement(id1-1);
+                                                                return;
+                                                            }
+                                                        }
+                                                        petakLadangCurr.removeElement((id2-1)/5,(id2-1)%5);
+                                                        deckCurr.removeAktifElement(id1-1);
+                                                    }else if (deckCard.getName().equals("DELAY")){
+                                                        if (petakLadangCurr == currPlayer.getPetakLadang()){
+                                                            throw new FieldInAccessible();
+                                                        }
+                                                        List<Item> itemInCard= ladangCard.getItems();
+                                                        for (int k=0;k<itemInCard.size();k++){
+                                                            if (itemInCard.get(k).getName().equals("PROTECT")){
+                                                                ladangCard.getItems().remove(k);
+                                                                deckCurr.removeAktifElement(id1-1);
+                                                                return;
+                                                            }
+                                                        }
+                                                        if (ladangCard.getKartu() instanceof Hewan){
+                                                            if (((Hewan) ladangCard.getKartu()).getBerat()<=5){
+                                                                ((Hewan) ladangCard.getKartu()).setBerat(0);
+                                                            }else{
+                                                                ((Hewan) ladangCard.getKartu()).addBerat(-5);
+                                                            }
+                                                        } else if (ladangCard.getKartu() instanceof Tanaman){
+                                                            if (((Tanaman) ladangCard.getKartu()).getUmur()<=2){
+                                                                ((Tanaman) ladangCard.getKartu()).addUmur(-1*((Tanaman) ladangCard.getKartu()).getUmur());
+                                                            }else{
+                                                                ((Tanaman) ladangCard.getKartu()).addUmur(-2);
+                                                            }
+                                                        }
+                                                        deckCurr.removeAktifElement(id1-1);
+                                                    }else if(deckCard.getName().equals("ACCELERATE")){
+                                                        if (petakLadangCurr != currPlayer.getPetakLadang()){
+                                                            throw new FieldInAccessible();
+                                                        }
+                                                        if (ladangCard.getKartu() instanceof Hewan){
+                                                            ((Hewan) ladangCard.getKartu()).addBerat(8);
+                                                        }else if (ladangCard.getKartu() instanceof Tanaman){
+                                                            ((Tanaman) ladangCard.getKartu()).addUmur(2);
+                                                        }
+                                                    }else {
+                                                        if (petakLadangCurr != currPlayer.getPetakLadang()){
+                                                            throw new FieldInAccessible();
+                                                        }
+                                                        petakLadangCurr.getElement((id2-1)/5,(id2-1)%5).addItems((Item) deckCard);
+                                                        deckCurr.removeAktifElement(id1-1);
+                                                    }
+
                                                 }else{
                                                     throw new InsertNonItemException();
                                                 }
