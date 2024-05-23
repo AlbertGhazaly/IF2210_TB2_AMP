@@ -57,3 +57,18 @@
     -fx-background-repeat: no-repeat; /* Agar gambar tidak diulang */
     -fx-background-position: center; /* Posisikan gambar di tengah */
 }
+
+.etalaseBackground {
+    -fx-background-color: rgba(0, 0, 0, 0.5); /* Adjust the last value (0.5) for the desired opacity */
+    -fx-border-radius: 5px;
+}
+
+.gambarBackground {
+    -fx-background-color: rgba(192, 192, 192, 1); /* Sesuaikan nilai terakhir (0.5) untuk kekeruhan yang diinginkan */
+    -fx-border-radius: 5px;
+}
+
+.guldenBackground {
+    -fx-background-color: rgba(128, 128, 128, 1); /* Sesuaikan nilai terakhir (0.5) untuk kekeruhan yang diinginkan */
+    -fx-border-radius: 3px;
+}

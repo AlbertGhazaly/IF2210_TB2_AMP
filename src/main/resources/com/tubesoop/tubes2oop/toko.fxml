@@ -9,54 +9,14 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="TokoPane" visible="false" prefHeight="775.0" prefWidth="850.0" styleClass="tokoBackground" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tubesoop.tubes2oop.TokoController">
+<AnchorPane fx:id="TokoPane" prefHeight="775.0" prefWidth="850.0" styleClass="tokoBackground" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tubesoop.tubes2oop.TokoController">
    <children>
-      <Label layoutX="404.0" layoutY="31.0" text="Toko">
+      <Pane layoutX="17.0" layoutY="20.0" prefHeight="29.0" prefWidth="100.0" style="-fx-background-radius: 5;" styleClass="guldenBackground" stylesheets="@style.css" />
+      <Label layoutX="239.0" layoutY="8.0" text="TOKO KELONTONG">
          <font>
-            <Font name="Book Antiqua" size="20.0" />
+            <Font name="Book Antiqua" size="41.0" />
          </font>
       </Label>
-
-      <Pane layoutX="27.0" layoutY="81.0" prefHeight="150.0" prefWidth="125.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" translateX="55.0">
-         <children>
-            <ImageView fitHeight="121.0" fitWidth="104.0" layoutX="-42.0" pickOnBounds="true" preserveRatio="true" translateX="55.0">
-               <image>
-                  <Image url="@../../../assets/produk/Daging_Domba.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="-28.0" layoutY="87.0" text="Daging Albert" translateX="55.0">
-               <font>
-                  <Font name="Book Antiqua" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="47.0" layoutY="14.0" text="100" translateX="55.0">
-               <font>
-                  <Font name="Book Antiqua Bold Italic" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="-10.0" layoutY="119.0" text="Stok 10" translateX="55.0">
-               <font>
-                  <Font name="Book Antiqua Italic" size="12.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-
-      <Pane layoutX="167.0" layoutY="81.0" prefHeight="150.0" prefWidth="125.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" translateX="55.0" />
-      <Pane layoutX="307.0" layoutY="81.0" prefHeight="150.0" prefWidth="125.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" translateX="55.0" />
-      <Pane layoutX="447.0" layoutY="81.0" prefHeight="150.0" prefWidth="125.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" translateX="55.0" />
-      <Pane layoutX="27.0" layoutY="246.0" prefHeight="150.0" prefWidth="125.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" translateX="55.0" />
-      <Pane layoutX="167.0" layoutY="246.0" prefHeight="150.0" prefWidth="125.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" translateX="55.0" />
-      <Pane layoutX="307.0" layoutY="246.0" prefHeight="150.0" prefWidth="125.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" translateX="55.0" />
-      <Pane layoutX="447.0" layoutY="246.0" prefHeight="150.0" prefWidth="125.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" translateX="55.0" />
-      <Pane layoutX="592.0" layoutY="81.0" prefHeight="150.0" prefWidth="125.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" translateX="55.0" />
-      <Pane layoutX="592.0" layoutY="246.0" prefHeight="150.0" prefWidth="125.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" translateX="55.0" />
-      <Pane layoutX="82.0" layoutY="410.0" prefHeight="150.0" prefWidth="125.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-      <Pane layoutX="222.0" layoutY="411.0" prefHeight="150.0" prefWidth="125.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-      <Pane layoutX="362.0" layoutY="411.0" prefHeight="150.0" prefWidth="125.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-      <Pane layoutX="502.0" layoutY="411.0" prefHeight="150.0" prefWidth="125.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
-      <Pane layoutX="647.0" layoutY="411.0" prefHeight="150.0" prefWidth="125.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
 
 
       <Pane layoutX="82.0" layoutY="627.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
@@ -66,11 +26,291 @@
       <Pane layoutX="555.0" layoutY="627.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
       <Pane layoutX="673.0" layoutY="627.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 10;" styleClass="glassBackground" stylesheets="@style.css" />
 
-      <Button layoutY="26.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="125.0" style="-fx-background-color: transparent;" stylesheets="@style.css" text="Tutup Toko" fx:id="CloseButton" onAction="#closeToko">
+      <Button fx:id="CloseButton" layoutX="728.0" layoutY="33.0" mnemonicParsing="false" onAction="#closeToko" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: ff0000; -fx-background-radius: 100;" stylesheets="@style.css" text="Tutup Toko" textFill="WHITE">
          <font>
-            <Font name="Book Antiqua" size="12.0" />
+            <Font name="Book Antiqua Bold" size="12.0" />
          </font>
       </Button>
       <Separator layoutX="82.0" layoutY="601.0" prefHeight="0.0" prefWidth="687.0" />
+      <Pane layoutX="79.0" layoutY="81.0" prefHeight="150.0" prefWidth="207.0" style="-fx-background-radius: 10;" styleClass="etalaseBackground" stylesheets="@style.css">
+         <children>
+            <Pane layoutX="14.0" layoutY="14.0" prefHeight="121.0" prefWidth="91.0" style="-fx-background-radius: 10;" styleClass="gambarBackground" stylesheets="@style.css">
+               <children>
+                  <ImageView fitHeight="81.0" fitWidth="73.0" layoutX="10.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../assets/produk/shark-fin.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="22.0" layoutY="85.0" text="Sirip Hiu">
+                     <font>
+                        <Font name="Book Antiqua" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label layoutX="117.0" layoutY="20.0" text="Harga" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="117.0" layoutY="66.0" text="Jumlah" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="118.0" layoutY="81.0" text="0" textFill="WHITE" />
+            <Label layoutX="118.0" layoutY="37.0" text="500" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane layoutX="322.0" layoutY="81.0" prefHeight="150.0" prefWidth="207.0" style="-fx-background-radius: 10;" styleClass="etalaseBackground" stylesheets="@style.css">
+         <children>
+            <Pane layoutX="14.0" layoutY="15.0" prefHeight="121.0" prefWidth="91.0" style="-fx-background-radius: 10;" styleClass="gambarBackground" stylesheets="@style.css">
+               <children>
+                  <ImageView fitHeight="81.0" fitWidth="73.0" layoutX="9.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../assets/produk/Daging_Beruang.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="2.0" layoutY="87.0" text="Daging Beruang">
+                     <font>
+                        <Font name="Book Antiqua" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label layoutX="118.0" layoutY="24.0" text="Harga" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="118.0" layoutY="67.0" text="Jumlah" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="117.0" layoutY="38.0" text="500" textFill="WHITE" />
+            <Label layoutX="120.0" layoutY="83.0" text="0" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane layoutX="562.0" layoutY="81.0" prefHeight="150.0" prefWidth="207.0" style="-fx-background-radius: 10;" styleClass="etalaseBackground" stylesheets="@style.css">
+         <children>
+            <Pane layoutX="14.0" layoutY="14.0" prefHeight="121.0" prefWidth="91.0" style="-fx-background-radius: 10;" styleClass="gambarBackground" stylesheets="@style.css">
+               <children>
+                  <ImageView fitHeight="81.0" fitWidth="73.0" layoutX="10.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../assets/produk/susu.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="32.0" layoutY="85.0" text="Susu" textAlignment="CENTER">
+                     <font>
+                        <Font name="Book Antiqua" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label layoutX="117.0" layoutY="20.0" text="Harga" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="117.0" layoutY="66.0" text="Jumlah" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="118.0" layoutY="81.0" text="0" textFill="WHITE" />
+            <Label layoutX="118.0" layoutY="37.0" text="100" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane layoutX="83.0" layoutY="246.0" prefHeight="150.0" prefWidth="207.0" style="-fx-background-radius: 10;" styleClass="etalaseBackground" stylesheets="@style.css">
+         <children>
+            <Pane layoutX="14.0" layoutY="14.0" prefHeight="121.0" prefWidth="91.0" style="-fx-background-radius: 10;" styleClass="gambarBackground" stylesheets="@style.css">
+               <children>
+                  <ImageView fitHeight="81.0" fitWidth="73.0" layoutX="10.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../assets/produk/Daging_Domba.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="5.0" layoutY="87.0" text="Daging Domba" textAlignment="CENTER">
+                     <font>
+                        <Font name="Book Antiqua" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label layoutX="117.0" layoutY="20.0" text="Harga" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="117.0" layoutY="66.0" text="Jumlah" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="118.0" layoutY="81.0" text="0" textFill="WHITE" />
+            <Label layoutX="118.0" layoutY="37.0" text="120" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane layoutX="322.0" layoutY="246.0" prefHeight="150.0" prefWidth="207.0" style="-fx-background-radius: 10;" styleClass="etalaseBackground" stylesheets="@style.css">
+         <children>
+            <Pane layoutX="14.0" layoutY="14.0" prefHeight="121.0" prefWidth="91.0" style="-fx-background-radius: 10;" styleClass="gambarBackground" stylesheets="@style.css">
+               <children>
+                  <ImageView fitHeight="81.0" fitWidth="73.0" layoutX="10.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../assets/produk/Daging_Kuda.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="10.0" layoutY="85.0" text="Daging Kuda" textAlignment="CENTER">
+                     <font>
+                        <Font name="Book Antiqua" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label layoutX="117.0" layoutY="20.0" text="Harga" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="117.0" layoutY="66.0" text="Jumlah" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="118.0" layoutY="81.0" text="0" textFill="WHITE" />
+            <Label layoutX="118.0" layoutY="37.0" text="150" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane layoutX="562.0" layoutY="246.0" prefHeight="150.0" prefWidth="207.0" style="-fx-background-radius: 10;" styleClass="etalaseBackground" stylesheets="@style.css">
+         <children>
+            <Pane layoutX="14.0" layoutY="14.0" prefHeight="121.0" prefWidth="91.0" style="-fx-background-radius: 10;" styleClass="gambarBackground" stylesheets="@style.css">
+               <children>
+                  <ImageView fitHeight="81.0" fitWidth="73.0" layoutX="10.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../assets/produk/telur.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="31.0" layoutY="85.0" text="Telur" textAlignment="CENTER">
+                     <font>
+                        <Font name="Book Antiqua" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label layoutX="117.0" layoutY="20.0" text="Harga" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="117.0" layoutY="66.0" text="Jumlah" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="118.0" layoutY="81.0" text="0" textFill="WHITE" />
+            <Label layoutX="118.0" layoutY="37.0" text="50" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane layoutX="83.0" layoutY="411.0" prefHeight="150.0" prefWidth="207.0" style="-fx-background-radius: 10;" styleClass="etalaseBackground" stylesheets="@style.css">
+         <children>
+            <Pane layoutX="14.0" layoutY="14.0" prefHeight="121.0" prefWidth="91.0" style="-fx-background-radius: 10;" styleClass="gambarBackground" stylesheets="@style.css">
+               <children>
+                  <ImageView fitHeight="81.0" fitWidth="73.0" layoutX="10.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../assets/produk/corn.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="26.0" layoutY="85.0" text="Jagung" textAlignment="CENTER">
+                     <font>
+                        <Font name="Book Antiqua" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label layoutX="117.0" layoutY="20.0" text="Harga" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="117.0" layoutY="66.0" text="Jumlah" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="118.0" layoutY="81.0" text="0" textFill="WHITE" />
+            <Label layoutX="118.0" layoutY="37.0" text="150" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane layoutX="322.0" layoutY="411.0" prefHeight="150.0" prefWidth="207.0" style="-fx-background-radius: 10;" styleClass="etalaseBackground" stylesheets="@style.css">
+         <children>
+            <Pane layoutX="14.0" layoutY="14.0" prefHeight="121.0" prefWidth="91.0" style="-fx-background-radius: 10;" styleClass="gambarBackground" stylesheets="@style.css">
+               <children>
+                  <ImageView fitHeight="81.0" fitWidth="73.0" layoutX="10.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../assets/produk/pumpkin.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="32.0" layoutY="85.0" text="Labu" textAlignment="CENTER">
+                     <font>
+                        <Font name="Book Antiqua" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label layoutX="117.0" layoutY="20.0" text="Harga" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="117.0" layoutY="66.0" text="Jumlah" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="118.0" layoutY="81.0" text="0" textFill="WHITE" />
+            <Label layoutX="118.0" layoutY="37.0" text="500" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane layoutX="562.0" layoutY="411.0" prefHeight="150.0" prefWidth="207.0" style="-fx-background-radius: 10;" styleClass="etalaseBackground" stylesheets="@style.css">
+         <children>
+            <Pane layoutX="14.0" layoutY="14.0" prefHeight="121.0" prefWidth="91.0" style="-fx-background-radius: 10;" styleClass="gambarBackground" stylesheets="@style.css">
+               <children>
+                  <ImageView fitHeight="81.0" fitWidth="73.0" layoutX="10.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../assets/produk/strawberry.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="23.0" layoutY="85.0" text="Stroberi" textAlignment="CENTER">
+                     <font>
+                        <Font name="Book Antiqua" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label layoutX="117.0" layoutY="20.0" text="Harga" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="117.0" layoutY="66.0" text="Jumlah" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="118.0" layoutY="81.0" text="0" textFill="WHITE" />
+            <Label layoutX="118.0" layoutY="37.0" text="350" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Label layoutX="26.0" layoutY="25.0" text="0" textFill="WHITE">
+         <font>
+            <Font name="Book Antiqua" size="12.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="29.0" fitWidth="29.0" layoutX="81.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../assets/gold.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
