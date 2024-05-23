@@ -3,6 +3,7 @@ package com.tubesoop.tubes2oop;
 public class ActionsController {
     public void openToko() {
         TokoController.alandToko.setVisible(true);
+
     }
     public void save() {
         SaveController.saveModalStatic.setVisible(true);

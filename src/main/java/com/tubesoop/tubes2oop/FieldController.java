@@ -12,23 +12,27 @@ import javafx.scene.Node;
 import petakladang.*;
 import deck.*;
 import card.*;
-
+import java.util.List;
 import java.net.URL;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.regex.*;
-
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import exception.*;
+import com.tubesoop.tubes2oop.ObjectInfoController;
+
 public class FieldController implements Initializable {
     private static GameObject gameObject;
     public static Player currPlayer;
+
     /* Inisiasi Player */
     @FXML private static Player player1;
     @FXML private static Player player2;
     public static Deck deckCurr;
     public static PetakLadang petakLadangCurr;
+
     /* Field Pane */
     @FXML private Pane fieldPane;
     @FXML private Pane targetPane1;
@@ -61,6 +65,12 @@ public class FieldController implements Initializable {
     @FXML private Pane pane5;
     @FXML private Pane pane6;
 
+    private static FieldController instance;
+
+    public FieldController() {
+        // Assign the instance to this
+        instance = this;
+    }
 
     public void setGameObject(GameObject gameObject) {
         this.gameObject = gameObject;
@@ -137,31 +147,48 @@ public class FieldController implements Initializable {
     }
 
     public static void reloadImage(){
-
-            for (int i = 0; i < 6; i++){
-                Pane parent = ((Pane) Main.deckPane.getChildren().get(i));
-                if (parent!=null){
-                    parent.getChildren().clear();
-                    Pane kartu = new Pane();
-                    kartu.setPrefSize(103,104);
-                    parent.getChildren().add(kartu);
-                    Card insideCard =  (Card) currPlayer.getDeck().getAktifElement(i);
-                    if (insideCard != null) {
-                        parent = (Pane) parent.getChildren().get(0);
-                        InputStream img = Main.class.getClassLoader().getResourceAsStream(insideCard.getImgPath());
-                        if (img != null) {
-                            parent.getChildren().add(new ImageView(new
-                                    Image(
-                                    img)));
-                            ( (ImageView) parent.getChildren().get(0)).setFitHeight(85);
-                            ( (ImageView) parent.getChildren().get(0)).setFitWidth(85);
-
-                        }
+//        for (int i = 0; i < 6; i++) {
+//            Pane parent = ((Pane) Main.deckPane.getChildren().get(i));
+//            if (parent != null) {
+//                parent.setOnMouseClicked(event -> {
+//                    showObjectDataDialog(parent);
+//                });
+//            }
+//        }
+//        for (int i = 0; i < 4; i++) {
+//            for (int j = 0; j < 5; j++) {
+//                Pane parent = ((Pane) Main.fieldPane.getChildren().get(i * 5 + j));
+//                if (parent != null) {
+//                    parent.setOnMouseClicked(event -> {
+//                        showObjectDataDialog(parent);
+//                    });
+//                }
+//            }
+//        }
+        for (int i = 0; i < 6; i++){
+            Pane parent = ((Pane) Main.deckPane.getChildren().get(i));
+            if (parent!=null){
+                parent.getChildren().clear();
+                Pane kartu = new Pane();
+                kartu.setPrefSize(103,104);
+                parent.getChildren().add(kartu);
+                Card insideCard =  (Card) currPlayer.getDeck().getAktifElement(i);
+                if (insideCard != null) {
+                    parent = (Pane) parent.getChildren().get(0);
+                    InputStream img = Main.class.getClassLoader().getResourceAsStream(insideCard.getImgPath());
+                    if (img != null) {
+                        parent.getChildren().add(new ImageView(new
+                                Image(
+                                img)));
+                        ( (ImageView) parent.getChildren().get(0)).setFitHeight(85);
+                        ( (ImageView) parent.getChildren().get(0)).setFitWidth(85);
 
                     }
-                }
 
+                }
             }
+
+        }
         for (int i=0;i<4;i++){
             for (int j=0;j<5;j++){
                 Pane kartu = new Pane();
@@ -180,10 +207,9 @@ public class FieldController implements Initializable {
                     ( (ImageView) parent.getChildren().get(0)).setFitWidth(85);
                 }
             }
-
         }
-
     }
+
     public static void showErrorDialog(Exception e) {
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Error Dialog");
@@ -195,6 +221,7 @@ public class FieldController implements Initializable {
 
         alert.showAndWait();
     }
+
     private void initializeDragAndDrop(Pane parent) {
         Pane parentPane = (Pane) parent;
         if (parentPane != null){
@@ -267,21 +294,102 @@ public class FieldController implements Initializable {
                                             System.out.println(ladangCard);
                                             if (ladangCard == null) {
 //                                                tanam
-                                                if (deckCard instanceof Item || deckCard instanceof Produk){
+                                                if (deckCard instanceof Item){
                                                     throw new InappropriateObjectInsertion();
                                                 }else{
+                                                    if (deckCard instanceof Produk){
+                                                        if (ladangCard.getKartu() instanceof Hewan){
+                                                            ((Hewan)((KartuLadang) petakLadangCurr.getElement((id2-1)/5,(id2-1)%5)).getKartu()).addBerat(((Produk) deckCard).getAddedBerat());
+                                                        }else{
+                                                            throw new InappropriateObjectInsertion();
+                                                        }
+                                                    }
                                                     if (petakLadangCurr != gameObject.getCurrentPlayer().getPetakLadang()){
                                                         throw new FieldInAccessible();
+                                                    }else{
+                                                        KartuLadang newLadangCard = new KartuLadang(deckCard);
+                                                        petakLadangCurr.addElement(newLadangCard,(id2-1)/5,(id2-1)%5);
                                                     }
-                                                    KartuLadang newLadangCard = new KartuLadang(deckCard);
-                                                    petakLadangCurr.addElement(newLadangCard,(id2-1)/5,(id2-1)%5);
                                                     deckCurr.removeAktifElement(id1-1);
                                                 }
                                             }else{
-//                                                insert item
+//                                              insert item
                                                 if (deckCard instanceof Item){
-                                                    petakLadangCurr.getElement((id2-1)/5,(id2-1)%5).addItems((Item) deckCard);
-                                                    deckCurr.removeAktifElement(id1-1);
+                                                    if (((Item) deckCard).getName().equals("INSTANT_HARVEST")){
+                                                        if (petakLadangCurr != currPlayer.getPetakLadang()){
+                                                            throw new FieldInAccessible();
+                                                        }
+                                                        List<Produk> produkHasil= new ArrayList<>();
+                                                        for (int i=0;i<GameObject.produkList.size();i++){
+                                                            if (GameObject.produkList.get(i).getOrisinil().equals(ladangCard.getKartu().getName())){
+                                                                produkHasil.add(new Produk((Produk) GameObject.produkList.get(i)));
+                                                            }
+                                                        }
+                                                        if (produkHasil.size()>(7-deckCurr.getAktifSize())){
+                                                            throw new DeckAktifFullException();
+                                                        }
+                                                        deckCurr.removeAktifElement(id1-1);
+                                                        for (int n=0;n<produkHasil.size();n++){
+                                                            deckCurr.addAktifElementRandom(produkHasil.get(n));
+                                                        }
+
+                                                    }else if (deckCard.getName().equals("DESTROY")){
+                                                        if (petakLadangCurr == currPlayer.getPetakLadang()){
+                                                            throw new FieldInAccessible();
+                                                        }
+                                                        List<Item> itemInCard= ladangCard.getItems();
+                                                        for (int k=0;k<itemInCard.size();k++){
+                                                            if (itemInCard.get(k).getName().equals("PROTECT")){
+                                                                ladangCard.getItems().remove(k);
+                                                                deckCurr.removeAktifElement(id1-1);
+                                                                return;
+                                                            }
+                                                        }
+                                                        petakLadangCurr.removeElement((id2-1)/5,(id2-1)%5);
+                                                        deckCurr.removeAktifElement(id1-1);
+                                                    }else if (deckCard.getName().equals("DELAY")){
+                                                        if (petakLadangCurr == currPlayer.getPetakLadang()){
+                                                            throw new FieldInAccessible();
+                                                        }
+                                                        List<Item> itemInCard= ladangCard.getItems();
+                                                        for (int k=0;k<itemInCard.size();k++){
+                                                            if (itemInCard.get(k).getName().equals("PROTECT")){
+                                                                ladangCard.getItems().remove(k);
+                                                                deckCurr.removeAktifElement(id1-1);
+                                                                return;
+                                                            }
+                                                        }
+                                                        if (ladangCard.getKartu() instanceof Hewan){
+                                                            if (((Hewan) ladangCard.getKartu()).getBerat()<=5){
+                                                                ((Hewan) ladangCard.getKartu()).setBerat(0);
+                                                            }else{
+                                                                ((Hewan) ladangCard.getKartu()).addBerat(-5);
+                                                            }
+                                                        } else if (ladangCard.getKartu() instanceof Tanaman){
+                                                            if (((Tanaman) ladangCard.getKartu()).getUmur()<=2){
+                                                                ((Tanaman) ladangCard.getKartu()).addUmur(-1*((Tanaman) ladangCard.getKartu()).getUmur());
+                                                            }else{
+                                                                ((Tanaman) ladangCard.getKartu()).addUmur(-2);
+                                                            }
+                                                        }
+                                                        deckCurr.removeAktifElement(id1-1);
+                                                    }else if(deckCard.getName().equals("ACCELERATE")){
+                                                        if (petakLadangCurr != currPlayer.getPetakLadang()){
+                                                            throw new FieldInAccessible();
+                                                        }
+                                                        if (ladangCard.getKartu() instanceof Hewan){
+                                                            ((Hewan) ladangCard.getKartu()).addBerat(8);
+                                                        }else if (ladangCard.getKartu() instanceof Tanaman){
+                                                            ((Tanaman) ladangCard.getKartu()).addUmur(2);
+                                                        }
+                                                    }else {
+                                                        if (petakLadangCurr != currPlayer.getPetakLadang()){
+                                                            throw new FieldInAccessible();
+                                                        }
+                                                        petakLadangCurr.getElement((id2-1)/5,(id2-1)%5).addItems((Item) deckCard);
+                                                        deckCurr.removeAktifElement(id1-1);
+                                                    }
+
                                                 }else{
                                                     throw new InsertNonItemException();
                                                 }
@@ -340,9 +448,34 @@ public class FieldController implements Initializable {
                         event.setDropCompleted(success);
                         event.consume();
                     });
+
+                    // Setiap pane akan memiliki fungsi ketika di klik
+                    pane.setOnMouseClicked(event -> {
+                        showObjectDataDialog(pane);
+                    });
                 }
             }
         }
-        }
+    }
 
+    private void showObjectDataDialog(Pane pane) {
+        int index = ((Pane) pane.getParent()).getChildren().indexOf(pane);
+        int row = index / 5;
+        int col = index % 5;
+
+        KartuLadang kartuLadang = (KartuLadang) petakLadangCurr.getElement(row, col);
+        if (kartuLadang != null) {
+            Card card = kartuLadang.getKartu();
+            if (card != null && (card instanceof Tanaman || card instanceof Hewan)) {
+                ObjectInfoController.ObjectInfoCardOnClicked(card);
+            }
+        } else {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Data Tidak Ditemukan");
+            alert.setHeaderText("Tidak Dapat Melihat Informasi Petak ");
+            alert.setContentText("Petak Kosong! atau Ini Adalah Petak Deck!");
+            alert.showAndWait();
+        }
+    }
 }
+

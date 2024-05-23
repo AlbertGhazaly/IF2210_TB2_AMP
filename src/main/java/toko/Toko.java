@@ -24,9 +24,9 @@ public class Toko implements Entity {
      *
      * @return int stok toko dalam permainan.
      */
-    public int getStok(String key) throws KeyNotInMapException {
+    public int getStok(String key) {
         if (!this.stok.containsKey(key)){
-            throw new KeyNotInMapException();
+            return 0;
         }
         return this.stok.get(key);
     }

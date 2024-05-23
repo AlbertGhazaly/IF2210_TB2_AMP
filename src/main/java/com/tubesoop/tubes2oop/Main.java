@@ -60,6 +60,12 @@ public class Main extends Application {
                     controller.setGameStatus(gameStatus);
                     return controller;
                 }
+                /* Pasang GameStatus di ObjectInfoController */
+                if (controllerClass == ObjectInfoController.class) {
+                    ObjectInfoController controller = new ObjectInfoController();
+                    controller.setGameStatus(gameStatus);
+                    return controller;
+                }
                 /* Pasang GameObject di PlayerStatusController */
                 if (controllerClass == PlayerStatusController.class) {
                     PlayerStatusController controller = new PlayerStatusController();

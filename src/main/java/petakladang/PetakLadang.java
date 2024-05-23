@@ -40,7 +40,6 @@ public KartuLadang getElement(int row, int col) {
         petakLadang.get(row).set(col,null);
       }
     }
-
   }
   public int getNEff(){
     int n = 0;
