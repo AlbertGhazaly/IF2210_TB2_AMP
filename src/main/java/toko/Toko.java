@@ -3,12 +3,13 @@ import card.Produk;
 import entity.Entity;
 import exception.*;
 import gamestatus.GameStatus;
-
+import exception.BeliException;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import javafx.scene.control.Alert;
 import player.Player;
 import gameobject.GameObject;
 
@@ -78,6 +79,17 @@ public class Toko implements Entity {
         }
     }
 
+    public static void showErrorDialogBeli(Exception e) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error Dialog");
+        alert.setHeaderText("Pembelian Gagal");
+        alert.setContentText(e.getMessage());
+
+        // Print the stack trace to the console (optional)
+        e.printStackTrace();
+        alert.showAndWait();
+    }
+
     /**
      * Method dengan masukan berupa player dan barang dimana player melakukan pembelian pada toko.
      * I.S. Barang terinisialisasi pada stok Toko
@@ -87,19 +99,44 @@ public class Toko implements Entity {
      * @param barang Barang yang ingin dibeli oleh pemain.
      */
     public void beli(Player player, String barang) {
-        if(player.getDeck().getAktifSize() < 6 && player.getGulden()>=hargaBarang.get(barang) && stok.get(barang)>0) {
-            for (int i = 0; i < GameObject.produkList.size(); i++) {
-                if (GameObject.produkList.get(i).getName().equals(barang)) {
-                    // Menambahkan barang ke deck aktif pemain
-                    player.getDeck().addAktifElementRandom(new Produk(GameObject.produkList.get(i)));
-                    int harga = hargaBarang.get(barang);
-                    player.setGulden(player.getGulden() - harga);
-                    // Mengurangi stok barang
-                    stok.put(barang, stok.get(barang) - 1);
-                    break;
+        try{
+            if(stok.get(barang) != null) {
+                if (player.getDeck().getAktifSize() < 6 && player.getGulden() >= hargaBarang.get(barang) && stok.get(barang) > 0) {
+                    for (int i = 0; i < GameObject.produkList.size(); i++) {
+                        if (GameObject.produkList.get(i).getName().equals(barang)) {
+                            // Menambahkan barang ke deck aktif pemain
+                            player.getDeck().addAktifElementRandom(new Produk(GameObject.produkList.get(i)));
+                            int harga = hargaBarang.get(barang);
+                            player.setGulden(player.getGulden() - harga);
+                            // Mengurangi stok barang
+                            stok.put(barang, stok.get(barang) - 1);
+                            break;
+                        }
+                    }
+                } else {
+                    throw new BeliException();
                 }
             }
+            else{
+                throw new BeliException();
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+            showErrorDialogBeli(e);
         }
+    }
+
+
+
+    public static void showErrorDialogJual(Exception e){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error Dialog");
+        alert.setHeaderText("Penjualan Gagal");
+        alert.setContentText(e.getMessage());
+
+        // Print the stack trace to the console (optional)
+        e.printStackTrace();
+        alert.showAndWait();
     }
 
     /**
@@ -111,20 +148,26 @@ public class Toko implements Entity {
      * @param indeks lokasi deck aktif yang ingin dihapus.
      */
     public void jual(Player player, int indeks){
-        if (player.getDeck().getAktifElement(indeks) != null) {
-            System.out.println("gaLAKU");
-            String barang = player.getDeck().getAktifElement(indeks).getName();
-            System.out.println(barang);
-            // Cek apakah barang ada dalam stok dan hargaBarang
-            if (hargaBarang.containsKey(barang)) {
-                System.out.println("LAKU");
-                // Menghapus barang dari deck aktif pemain
-                player.getDeck().removeAktifElement(indeks);
-                // Menambahkan stok barang
-                stok.put(barang, stok.getOrDefault(barang, 0) + 1);
-                int harga = hargaBarang.get(barang);
-                player.setGulden(player.getGulden()+harga);
+        try {
+            if (player.getDeck().getAktifElement(indeks) != null) {
+                String barang = player.getDeck().getAktifElement(indeks).getName();
+                System.out.println(barang);
+                // Cek apakah barang ada dalam stok dan hargaBarang
+                if (hargaBarang.containsKey(barang)) {
+                    // Menghapus barang dari deck aktif pemain
+                    player.getDeck().removeAktifElement(indeks);
+                    // Menambahkan stok barang
+                    stok.put(barang, stok.getOrDefault(barang, 0) + 1);
+                    int harga = hargaBarang.get(barang);
+                    player.setGulden(player.getGulden() + harga);
+                }
+            } else {
+                throw new JualException();
             }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            showErrorDialogJual(e);
         }
     }
 
