@@ -96,56 +96,67 @@ public class ObjectInfoController implements Initializable {
     }
 
     public void panenKartu() {
-        if (SKartuPilihan instanceof Hewan) {
-            Hewan hewan = (Hewan) SKartuPilihan;
-            if (hewan.getBerat() >= hewan.getBeratPanen()) {
-                if (gameStatus.getObjek().getCurrentPlayer().getDeck().getAktifSize() < 6) {
-                    Produk produk = convertToProduct(SKartuPilihan);
-                    gameStatus.getObjek().getCurrentPlayer().getDeck().addAktifElement(produk);
-                    gameStatus.getObjek().getCurrentPlayer().getPetakLadang().removeElement(Srow, Scol);
+        if (gameStatus.getObjek().getCurrentPlayer().getPetakLadang() == FieldController.petakLadangCurr) {
 
-                    FieldController.reloadImage();
+            if (SKartuPilihan instanceof Hewan) {
+                Hewan hewan = (Hewan) SKartuPilihan;
+                if (hewan.getBerat() >= hewan.getBeratPanen()) {
+                    if (gameStatus.getObjek().getCurrentPlayer().getDeck().getAktifSize() < 6) {
+                        Produk produk = convertToProduct(SKartuPilihan);
+                        gameStatus.getObjek().getCurrentPlayer().getDeck().addAktifElement(produk);
+                        gameStatus.getObjek().getCurrentPlayer().getPetakLadang().removeElement(Srow, Scol);
+
+                        FieldController.reloadImage();
+                    } else {
+                        // Alert deck aktif sudah penuh
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Error Menyimpan Produk");
+                        alert.setHeaderText("Tidak Dapat Menyimpan Produk");
+                        alert.setContentText("Tidak ada slot tersisa di deck aktif!");
+                        alert.showAndWait();
+                    }
                 } else {
-                    // Alert deck aktif sudah penuh
+                    // Alert tidak cukup berat untuk panen
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Error Menyimpan Produk");
-                    alert.setHeaderText("Tidak Dapat Menyimpan Produk");
-                    alert.setContentText("Tidak ada slot tersisa di deck aktif!");
+                    alert.setTitle("Error Panen");
+                    alert.setHeaderText("Tidak Dapat Memanen Hewan");
+                    alert.setContentText("Berat Hewan Tidak Cukup Untuk Dipanen");
                     alert.showAndWait();
                 }
-            } else {
-                // Alert tidak cukup berat untuk panen
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Error Panen");
-                alert.setHeaderText("Tidak Dapat Memanen Hewan");
-                alert.setContentText("Berat Hewan Tidak Cukup Untuk Dipanen");
-                alert.showAndWait();
-            }
-        } else if (SKartuPilihan instanceof Tanaman) {
-            Tanaman tanaman = (Tanaman) SKartuPilihan;
-            if (tanaman.getUmur() >= tanaman.getdurasiPanen()) {
-                if (gameStatus.getObjek().getCurrentPlayer().getDeck().getAktifSize() < 6) {
-                    Produk produk = convertToProduct(SKartuPilihan);
-                    gameStatus.getObjek().getCurrentPlayer().getDeck().addAktifElement(produk);
-                    gameStatus.getObjek().getCurrentPlayer().getPetakLadang().removeElement(Srow, Scol);
+            } else if (SKartuPilihan instanceof Tanaman) {
+                Tanaman tanaman = (Tanaman) SKartuPilihan;
+                if (tanaman.getUmur() >= tanaman.getdurasiPanen()) {
+                    if (gameStatus.getObjek().getCurrentPlayer().getDeck().getAktifSize() < 6) {
+                        Produk produk = convertToProduct(SKartuPilihan);
+                        gameStatus.getObjek().getCurrentPlayer().getDeck().addAktifElement(produk);
+                        gameStatus.getObjek().getCurrentPlayer().getPetakLadang().removeElement(Srow, Scol);
 
-                    FieldController.reloadImage();
+                        FieldController.reloadImage();
+                    } else {
+                        // Alert deck aktif sudah penuh
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Error Menyimpan Produk");
+                        alert.setHeaderText("Tidak Dapat Menyimpan Produk");
+                        alert.setContentText("Tidak ada slot tersisa di deck aktif!");
+                        alert.showAndWait();
+                    }
                 } else {
-                    // Alert deck aktif sudah penuh
+                    // Alert tidak cukup umur untuk panen
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Error Menyimpan Produk");
-                    alert.setHeaderText("Tidak Dapat Menyimpan Produk");
-                    alert.setContentText("Tidak ada slot tersisa di deck aktif!");
+                    alert.setTitle("Error Panen");
+                    alert.setHeaderText("Tidak Dapat Memanen Tanaman");
+                    alert.setContentText("Umur Tanaman Tidak Cukup Untuk Dipanen");
                     alert.showAndWait();
                 }
-            } else {
-                // Alert tidak cukup umur untuk panen
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Error Panen");
-                alert.setHeaderText("Tidak Dapat Memanen Tanaman");
-                alert.setContentText("Umur Tanaman Tidak Cukup Untuk Dipanen");
-                alert.showAndWait();
             }
+
+        } else {
+            // Alert tidak dapat menanam pada petak ladang lawan
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error Panen");
+            alert.setHeaderText("Tidak Dapat Memanen Petak Ladang");
+            alert.setContentText("Kamu tidak dapat memanen dari petak ladang musuh");
+            alert.showAndWait();
         }
 
         CardInfo.setVisible(false);

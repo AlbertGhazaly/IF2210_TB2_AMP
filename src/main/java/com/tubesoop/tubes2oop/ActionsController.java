@@ -8,6 +8,9 @@ import javafx.scene.control.Button;
 
 public class ActionsController {
     private GameObject gameObject;
+    @FXML Button myField;
+    @FXML Button oppField;
+
     public void setGameObject(GameObject gameObject) {
         this.gameObject = gameObject;
     }
@@ -31,6 +34,8 @@ public class ActionsController {
         }else{
             FieldController.petakLadangCurr = (PetakLadang) this.gameObject.getPlayer2().getPetakLadang();
         }
+        myField.setStyle("-fx-background-color: white; -fx-background-radius: 5px; -fx-text-fill: black;");
+        oppField.setStyle("-fx-background-color: green; -fx-background-radius: 5px; -fx-text-fill: white;");
         FieldController.reloadImage();
     }
     public void openMine(){
@@ -39,6 +44,8 @@ public class ActionsController {
         }else{
             FieldController.petakLadangCurr = (PetakLadang) this.gameObject.getPlayer1().getPetakLadang();
         }
+        oppField.setStyle("-fx-background-color: white; -fx-background-radius: 5px; -fx-text-fill: black;");
+        myField.setStyle("-fx-background-color: green; -fx-background-radius: 5px; -fx-text-fill: white;");
         FieldController.reloadImage();
     }
 }
