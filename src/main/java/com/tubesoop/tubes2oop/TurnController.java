@@ -38,6 +38,8 @@ public class TurnController implements Initializable {
     protected void onNextButtonClick() {
         ActionsController.disableAllButtons();
 
+        FieldController.attackOnBeruang(gameStatus.getObjek());
+
         if (numberOfTurn < 20) {
             gameStatus.turn ++;
             numberOfTurn = gameStatus.turn;

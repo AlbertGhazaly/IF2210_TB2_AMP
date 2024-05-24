@@ -25,10 +25,7 @@ public class GameStatus{
         if (this.status instanceof Shuffle){
             this.status = new SeranganBeruang();
         }else if(this.status instanceof SeranganBeruang){
-            this.status = new AksiBebas();
-        }else{
             this.status = new Shuffle();
-            GameStatus.turn += 1;
         }
     }
     public void execute(){

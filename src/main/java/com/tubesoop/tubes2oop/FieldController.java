@@ -1,5 +1,9 @@
 package com.tubesoop.tubes2oop;
 
+import java.util.ArrayList;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import gameobject.GameObject;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,9 +26,14 @@ import java.util.regex.*;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import exception.*;
+import card.*;
+import java.util.ArrayList;
+import java.util.Random;
 import javafx.scene.media.*;
 import java.io.File;
 import com.tubesoop.tubes2oop.ObjectInfoController;
+import petakladang.*;
+import state.SeranganBeruang;
 
 public class FieldController implements Initializable {
     private static GameObject gameObject;
@@ -503,5 +512,47 @@ public class FieldController implements Initializable {
             alert.showAndWait();
         }
     }
-}
 
+    public static void attackOnBeruang(GameObject objek) {
+        var beruang = new SeranganBeruang();
+        beruang.execute(objek);
+
+        Random random = new Random();
+        int minWaktu = 30;
+        int maxWaktu = 61;
+        int lamaWaktuMenyerang = random.nextInt(maxWaktu - minWaktu) + minWaktu;
+
+        List<int[]> petakDiserang = beruang.getPetakDiserang();
+        ArrayList<Integer> indexToAttack = new ArrayList<>();
+
+        for (int[] petak : petakDiserang) {
+            int row = petak[0];
+            int col = petak[1];
+            int index = row * 5 + col;
+
+            if (index >= 0 && index < Main.fieldPane.getChildren().size()) {
+                indexToAttack.add(index);
+            }
+        }
+
+        for (int index : indexToAttack) {
+            Pane paneToAttack = (Pane) Main.fieldPane.getChildren().get(index);
+            paneToAttack.setStyle("-fx-background-color: red; -fx-border-radius: 25");
+        }
+
+        // Schedule a task to execute after waktuMenyerang milliseconds
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        scheduler.schedule(() -> {
+            // Task to execute after waktuMenyerang seconds
+            // Here you can put any code that should run after the attack time
+            System.out.println("Attack finished, waktu menyerang: " + lamaWaktuMenyerang + " seconds");
+
+            // Additional code if you need to perform other actions after the delay
+            // ...
+
+            // Shutdown the scheduler
+            scheduler.shutdown();
+        }, lamaWaktuMenyerang, TimeUnit.SECONDS);
+    }
+
+}
