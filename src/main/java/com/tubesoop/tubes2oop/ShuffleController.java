@@ -10,8 +10,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import player.Player;
 import javafx.scene.layout.AnchorPane;
+
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.scene.image.ImageView;
@@ -107,6 +111,10 @@ public class ShuffleController implements Initializable {
     @FXML
     public static void shuffleCard() {
         try {
+            String musicFile = "src/main/resources/assets/clickSound.mp3";
+            Media sound = new Media(new File(musicFile).toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play();
             dImageCard1.setImage(null);
             dImageCard2.setImage(null);
             dImageCard3.setImage(null);
@@ -185,6 +193,10 @@ public class ShuffleController implements Initializable {
     }
     @FXML
     public void handleFinish() {
+        String musicFile = "src/main/resources/assets/clickSound.mp3";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         ActionsController.enableAllButtons();
 
         try {
