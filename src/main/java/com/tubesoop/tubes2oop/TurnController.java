@@ -37,9 +37,6 @@ public class TurnController implements Initializable {
     @FXML
     protected void onNextButtonClick() {
         ActionsController.disableAllButtons();
-
-        FieldController.attackOnBeruang(gameStatus.getObjek());
-
         if (numberOfTurn < 20) {
             gameStatus.turn ++;
             numberOfTurn = gameStatus.turn;
@@ -60,6 +57,9 @@ public class TurnController implements Initializable {
             }
 
             ShuffleController.openShuffleCard();
+
+            // Dijalankan setelah shuffle
+            FieldController.attackOnBeruang();
 
             if (numberOfTurn == 20) {
                 STurnButton.setText("Winning!");

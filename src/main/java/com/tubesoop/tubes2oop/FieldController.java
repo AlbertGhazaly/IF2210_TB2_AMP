@@ -34,6 +34,17 @@ import java.io.File;
 import com.tubesoop.tubes2oop.ObjectInfoController;
 import petakladang.*;
 import state.SeranganBeruang;
+import java.util.Random;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import javafx.scene.layout.Pane;
+import java.util.Random;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import javafx.scene.layout.Pane;
+import javax.lang.model.type.ArrayType;
 
 public class FieldController implements Initializable {
     private static GameObject gameObject;
@@ -517,46 +528,69 @@ public class FieldController implements Initializable {
         }
     }
 
-    public static void attackOnBeruang(GameObject objek) {
-        var beruang = new SeranganBeruang();
-        beruang.execute(objek);
-
+    public static void attackOnBeruang() {
         Random random = new Random();
-        int minWaktu = 30;
-        int maxWaktu = 61;
-        int lamaWaktuMenyerang = random.nextInt(maxWaktu - minWaktu) + minWaktu;
+        int randomNum = random.nextInt(10) + 1;
 
-        List<int[]> petakDiserang = beruang.getPetakDiserang();
-        ArrayList<Integer> indexToAttack = new ArrayList<>();
+        // Terjadi serangan beruang
+        if (randomNum != -1) {
+            int[][] subGridSizes = {{3, 2}, {2, 3}, {2, 2}, {2, 1}, {1, 2}, {1, 1}};
+            int[] selectedSize = subGridSizes[random.nextInt(subGridSizes.length)];
 
-        for (int[] petak : petakDiserang) {
-            int row = petak[0];
-            int col = petak[1];
-            int index = row * 5 + col;
+            int numRows = selectedSize[0];
+            int numCols = selectedSize[1];
+            int numPetakAttack = numRows * numCols;
 
-            if (index >= 0 && index < Main.fieldPane.getChildren().size()) {
-                indexToAttack.add(index);
+            int[][] indexToAttack = new int[numPetakAttack][2];
+
+            int startRow = random.nextInt(4 - numRows + 1);
+            int startCol = random.nextInt(5 - numCols + 1);
+
+            int currentIndex = 0;
+            for (int i = startRow; i < startRow + numRows; i++) {
+                for (int j = startCol; j < startCol + numCols; j++) {
+                    indexToAttack[currentIndex][0] = i;
+                    indexToAttack[currentIndex][1] = j;
+                    currentIndex++;
+                }
             }
+
+            // Mengganti background petak yang akan diserang
+            for (int i = 0; i < numPetakAttack; i++) {
+                int row = indexToAttack[i][0];
+                int col = indexToAttack[i][1];
+                int index = row * 5 + col;
+                Pane paneToAttack = (Pane) Main.fieldPane.getChildren().get(index);
+                paneToAttack.setStyle("-fx-background-color: red; -fx-background-radius: 10px");
+            }
+
+            // Menghasilkan waktu penyerangan beruang (30 - 60 detik)
+            int attackDuration = random.nextInt(1) + 5;
+
+
+
+            // Setelah waktu penyerangan, petak kembali ke warna normal
+            ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+            scheduler.schedule(() -> {
+                for (int i = 0; i < numPetakAttack; i++) {
+                    int row = indexToAttack[i][0];
+                    int col = indexToAttack[i][1];
+                    int index = row * 5 + col;
+                    Pane paneToAttack = (Pane) Main.fieldPane.getChildren().get(index);
+                    paneToAttack.setStyle("-fx-background-color: rgba(255, 255, 255, 0.5); -fx-border-radius: 10px; -fx-background-radius: 10px");
+                }
+
+                scheduler.shutdown();
+            }, attackDuration, TimeUnit.SECONDS);
         }
-
-        for (int index : indexToAttack) {
-            Pane paneToAttack = (Pane) Main.fieldPane.getChildren().get(index);
-            paneToAttack.setStyle("-fx-background-color: red; -fx-border-radius: 25");
-        }
-
-        // Schedule a task to execute after waktuMenyerang milliseconds
-        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-        scheduler.schedule(() -> {
-            // Task to execute after waktuMenyerang seconds
-            // Here you can put any code that should run after the attack time
-            System.out.println("Attack finished, waktu menyerang: " + lamaWaktuMenyerang + " seconds");
-
-            // Additional code if you need to perform other actions after the delay
-            // ...
-
-            // Shutdown the scheduler
-            scheduler.shutdown();
-        }, lamaWaktuMenyerang, TimeUnit.SECONDS);
     }
 
+    private static boolean isIndexAlreadyUsed(int[][] indexToAttack, int row, int col) {
+        for (int[] index : indexToAttack) {
+            if (index[0] == row && index[1] == col) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
