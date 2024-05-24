@@ -1,4 +1,6 @@
 package com.tubesoop.tubes2oop;
+import javafx.application.Platform;
+
 
 import java.util.ArrayList;
 import java.util.concurrent.Executors;
@@ -38,6 +40,7 @@ import state.SeranganBeruang;
 public class FieldController implements Initializable {
     private static GameObject gameObject;
     public static Player currPlayer;
+    private static List<Integer> previousAttackIndices = new ArrayList<>();
 
     /* Inisiasi Player */
     @FXML private static Player player1;
@@ -518,17 +521,22 @@ public class FieldController implements Initializable {
     }
 
     public static void attackOnBeruang(GameObject objek) {
+        // Reset gaya petak dari serangan sebelumnya
+        for (int index : previousAttackIndices) {
+            Pane paneToReset = (Pane) Main.fieldPane.getChildren().get(index);
+            paneToReset.setStyle(""); // Atur kembali ke gaya default atau semula
+        }
+        previousAttackIndices.clear();
+
         var beruang = new SeranganBeruang();
         beruang.execute(objek);
 
-        Random random = new Random();
-        int minWaktu = 30;
-        int maxWaktu = 61;
-        int lamaWaktuMenyerang = random.nextInt(maxWaktu - minWaktu) + minWaktu;
-
+        int lamaWaktuMenyerang = 10;
         List<int[]> petakDiserang = beruang.getPetakDiserang();
         ArrayList<Integer> indexToAttack = new ArrayList<>();
+        boolean trapFound = false;
 
+        // Cek apakah ada Trap di petak yang diserang
         for (int[] petak : petakDiserang) {
             int row = petak[0];
             int col = petak[1];
@@ -536,7 +544,26 @@ public class FieldController implements Initializable {
 
             if (index >= 0 && index < Main.fieldPane.getChildren().size()) {
                 indexToAttack.add(index);
+
+                // Validasi keberadaan Trap
+                KartuLadang<Card> kartuLadang = objek.getCurrentPlayer().getPetakLadang().getElement(row, col);
+                if (kartuLadang != null) {
+                    for (Item item : kartuLadang.getItems()) {
+//                        if (item instanceof Trap) {
+//                            trapFound = true;
+//                            break;
+//                        }
+                    }
+                }
+
+                if (trapFound) break;
             }
+        }
+
+        // Jika Trap ditemukan, batalkan serangan dan berikan kartu Beruang
+        if (trapFound) {
+            System.out.println("Trap found! Attack cancelled. Player received a Beruang card.");
+            return;
         }
 
         for (int index : indexToAttack) {
@@ -544,19 +571,21 @@ public class FieldController implements Initializable {
             paneToAttack.setStyle("-fx-background-color: red; -fx-border-radius: 25");
         }
 
+        previousAttackIndices.addAll(indexToAttack);
+
         // Schedule a task to execute after waktuMenyerang milliseconds
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
         scheduler.schedule(() -> {
-            // Task to execute after waktuMenyerang seconds
-            // Here you can put any code that should run after the attack time
-            System.out.println("Attack finished, waktu menyerang: " + lamaWaktuMenyerang + " seconds");
-
-            // Additional code if you need to perform other actions after the delay
-            // ...
-
-            // Shutdown the scheduler
+            Platform.runLater(() -> {
+                beruang.HapusElementPetakDiserang(objek.getCurrentPlayer().getPetakLadang());
+                for (int index : indexToAttack) {
+                    Pane paneToReset = (Pane) Main.fieldPane.getChildren().get(index);
+                    paneToReset.setStyle("");
+                    paneToReset.getChildren().clear();
+                }
+                System.out.println("Attack finished, waktu menyerang: " + lamaWaktuMenyerang + " seconds");
+            });
             scheduler.shutdown();
         }, lamaWaktuMenyerang, TimeUnit.SECONDS);
     }
-
 }

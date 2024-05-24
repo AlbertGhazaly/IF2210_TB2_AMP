@@ -9,10 +9,12 @@ import com.tubesoop.tubes2oop.ShuffleController;
 import gamestatus.*;
 import com.tubesoop.tubes2oop.WinnerController;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class TurnController implements Initializable {
     private GameStatus gameStatus;
+    private static final double BERUANG_ATTACK_PROBABILITY = 0.1;
 
     @FXML
     private Label turnLabel;
@@ -26,7 +28,6 @@ public class TurnController implements Initializable {
 
     @FXML
     public void updateTurnLabel() {
-//        turnLabel.setText(String.valueOf(numberOfTurn));
         turnLabel.setText(String.valueOf(numberOfTurn));
         FieldController.currPlayer = gameStatus.getObjek().getCurrentPlayer();
         FieldController.petakLadangCurr = gameStatus.getObjek().getCurrentPlayer().getPetakLadang();
@@ -38,22 +39,26 @@ public class TurnController implements Initializable {
     protected void onNextButtonClick() {
         ActionsController.disableAllButtons();
 
-        FieldController.attackOnBeruang(gameStatus.getObjek());
+        // Menambahkan probabilitas serangan beruang
+        Random random = new Random();
+        if (random.nextDouble() < BERUANG_ATTACK_PROBABILITY) {
+            FieldController.attackOnBeruang(gameStatus.getObjek());
+        }
 
         if (numberOfTurn < 20) {
-            gameStatus.turn ++;
+            gameStatus.turn++;
             numberOfTurn = gameStatus.turn;
             updateTurnLabel();
-            for (int i=0;i<4;i++){
-                for (int j=0;j<5;j++){
-                    if (this.gameStatus.getObjek().getPlayer1().getPetakLadang().getElement(i,j)!=null){
-                        if (this.gameStatus.getObjek().getPlayer1().getPetakLadang().getElement(i,j).getKartu() instanceof Tanaman){
-                            ((Tanaman) this.gameStatus.getObjek().getPlayer1().getPetakLadang().getElement(i,j).getKartu()).addUmur(1);
+            for (int i = 0; i < 4; i++) {
+                for (int j = 0; j < 5; j++) {
+                    if (this.gameStatus.getObjek().getPlayer1().getPetakLadang().getElement(i, j) != null) {
+                        if (this.gameStatus.getObjek().getPlayer1().getPetakLadang().getElement(i, j).getKartu() instanceof Tanaman) {
+                            ((Tanaman) this.gameStatus.getObjek().getPlayer1().getPetakLadang().getElement(i, j).getKartu()).addUmur(1);
                         }
                     }
-                    if (this.gameStatus.getObjek().getPlayer2().getPetakLadang().getElement(i,j)!=null){
-                        if (this.gameStatus.getObjek().getPlayer2().getPetakLadang().getElement(i,j).getKartu() instanceof Tanaman){
-                            ((Tanaman) this.gameStatus.getObjek().getPlayer2().getPetakLadang().getElement(i,j).getKartu()).addUmur(1);
+                    if (this.gameStatus.getObjek().getPlayer2().getPetakLadang().getElement(i, j) != null) {
+                        if (this.gameStatus.getObjek().getPlayer2().getPetakLadang().getElement(i, j).getKartu() instanceof Tanaman) {
+                            ((Tanaman) this.gameStatus.getObjek().getPlayer2().getPetakLadang().getElement(i, j).getKartu()).addUmur(1);
                         }
                     }
                 }
@@ -64,8 +69,7 @@ public class TurnController implements Initializable {
             if (numberOfTurn == 20) {
                 STurnButton.setText("Winning!");
             }
-        }
-        else {
+        } else {
             WinnerController.SWinnerDialog.setVisible(true);
 
             if (gameStatus.getObjek().getPlayer1().getGulden() > gameStatus.getObjek().getPlayer2().getGulden()) {
@@ -76,7 +80,7 @@ public class TurnController implements Initializable {
         }
     }
 
-    public void setGameStatus(GameStatus gameStatus){
+    public void setGameStatus(GameStatus gameStatus) {
         this.gameStatus = gameStatus;
     }
 
