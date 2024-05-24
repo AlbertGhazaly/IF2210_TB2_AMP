@@ -22,6 +22,8 @@ import java.util.regex.*;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import exception.*;
+import javafx.scene.media.*;
+import java.io.File;
 import com.tubesoop.tubes2oop.ObjectInfoController;
 
 public class FieldController implements Initializable {
@@ -133,7 +135,6 @@ public class FieldController implements Initializable {
             }
         Main.fieldPane = this.fieldPane;
         Main.deckPane = this.deckPane;
-
     }
 
     public static void reloadImage(){

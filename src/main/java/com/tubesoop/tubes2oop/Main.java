@@ -6,8 +6,12 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.scene.layout.Pane;
+
+import java.io.File;
 
 public class Main extends Application {
     public static Pane fieldPane;
@@ -21,6 +25,11 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
 
         try {
+            String musicFile = "src/main/resources/assets/bgSong.mp3"; // Ubah dengan path yang sesuai
+            Media sound = new Media(new File(musicFile).toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play();
+            mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); // Mengatur media player untuk loop tak terbatas
             GameStatus gameStatus = new GameStatus();
 //            gameStatus.getObjek().geToko().load("gamestate.txt");
 //            gameStatus.getObjek().getPlayer1().load("player1.txt");
