@@ -168,23 +168,23 @@ public class ObjectInfoController implements Initializable {
     public Produk convertToProduct(Card card) {
         switch (card.getName()) {
             case "HIU_DARAT":
-                return new Produk("Sirip Hiu", "assets/produk/shark-fin.png", 500, 12, "HIU_DARAT");
+                return new Produk("SIRIP_HIU", "assets/produk/shark-fin.png", 500, 12, "HIU_DARAT");
             case "SAPI":
-                return new Produk("Susu", "assets/produk/susu.png", 100, 4, "SAPI");
+                return new Produk("SUSU", "assets/produk/susu.png", 100, 4, "SAPI");
             case "DOMBA":
-                return new Produk("Daging Domba", "assets/produk/Daging_Domba.png", 120, 6, "DOMBA");
+                return new Produk("DAGING_DOMBA", "assets/produk/Daging_Domba.png", 120, 6, "DOMBA");
             case "KUDA":
-                return new Produk("Daging Kuda", "assets/produk/Daging_Kuda.png", 150, 8, "KUDA");
+                return new Produk("DAGING_KUDA", "assets/produk/Daging_Kuda.png", 150, 8, "KUDA");
             case "AYAM":
-                return new Produk("Telur", "assets/produk/telur.png", 50, 2, "AYAM");
+                return new Produk("TELUR", "assets/produk/telur.png", 50, 2, "AYAM");
             case "BERUANG":
-                return new Produk("Daging Beruang", "assets/produk/Daging_Beruang.png", 500, 12, "BERUANG");
+                return new Produk("DAGING_BERUANG", "assets/produk/Daging_Beruang.png", 500, 12, "BERUANG");
             case "BIJI_LABU":
-                return new Produk("Labu", "assets/produk/pumpkin.png", 500, 10, "BIJI_LABU");
+                return new Produk("LABU", "assets/produk/pumpkin.png", 500, 10, "BIJI_LABU");
             case "BIJI_JAGUNG":
-                return new Produk("Jagung", "assets/produk/corn.png", 150, 3, "BIJI_JAGUNG");
+                return new Produk("JAGUNG", "assets/produk/corn.png", 150, 3, "BIJI_JAGUNG");
             case "BIJI_STROBERI":
-                return new Produk("Stroberi", "assets/produk/stawberry.png", 350, 5, "BIJI_STROBERI");
+                return new Produk("STROBERI", "assets/produk/stawberry.png", 350, 5, "BIJI_STROBERI");
             default:
                 return new Produk();
         }

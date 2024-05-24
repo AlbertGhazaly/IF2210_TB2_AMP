@@ -48,7 +48,11 @@ public class TurnController implements Initializable {
                     }
                 }
             }
+
+            // Shuffle card setiap next turn
             ShuffleController.openShuffleCard();
+
+
         } else {
             // TO DO : Handle Kemenangan
         }
