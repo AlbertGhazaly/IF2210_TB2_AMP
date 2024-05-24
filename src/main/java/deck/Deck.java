@@ -1,4 +1,5 @@
 package deck;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 import card.*;
@@ -11,6 +12,7 @@ public class Deck<T extends Card> {
   private List<Card> deckAktif;
   public static final int DECK_PASSIVE_ROW_SIZE = 40;
   public static final int DECK_ACTIVE_SIZE = 6;
+
   public Deck() {
     this.deckAktif = new ArrayList<>();
     for (int i = 0;i<DECK_ACTIVE_SIZE;i++){
@@ -18,7 +20,6 @@ public class Deck<T extends Card> {
     }
     this.deckPasif = new ArrayList<>();
     insertPassiveDeck(DECK_PASSIVE_ROW_SIZE);
-
   }
 public void addAktifElementRandom(T element){
       for (int i = 0;i<DECK_ACTIVE_SIZE;i++){
@@ -79,24 +80,34 @@ public void addAktifElementRandom(T element){
   public int getPasifSize() {
     return this.deckPasif.size();
   }
+    public final static List<Integer> komposisi = new ArrayList<>(Arrays.asList(
+            0,1,2,3,4,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,
+            0,1,2,3,4,
+            15,16,17,
+            18,19,20,21,22,23,
+            0,1,3
+            ));
   public void insertPassiveDeck(int n){
-      this.deckPasif.clear();
-      Random random = new Random();
+      if (n==40){
+          this.deckPasif.clear();
+      }
+      int i = 0;
       while (this.deckPasif.size()<n){
-          int x = random.nextInt(24);
-          if (x<6){
-              if (!GameObject.hewanList.get(x).getName().equals("BERUANG")){
-                  this.deckPasif.add( new Hewan(GameObject.hewanList.get(x)));
+          if (komposisi.get(i)<6){
+              if (!GameObject.hewanList.get(komposisi.get(i)).getName().equals("BERUANG")){
+                  this.deckPasif.add( new Hewan(GameObject.hewanList.get(komposisi.get(i))));
               }
-          }else if (x>=6 && x<15){
-              this.deckPasif.add( new Produk(GameObject.produkList.get(x-6)));
-          }else if (x>=15 && x<18){
-            this.deckPasif.add( new Tanaman(GameObject.tanamanList.get(x-15)));
-          }else if (x>=18 && x<24){
-            this.deckPasif.add( new Item(GameObject.itemList.get(x-18)));
+          }else if (komposisi.get(i)>=6 && komposisi.get(i)<15){
+              this.deckPasif.add( new Produk(GameObject.produkList.get(komposisi.get(i)-6)));
+          }else if (komposisi.get(i)>=15 && komposisi.get(i)<18){
+            this.deckPasif.add( new Tanaman(GameObject.tanamanList.get(komposisi.get(i)-15)));
+          }else if (komposisi.get(i)>=18 && komposisi.get(i)<24){
+            this.deckPasif.add( new Item(GameObject.itemList.get(komposisi.get(i)-18)));
           }
+          i += 1;
       }
   }
+
   public void swapIndex(int i, int j){
       Card temp = this.deckAktif.get(i);
       this.deckAktif.set(i,this.deckAktif.get(j));
