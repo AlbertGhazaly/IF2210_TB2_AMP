@@ -24,7 +24,7 @@
     </Pane>
 
     <!-- Buka Toko -->
-    <Button layoutY="125.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Shop" textFill="WHITE" onAction="#openToko">
+    <Button fx:id="shopButton" layoutY="125.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Shop" textFill="WHITE" onAction="#openToko">
         <font>
             <Font name="Book Antiqua" size="14.0" />
         </font>
@@ -33,21 +33,21 @@
     <Pane layoutY="250.0">
         <children>
             <!-- Save State -->
-            <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Save State" textFill="WHITE" onAction="#save">
+            <Button fx:id="saveStateButton" mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Save State" textFill="WHITE" onAction="#save">
                 <font>
                     <Font name="Book Antiqua" size="14.0" />
                 </font>
             </Button>
 
             <!-- Load State -->
-            <Button layoutY="52.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Load State" textFill="WHITE" onAction="#load">
+            <Button fx:id="loadStateButton" layoutY="52.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Load State" textFill="WHITE" onAction="#load">
                 <font>
                     <Font name="Book Antiqua" size="14.0" />
                 </font>
             </Button>
 
             <!-- Load Plugin -->
-            <Button layoutY="105.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Load Plugin" textFill="WHITE" onAction="#plugin">
+            <Button fx:id="loadPluginButton" layoutY="105.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="178.0" styleClass="inactiveField" stylesheets="@style.css" text="Load Plugin" textFill="WHITE" onAction="#plugin">
                 <font>
                     <Font name="Book Antiqua" size="14.0" />
                 </font>

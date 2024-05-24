@@ -36,6 +36,14 @@ public class TurnController implements Initializable {
 
     @FXML
     protected void onNextButtonClick() {
+        TurnController.STurnButton.setDisable(true);
+        ActionsController.SmyField.setDisable(true);
+        ActionsController.SoppField.setDisable(true);
+        ActionsController.SshopButton.setDisable(true);
+        ActionsController.SsaveStateButton.setDisable(true);
+        ActionsController.SloadStateButton.setDisable(true);
+        ActionsController.SloadPluginButton.setDisable(true);
+        
         if (numberOfTurn < 20) {
             gameStatus.turn ++;
             numberOfTurn = gameStatus.turn;
@@ -80,5 +88,6 @@ public class TurnController implements Initializable {
         STurnButton = turnButton;
         this.numberOfTurn = gameStatus.turn;
         turnLabel.setText(String.valueOf(numberOfTurn));
+        STurnButton.setDisable(true);
     }
 }

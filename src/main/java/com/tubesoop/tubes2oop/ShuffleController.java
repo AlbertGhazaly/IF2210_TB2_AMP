@@ -1,5 +1,7 @@
 package com.tubesoop.tubes2oop;
 
+import exception.SelectShuffleCardLessException;
+import exception.SelectShuffleCardOverException;
 import gameobject.GameObject;
 import card.Card;
 import gamestatus.GameStatus;
@@ -89,6 +91,7 @@ public class ShuffleController implements Initializable {
     }
     public void shuffle(){
         this.shuffleCard();
+
     }
     public static void openShuffleCard() {
         selectedNum = 0;
@@ -182,49 +185,74 @@ public class ShuffleController implements Initializable {
     }
     @FXML
     public void handleFinish() {
-        // Hide the shuffleCard pane
-        if (isCard1Selected){
-            System.out.println("insert card 1");
-            System.out.println(this.gameShuffle.getCards().get(0).getName());
-            this.gameObject.getCurrentPlayer().getDeck().addAktifElementRandom(this.gameShuffle.getCards().get(0));
-        }else{
-            this.gameObject.getCurrentPlayer().getDeck().addPasifElement(this.gameShuffle.getCards().get(0));
-        }
-        if (isCard2Selected){
-            System.out.println("insert card 2");
-            System.out.println(this.gameShuffle.getCards().get(1).getName());
-            this.gameObject.getCurrentPlayer().getDeck().addAktifElementRandom(this.gameShuffle.getCards().get(1));
-        }else{
-            this.gameObject.getCurrentPlayer().getDeck().addPasifElement(this.gameShuffle.getCards().get(1));
-        }
-        if (isCard3Selected){
-            System.out.println("insert card 3");
-            System.out.println(this.gameShuffle.getCards().get(2).getName());
-            this.gameObject.getCurrentPlayer().getDeck().addAktifElementRandom(this.gameShuffle.getCards().get(2));
-        }else{
-            this.gameObject.getCurrentPlayer().getDeck().addPasifElement(this.gameShuffle.getCards().get(2));
-        }
-        if (isCard4Selected){
-            System.out.println("insert card 4");
-            System.out.println(this.gameShuffle.getCards().get(3).getName());
-            this.gameObject.getCurrentPlayer().getDeck().addAktifElementRandom(this.gameShuffle.getCards().get(3));
-        }else{
-            this.gameObject.getCurrentPlayer().getDeck().addPasifElement(this.gameShuffle.getCards().get(3));
-        }
+        TurnController.STurnButton.setDisable(false);
+        ActionsController.SmyField.setDisable(false);
+        ActionsController.SoppField.setDisable(false);
+        ActionsController.SshopButton.setDisable(false);
+        ActionsController.SsaveStateButton.setDisable(false);
+        ActionsController.SloadStateButton.setDisable(false);
+        ActionsController.SloadPluginButton.setDisable(false);
+
+        try {
+            if ((6-gameStatus.getObjek().getCurrentPlayer().getDeck().getAktifSize()) >= 4){
+                if (selectedNum != 4){
+                    throw new SelectShuffleCardLessException();
+                }
+            }else{
+                if (selectedNum > (6-gameStatus.getObjek().getCurrentPlayer().getDeck().getAktifSize())){
+                    throw new SelectShuffleCardOverException();
+                }else if (selectedNum < (6-gameStatus.getObjek().getCurrentPlayer().getDeck().getAktifSize())){
+                    throw new SelectShuffleCardLessException();
+                }
+            }
+            // Hide the shuffleCard pane
+            if (isCard1Selected){
+                System.out.println("insert card 1");
+                System.out.println(this.gameShuffle.getCards().get(0).getName());
+                this.gameObject.getCurrentPlayer().getDeck().addAktifElementRandom(this.gameShuffle.getCards().get(0));
+            }else{
+                this.gameObject.getCurrentPlayer().getDeck().addPasifElement(this.gameShuffle.getCards().get(0));
+            }
+            if (isCard2Selected){
+                System.out.println("insert card 2");
+                System.out.println(this.gameShuffle.getCards().get(1).getName());
+                this.gameObject.getCurrentPlayer().getDeck().addAktifElementRandom(this.gameShuffle.getCards().get(1));
+            }else{
+                this.gameObject.getCurrentPlayer().getDeck().addPasifElement(this.gameShuffle.getCards().get(1));
+            }
+            if (isCard3Selected){
+                System.out.println("insert card 3");
+                System.out.println(this.gameShuffle.getCards().get(2).getName());
+                this.gameObject.getCurrentPlayer().getDeck().addAktifElementRandom(this.gameShuffle.getCards().get(2));
+            }else{
+                this.gameObject.getCurrentPlayer().getDeck().addPasifElement(this.gameShuffle.getCards().get(2));
+            }
+            if (isCard4Selected){
+                System.out.println("insert card 4");
+                System.out.println(this.gameShuffle.getCards().get(3).getName());
+                this.gameObject.getCurrentPlayer().getDeck().addAktifElementRandom(this.gameShuffle.getCards().get(3));
+            }else{
+                this.gameObject.getCurrentPlayer().getDeck().addPasifElement(this.gameShuffle.getCards().get(3));
+            }
 //        for (int i=0;i<this.gameObject.getCurrentPlayer().getDeck().getAktifSize();i++){
 //            System.out.println(this.gameObject.getCurrentPlayer().getDeck().getAktifElement(i).getName());
 //        }
 
-        System.out.println(this.gameObject.getCurrentPlayer().getDeck().getAktifSize());
-        System.out.println(this.gameObject.getCurrentPlayer().getDeck().getPasifSize());
-        this.selectedNum = 0;
-        gameShuffle.getCards().clear();
-        FieldController.reloadImage();
-        card1.setStyle("-fx-border-color: none;");
-        card2.setStyle("-fx-border-color: none;");
-        card3.setStyle("-fx-border-color: none;");
-        card4.setStyle("-fx-border-color: none;");
-        shuffleCard.setVisible(false);
+            System.out.println(this.gameObject.getCurrentPlayer().getDeck().getAktifSize());
+            System.out.println(this.gameObject.getCurrentPlayer().getDeck().getPasifSize());
+            this.selectedNum = 0;
+            gameShuffle.getCards().clear();
+            FieldController.reloadImage();
+            card1.setStyle("-fx-border-color: none;");
+            card2.setStyle("-fx-border-color: none;");
+            card3.setStyle("-fx-border-color: none;");
+            card4.setStyle("-fx-border-color: none;");
+            shuffleCard.setVisible(false);
+        }catch (Exception e){
+            e.printStackTrace();
+            FieldController.showErrorDialog(e);
+        }
+
 //        this.gameObject.getCurrentPlayer().
     }
 }

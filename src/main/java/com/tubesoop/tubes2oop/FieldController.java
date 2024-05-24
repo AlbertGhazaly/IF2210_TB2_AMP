@@ -330,6 +330,7 @@ public class FieldController implements Initializable {
                                                             if (itemInCard.get(k).getName().equals("PROTECT")){
                                                                 ladangCard.getItems().remove(k);
                                                                 deckCurr.removeAktifElement(id1-1);
+                                                                reloadImage();
                                                                 return;
                                                             }
                                                         }
@@ -344,6 +345,7 @@ public class FieldController implements Initializable {
                                                             if (itemInCard.get(k).getName().equals("PROTECT")){
                                                                 ladangCard.getItems().remove(k);
                                                                 deckCurr.removeAktifElement(id1-1);
+                                                                reloadImage();
                                                                 return;
                                                             }
                                                         }
