@@ -63,6 +63,9 @@
             <!-- Object Info -->
             <fx:include source="object_info.fxml" styleClass="card-shuffle" />
 
+            <!-- Object Info -->
+            <fx:include source="winning_status.fxml" styleClass="card-shuffle" />
+
             <!-- EFEK GLOWING -->
             <effect>
                 <Glow />
