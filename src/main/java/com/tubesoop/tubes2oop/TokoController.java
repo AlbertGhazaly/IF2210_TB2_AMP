@@ -15,6 +15,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import  javafx.scene.control.Label;
 import javafx.util.Duration;
+import javafx.scene.media.*;
+import java.io.File;
 import com.tubesoop.tubes2oop.FieldController;
 import com.tubesoop.tubes2oop.PlayerStatusController;
 
@@ -83,7 +85,6 @@ public class TokoController implements Initializable {
     }
 
     public void initialize(URL location, ResourceBundle resources) {
-
         TokoPane.setVisible(false);
         alandToko = TokoPane;
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), ev -> {
@@ -94,50 +95,109 @@ public class TokoController implements Initializable {
     }
 
     public void clickDeck1(){
+        String musicFile = "src/main/resources/assets/clickSound.mp3"; // Ubah dengan path yang sesuai
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         gameStatus.getObjek().geToko().jual(gameStatus.getObjek().getCurrentPlayer(), 0);
     }
 
     public void clickDeck2(){
+        String musicFile = "src/main/resources/assets/clickSound.mp3"; // Ubah dengan path yang sesuai
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         gameStatus.getObjek().geToko().jual(gameStatus.getObjek().getCurrentPlayer(), 1);
     }
     public void clickDeck3(){
+        String musicFile = "src/main/resources/assets/clickSound.mp3"; // Ubah dengan path yang sesuai
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         gameStatus.getObjek().geToko().jual(gameStatus.getObjek().getCurrentPlayer(), 2);
     }
     public void clickDeck4(){
+        String musicFile = "src/main/resources/assets/clickSound.mp3"; // Ubah dengan path yang sesuai
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         gameStatus.getObjek().geToko().jual(gameStatus.getObjek().getCurrentPlayer(), 3);
     }
     public void clickDeck5(){
+        String musicFile = "src/main/resources/assets/clickSound.mp3"; // Ubah dengan path yang sesuai
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         gameStatus.getObjek().geToko().jual(gameStatus.getObjek().getCurrentPlayer(), 4);
     }
     public void clickDeck6(){
+        String musicFile = "src/main/resources/assets/clickSound.mp3"; // Ubah dengan path yang sesuai
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         gameStatus.getObjek().geToko().jual(gameStatus.getObjek().getCurrentPlayer(), 5);
     }
     public void beliSiripHiu(){
+        String musicFile = "src/main/resources/assets/clickSound.mp3"; // Ubah dengan path yang sesuai
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         gameStatus.getObjek().geToko().beli(gameStatus.getObjek().getCurrentPlayer(), "SIRIP_HIU");
-
     }
     public void beliDagingBeruang(){
+        String musicFile = "src/main/resources/assets/clickSound.mp3"; // Ubah dengan path yang sesuai
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         gameStatus.getObjek().geToko().beli(gameStatus.getObjek().getCurrentPlayer(), "DAGING_BERUANG");
     }
     public void beliSusu(){
+        String musicFile = "src/main/resources/assets/clickSound.mp3"; // Ubah dengan path yang sesuai
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         gameStatus.getObjek().geToko().beli(gameStatus.getObjek().getCurrentPlayer(), "SUSU");
     }
     public void beliDagingDomba(){
+        String musicFile = "src/main/resources/assets/clickSound.mp3"; // Ubah dengan path yang sesuai
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         gameStatus.getObjek().geToko().beli(gameStatus.getObjek().getCurrentPlayer(), "DAGING_DOMBA");
     }
     public void beliDagingKuda(){
+        String musicFile = "src/main/resources/assets/clickSound.mp3"; // Ubah dengan path yang sesuai
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         gameStatus.getObjek().geToko().beli(gameStatus.getObjek().getCurrentPlayer(), "DAGING_KUDA");
     }
     public void beliTelur(){
+        String musicFile = "src/main/resources/assets/clickSound.mp3"; // Ubah dengan path yang sesuai
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         gameStatus.getObjek().geToko().beli(gameStatus.getObjek().getCurrentPlayer(), "TELUR");
     }
     public void beliJagung(){
+        String musicFile = "src/main/resources/assets/clickSound.mp3"; // Ubah dengan path yang sesuai
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         gameStatus.getObjek().geToko().beli(gameStatus.getObjek().getCurrentPlayer(), "JAGUNG");
     }
     public void beliLabu(){
+        String musicFile = "src/main/resources/assets/clickSound.mp3"; // Ubah dengan path yang sesuai
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         gameStatus.getObjek().geToko().beli(gameStatus.getObjek().getCurrentPlayer(), "LABU");
     }
     public void beliStroberi(){
+        String musicFile = "src/main/resources/assets/clickSound.mp3"; // Ubah dengan path yang sesuai
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         gameStatus.getObjek().geToko().beli(gameStatus.getObjek().getCurrentPlayer(), "STROBERI");
     }
 }
