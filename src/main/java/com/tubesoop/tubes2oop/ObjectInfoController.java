@@ -68,6 +68,8 @@ public class ObjectInfoController implements Initializable {
     }
 
     public static void ObjectInfoCardOnClicked(KartuLadang ladangCard, int row, int col) {
+        ActionsController.disableAllButtons();
+
         SItemAktif.getChildren().clear();
         SNama.setText(ladangCard.getKartu().getName());
 
@@ -107,6 +109,8 @@ public class ObjectInfoController implements Initializable {
                         gameStatus.getObjek().getCurrentPlayer().getPetakLadang().removeElement(Srow, Scol);
 
                         FieldController.reloadImage();
+
+                        ActionsController.enableAllButtons();
                     } else {
                         // Alert deck aktif sudah penuh
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -114,6 +118,8 @@ public class ObjectInfoController implements Initializable {
                         alert.setHeaderText("Tidak Dapat Menyimpan Produk");
                         alert.setContentText("Tidak ada slot tersisa di deck aktif!");
                         alert.showAndWait();
+
+                        ActionsController.enableAllButtons();
                     }
                 } else {
                     // Alert tidak cukup berat untuk panen
@@ -122,6 +128,8 @@ public class ObjectInfoController implements Initializable {
                     alert.setHeaderText("Tidak Dapat Memanen Hewan");
                     alert.setContentText("Berat Hewan Tidak Cukup Untuk Dipanen");
                     alert.showAndWait();
+
+                    ActionsController.enableAllButtons();
                 }
             } else if (SKartuPilihan instanceof Tanaman) {
                 Tanaman tanaman = (Tanaman) SKartuPilihan;
@@ -132,6 +140,8 @@ public class ObjectInfoController implements Initializable {
                         gameStatus.getObjek().getCurrentPlayer().getPetakLadang().removeElement(Srow, Scol);
 
                         FieldController.reloadImage();
+
+                        ActionsController.enableAllButtons();
                     } else {
                         // Alert deck aktif sudah penuh
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -139,6 +149,8 @@ public class ObjectInfoController implements Initializable {
                         alert.setHeaderText("Tidak Dapat Menyimpan Produk");
                         alert.setContentText("Tidak ada slot tersisa di deck aktif!");
                         alert.showAndWait();
+
+                        ActionsController.enableAllButtons();
                     }
                 } else {
                     // Alert tidak cukup umur untuk panen
@@ -147,6 +159,8 @@ public class ObjectInfoController implements Initializable {
                     alert.setHeaderText("Tidak Dapat Memanen Tanaman");
                     alert.setContentText("Umur Tanaman Tidak Cukup Untuk Dipanen");
                     alert.showAndWait();
+
+                    ActionsController.enableAllButtons();
                 }
             }
 
@@ -157,6 +171,8 @@ public class ObjectInfoController implements Initializable {
             alert.setHeaderText("Tidak Dapat Memanen Petak Ladang");
             alert.setContentText("Kamu tidak dapat memanen dari petak ladang musuh");
             alert.showAndWait();
+
+            ActionsController.enableAllButtons();
         }
 
         CardInfo.setVisible(false);
@@ -193,5 +209,7 @@ public class ObjectInfoController implements Initializable {
     public void closeInfoCard() {
         SKartuPilihan = null;
         CardInfo.setVisible(false);
+
+        ActionsController.enableAllButtons();
     }
 }
