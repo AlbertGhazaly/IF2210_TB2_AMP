@@ -1,5 +1,6 @@
 package com.tubesoop.tubes2oop;
 
+import card.Tanaman;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -33,7 +34,20 @@ public class TurnController implements Initializable {
             gameStatus.turn ++;
             numberOfTurn = gameStatus.turn;
             updateTurnLabel();
-
+            for (int i=0;i<4;i++){
+                for (int j=0;j<5;j++){
+                    if (this.gameStatus.getObjek().getPlayer1().getPetakLadang().getElement(i,j)!=null){
+                        if (this.gameStatus.getObjek().getPlayer1().getPetakLadang().getElement(i,j).getKartu() instanceof Tanaman){
+                            ((Tanaman) this.gameStatus.getObjek().getPlayer1().getPetakLadang().getElement(i,j).getKartu()).addUmur(1);
+                        }
+                    }
+                    if (this.gameStatus.getObjek().getPlayer2().getPetakLadang().getElement(i,j)!=null){
+                        if (this.gameStatus.getObjek().getPlayer2().getPetakLadang().getElement(i,j).getKartu() instanceof Tanaman){
+                            ((Tanaman) this.gameStatus.getObjek().getPlayer2().getPetakLadang().getElement(i,j).getKartu()).addUmur(1);
+                        }
+                    }
+                }
+            }
             ShuffleController.openShuffleCard();
         } else {
             // TO DO : Handle Kemenangan

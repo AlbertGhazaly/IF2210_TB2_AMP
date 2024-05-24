@@ -59,7 +59,7 @@
          </StackPane>
       </Pane>
 
-      <Button fx:id="shuffleButton" layoutX="25.0" layoutY="244.0" mnemonicParsing="false" onAction="#shuffleCard" prefHeight="35.0" prefWidth="125.0" styleClass="shuffleButton" stylesheets="@style.css" text="Refresh">
+      <Button fx:id="shuffleButton" layoutX="25.0" layoutY="244.0" mnemonicParsing="false" onAction="#shuffle" prefHeight="35.0" prefWidth="125.0" styleClass="shuffleButton" stylesheets="@style.css" text="Refresh">
          <font>
             <Font name="Book Antiqua" size="16.0" />
          </font>

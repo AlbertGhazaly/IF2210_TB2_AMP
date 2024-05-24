@@ -2,7 +2,9 @@ package com.tubesoop.tubes2oop;
 import com.tubesoop.tubes2oop.TokoController;
 import gameobject.GameObject;
 import gamestatus.GameStatus;
+import javafx.fxml.FXML;
 import petakladang.PetakLadang;
+import javafx.scene.control.Button;
 
 public class ActionsController {
     private GameObject gameObject;
@@ -29,5 +31,14 @@ public class ActionsController {
         }else{
             FieldController.petakLadangCurr = (PetakLadang) this.gameObject.getPlayer2().getPetakLadang();
         }
+        FieldController.reloadImage();
+    }
+    public void openMine(){
+        if (GameStatus.turn%2==0){
+            FieldController.petakLadangCurr = (PetakLadang) this.gameObject.getPlayer2().getPetakLadang();
+        }else{
+            FieldController.petakLadangCurr = (PetakLadang) this.gameObject.getPlayer1().getPetakLadang();
+        }
+        FieldController.reloadImage();
     }
 }

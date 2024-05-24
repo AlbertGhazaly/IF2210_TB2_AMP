@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import player.Player;
 import javafx.scene.Node;
 import petakladang.*;
+import javafx.scene.control.Label;
 import deck.*;
 import card.*;
 import java.util.List;
@@ -55,7 +56,8 @@ public class FieldController implements Initializable {
     @FXML private Pane targetPane18;
     @FXML private Pane targetPane19;
     @FXML private Pane targetPane20;
-
+    @FXML private  Label labelDeck;
+    private static Label labelDeckStatic;
     /* Deck Pane */
     @FXML private Pane deckPane;
     @FXML private Pane pane1;
@@ -87,7 +89,7 @@ public class FieldController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         SFieldMain = FieldMain;
         SFieldMain.setVisible(false);
-
+        labelDeckStatic = labelDeck;
         initializeDragAndDrop(fieldPane);
         initializeDragAndDrop(deckPane);
 
@@ -196,6 +198,7 @@ public class FieldController implements Initializable {
                 }
             }
         }
+        labelDeckStatic.setText(String.valueOf(currPlayer.getDeck().getPasifSize()) + "/40");
     }
 
     public static void showErrorDialog(Exception e) {
@@ -316,7 +319,7 @@ public class FieldController implements Initializable {
                                                         for (int n=0;n<produkHasil.size();n++){
                                                             deckCurr.addAktifElementRandom(produkHasil.get(n));
                                                         }
-
+                                                        petakLadangCurr.removeElement((id2-1)/5,(id2-1)%5);
                                                     }else if (deckCard.getName().equals("DESTROY")){
                                                         if (petakLadangCurr == currPlayer.getPetakLadang()){
                                                             throw new FieldInAccessible();
@@ -385,6 +388,7 @@ public class FieldController implements Initializable {
 
                                                             }
                                                             if(((Hewan) ladangCard.getKartu()).getKategori().equals("herbivora")){
+                                                                System.out.println("herbivora");
                                                                 if (!(deckCard.getName().equals("JAGUNG") || deckCard.getName().equals("LABU") || deckCard.getName().equals("STROBERI"))){
                                                                     throw new InappropriateFood();
                                                                 }

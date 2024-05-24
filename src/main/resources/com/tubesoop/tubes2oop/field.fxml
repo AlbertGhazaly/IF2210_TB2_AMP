@@ -116,7 +116,7 @@
     <Pane layoutX="25.0" layoutY="574.0">
         <children>
             <Separator layoutY="28.0" prefHeight="12.0" prefWidth="749.0" />
-            <Label layoutX="649.0" text="Deck 33/40">
+            <Label  fx:id="labelDeck" layoutX="649.0" text="Deck 40/40">
                 <font>
                     <Font name="Book Antiqua Bold Italic" size="20.0" />
                 </font>
