@@ -87,7 +87,7 @@ public class Toko implements Entity {
      * @param barang Barang yang ingin dibeli oleh pemain.
      */
     public void beli(Player player, String barang) {
-        if(player.getDeck().getAktifSize() <= 6 && player.getGulden()>=hargaBarang.get(barang)) {
+        if(player.getDeck().getAktifSize() < 6 && player.getGulden()>=hargaBarang.get(barang) && stok.get(barang)>0) {
             for (int i = 0; i < GameObject.produkList.size(); i++) {
                 if (GameObject.produkList.get(i).getName().equals(barang)) {
                     // Menambahkan barang ke deck aktif pemain
