@@ -1,6 +1,7 @@
 module com.tubesoop.tubes2oop {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.media;
 
     requires org.controlsfx.controls;
     requires java.desktop;

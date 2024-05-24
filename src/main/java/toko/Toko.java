@@ -7,6 +7,7 @@ import exception.BeliException;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import javafx.scene.control.Alert;
@@ -160,6 +161,9 @@ public class Toko implements Entity {
                     stok.put(barang, stok.getOrDefault(barang, 0) + 1);
                     int harga = hargaBarang.get(barang);
                     player.setGulden(player.getGulden() + harga);
+                }
+                else {
+                    throw new JualException();
                 }
             } else {
                 throw new JualException();
