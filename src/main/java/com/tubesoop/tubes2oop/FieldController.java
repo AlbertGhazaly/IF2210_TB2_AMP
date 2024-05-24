@@ -465,6 +465,10 @@ public class FieldController implements Initializable {
 //                                    draggedPane.getChildren().add(temp);
 //                                }
                                 success = true;
+                                String musicFile = "src/main/resources/assets/farmingSound.mp3";
+                                Media sound = new Media(new File(musicFile).toURI().toString());
+                                MediaPlayer mediaPlayer = new MediaPlayer(sound);
+                                mediaPlayer.play();
                             }
                         }
                         event.setDropCompleted(success);

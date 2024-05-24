@@ -85,6 +85,7 @@ public class ShuffleController implements Initializable {
     }
     public void shuffle(){
         this.shuffleCard();
+
     }
     public static void openShuffleCard() {
         selectedNum = 0;
@@ -178,6 +179,8 @@ public class ShuffleController implements Initializable {
     }
     @FXML
     public void handleFinish() {
+        ActionsController.enableAllButtons();
+
         try {
             if (selectedNum > (6-gameStatus.getObjek().getCurrentPlayer().getDeck().getAktifSize())){
                 throw new SelectShuffleCardOverException();

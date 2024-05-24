@@ -36,6 +36,8 @@ public class TurnController implements Initializable {
 
     @FXML
     protected void onNextButtonClick() {
+        ActionsController.disableAllButtons();
+
         if (numberOfTurn < 20) {
             gameStatus.turn ++;
             numberOfTurn = gameStatus.turn;
@@ -80,5 +82,6 @@ public class TurnController implements Initializable {
         STurnButton = turnButton;
         this.numberOfTurn = gameStatus.turn;
         turnLabel.setText(String.valueOf(numberOfTurn));
+        STurnButton.setDisable(true);
     }
 }
