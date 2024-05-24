@@ -11,7 +11,7 @@
                 <Font name="Book Antiqua Bold" size="22.0" />
             </font>
         </Label>
-        <Button layoutX="293.0" layoutY="10.0" mnemonicParsing="false" onAction="#onNextButtonClick" style="-fx-background-color: #000000; -fx-cursor: pointer;" text="Next Turn" textFill="WHITE">
+        <Button fx:id="turnButton" layoutX="293.0" layoutY="10.0" mnemonicParsing="false" onAction="#onNextButtonClick" style="-fx-background-color: #000000; -fx-cursor: pointer;" text="Next Turn" textFill="WHITE">
             <font>
                 <Font name="Book Antiqua" size="14.0" />
             </font>

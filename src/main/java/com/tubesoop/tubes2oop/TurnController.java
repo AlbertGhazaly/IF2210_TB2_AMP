@@ -3,10 +3,11 @@ package com.tubesoop.tubes2oop;
 import card.Tanaman;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import com.tubesoop.tubes2oop.ShuffleController;
 import gamestatus.*;
-
+import com.tubesoop.tubes2oop.WinnerController;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -16,7 +17,12 @@ public class TurnController implements Initializable {
     @FXML
     private Label turnLabel;
 
+    @FXML
+    private Button turnButton;
+
     private int numberOfTurn;
+
+    static Button STurnButton;
 
     @FXML
     public void updateTurnLabel() {
@@ -48,9 +54,21 @@ public class TurnController implements Initializable {
                     }
                 }
             }
+
             ShuffleController.openShuffleCard();
-        } else {
-            // TO DO : Handle Kemenangan
+
+            if (numberOfTurn == 20) {
+                STurnButton.setText("Winning!");
+            }
+        }
+        else {
+            WinnerController.SWinnerDialog.setVisible(true);
+
+            if (gameStatus.getObjek().getPlayer1().getGulden() > gameStatus.getObjek().getPlayer2().getGulden()) {
+                WinnerController.SWinner.setText("Player 1");
+            } else {
+                WinnerController.SWinner.setText("Player 2");
+            }
         }
     }
 
@@ -59,6 +77,7 @@ public class TurnController implements Initializable {
     }
 
     public void initialize(URL location, ResourceBundle resources) {
+        STurnButton = turnButton;
         this.numberOfTurn = gameStatus.turn;
         turnLabel.setText(String.valueOf(numberOfTurn));
     }

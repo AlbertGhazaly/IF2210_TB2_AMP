@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="PluginModal" prefHeight="400.0" prefWidth="600.0" styleClass="saveload" stylesheets="style.css" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tubesoop.tubes2oop.PluginController">
+    <children>
+        <Label layoutX="259.0" layoutY="72.0" prefHeight="50.0" prefWidth="98.0" text="Plugin">
+            <font>
+                <Font size="34.0" />
+            </font>
+        </Label>
+        <Button layoutY="2.0" mnemonicParsing="false" onAction="#kembali" prefHeight="25.0" prefWidth="66.0" text="Kembali" />
+        <Label layoutX="127.0" layoutY="167.0" prefHeight="17.0" prefWidth="66.0" text="File Plugin :" />
+        <Button layoutX="39.0" layoutY="215.0" mnemonicParsing="false" onAction="#execute" prefHeight="25.0" prefWidth="538.0" text="Upload" />
+        <Label fx:id="succes" layoutX="39.0" layoutY="273.0" prefHeight="17.0" prefWidth="155.0" text="Plugin loaded succesfully" textFill="#00da28">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Label>
+        <Label fx:id="failed" layoutX="40.0" layoutY="273.0" prefHeight="17.0" prefWidth="186.0" text="Error: file is not in a valid JAR" textFill="RED">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Label>
+      <Button  layoutX="40.0" layoutY="163.0" mnemonicParsing="false" text="Choose File" onAction="#handleChooseFile" />
+      <Label fx:id="path"  layoutX="194.0" layoutY="167.0" prefHeight="17.0" prefWidth="378.0" />
+    </children>
+</AnchorPane>

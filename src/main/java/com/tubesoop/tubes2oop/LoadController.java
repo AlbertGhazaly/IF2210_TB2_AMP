@@ -70,6 +70,7 @@ public class LoadController implements Initializable {
         String Ext = choiceBox.getSelectionModel().getSelectedItem();
         if (!(folder.length()==0)) {
             try {
+                gameStatus = new GameStatus();
                 gameStatus.loadState(folder,Ext);
                 succes.setVisible(true);
             } catch (Exception e) {

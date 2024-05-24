@@ -380,7 +380,9 @@ public class FieldController implements Initializable {
                                                     }
 
                                                 }else if(deckCard instanceof Produk){
-
+                                                        if (currPlayer.getPetakLadang() != petakLadangCurr){
+                                                            throw new FieldInAccessible();
+                                                        }
                                                         if (ladangCard.getKartu() instanceof Hewan){
                                                             if (((Hewan) ladangCard.getKartu()).getKategori().equals("karnivora")) {
                                                                 if (deckCard.getName().equals("JAGUNG") || deckCard.getName().equals("LABU") || deckCard.getName().equals("STROBERI")) {
@@ -426,19 +428,28 @@ public class FieldController implements Initializable {
                                     System.out.println(id1+" "+id2);
                                     deckCurr.swapIndex(id1-1,id2-1);
                                 }else{
+                                    try{
+                                        if (currPlayer.getPetakLadang()!=petakLadangCurr){
+                                            throw new FieldInAccessible();
+                                        }
 //                                    swap petakLadang to PetakLadang
-                                    Pattern pattern = Pattern.compile("Pane(\\d+)");
-                                    Matcher matcher = pattern.matcher(pane.getId());
-                                    int id1,id2;
-                                    matcher.find();
-                                    String number = matcher.group(1);
-                                    id1 = Integer.parseInt(number);
-                                    matcher = pattern.matcher(nampan_sumber.getId());
-                                    matcher.find();
-                                    number = matcher.group(1);
-                                    id2 = Integer.parseInt(number);
-                                    System.out.println(id1+" "+id2);
-                                    petakLadangCurr.swapElement(id1-1,id2-1);
+                                        Pattern pattern = Pattern.compile("Pane(\\d+)");
+                                        Matcher matcher = pattern.matcher(pane.getId());
+                                        int id1,id2;
+                                        matcher.find();
+                                        String number = matcher.group(1);
+                                        id1 = Integer.parseInt(number);
+                                        matcher = pattern.matcher(nampan_sumber.getId());
+                                        matcher.find();
+                                        number = matcher.group(1);
+                                        id2 = Integer.parseInt(number);
+                                        System.out.println(id1+" "+id2);
+                                        petakLadangCurr.swapElement(id1-1,id2-1);
+                                    }catch (Exception e){
+                                        e.printStackTrace();
+                                        showErrorDialog(e);
+                                    }
+
                                 }
 //                                Pane temp = null;
 //                                if (!pane.getChildren().isEmpty()){
