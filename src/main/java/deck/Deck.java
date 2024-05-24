@@ -21,20 +21,20 @@ public class Deck<T extends Card> {
     this.deckPasif = new ArrayList<>();
     insertPassiveDeck(DECK_PASSIVE_ROW_SIZE);
   }
-public void addAktifElementRandom(T element){
-      for (int i = 0;i<DECK_ACTIVE_SIZE;i++){
-          if (deckAktif.get(i) == null){
-              this.addAktifElement(element,0,i);
-              return;
-
-          }
-      }
-}
+//public void addAktifElementRandom(T element){
+//      for (int i = 0;i<DECK_ACTIVE_SIZE;i++){
+//          if (deckAktif.get(i) == null){
+//              this.addAktifElement(element,0,i);
+//              return;
+//
+//          }
+//      }
+//}
   public void addAktifElement(T element) {
       for (int i = 0; i < DECK_ACTIVE_SIZE; i++) {
           if (this.deckAktif.get(i) == null) {
               this.deckAktif.set(i, element);
-              break;
+              return;
           }
       }
   }
