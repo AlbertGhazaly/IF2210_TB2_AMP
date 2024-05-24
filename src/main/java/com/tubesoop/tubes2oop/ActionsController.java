@@ -86,4 +86,24 @@ public class ActionsController implements Initializable {
         myField.setStyle("-fx-background-color: green; -fx-background-radius: 5px; -fx-text-fill: white;");
         FieldController.reloadImage();
     }
+
+    public static void enableAllButtons() {
+        TurnController.STurnButton.setDisable(false);
+        ActionsController.SmyField.setDisable(false);
+        ActionsController.SoppField.setDisable(false);
+        ActionsController.SshopButton.setDisable(false);
+        ActionsController.SsaveStateButton.setDisable(false);
+        ActionsController.SloadStateButton.setDisable(false);
+        ActionsController.SloadPluginButton.setDisable(false);
+    }
+
+    public static void disableAllButtons() {
+        TurnController.STurnButton.setDisable(true);
+        ActionsController.SmyField.setDisable(true);
+        ActionsController.SoppField.setDisable(true);
+        ActionsController.SshopButton.setDisable(true);
+        ActionsController.SsaveStateButton.setDisable(true);
+        ActionsController.SloadStateButton.setDisable(true);
+        ActionsController.SloadPluginButton.setDisable(true);
+    }
 }
