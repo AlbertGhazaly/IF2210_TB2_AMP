@@ -3,13 +3,46 @@ import com.tubesoop.tubes2oop.TokoController;
 import gameobject.GameObject;
 import gamestatus.GameStatus;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import petakladang.PetakLadang;
 import javafx.scene.control.Button;
+import toko.Toko;
 
-public class ActionsController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class ActionsController implements Initializable {
     private GameObject gameObject;
     @FXML Button myField;
     @FXML Button oppField;
+    @FXML Button shopButton;
+    @FXML Button saveStateButton;
+    @FXML Button loadStateButton;
+    @FXML Button loadPluginButton;
+
+    static Button SmyField;
+    static Button SoppField;
+    static Button SshopButton;
+    static Button SsaveStateButton;
+    static Button SloadStateButton;
+    static Button SloadPluginButton;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        SmyField = myField;
+        SoppField = oppField;
+        SshopButton = shopButton;
+        SsaveStateButton = saveStateButton;
+        SloadStateButton = loadStateButton;
+        SloadPluginButton = loadPluginButton;
+
+        SmyField.setDisable(true);
+        SoppField.setDisable(true);
+        SshopButton.setDisable(true);
+        SsaveStateButton.setDisable(true);
+        SloadStateButton.setDisable(true);
+        SloadPluginButton.setDisable(true);
+    }
 
     public void setGameObject(GameObject gameObject) {
         this.gameObject = gameObject;

@@ -80,5 +80,6 @@ public class TurnController implements Initializable {
         STurnButton = turnButton;
         this.numberOfTurn = gameStatus.turn;
         turnLabel.setText(String.valueOf(numberOfTurn));
+        STurnButton.setDisable(true);
     }
 }
