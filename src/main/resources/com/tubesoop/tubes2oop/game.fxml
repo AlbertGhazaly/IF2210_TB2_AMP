@@ -56,6 +56,9 @@
 
             <!-- Load -->
             <fx:include source="load.fxml" styleClass="card-shuffle" />
+
+            <!-- Plugin -->
+            <fx:include source="plugin.fxml" styleClass="card-shuffle" />
             
             <!-- Object Info -->
             <fx:include source="object_info.fxml" styleClass="card-shuffle" />

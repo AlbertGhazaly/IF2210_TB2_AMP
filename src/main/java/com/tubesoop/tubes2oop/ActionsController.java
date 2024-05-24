@@ -28,6 +28,11 @@ public class ActionsController {
         LoadController.succesStatic.setVisible(false);
         LoadController.failedStatic.setVisible(false);
     }
+    public  void plugin(){
+        PluginController.pluginModalStatic.setVisible(true);
+        PluginController.failedStatic.setVisible(false);
+        PluginController.succesStatic.setVisible(false);
+    }
     public void openOpp(){
         if (GameStatus.turn%2==0){
             FieldController.petakLadangCurr = (PetakLadang) this.gameObject.getPlayer1().getPetakLadang();
