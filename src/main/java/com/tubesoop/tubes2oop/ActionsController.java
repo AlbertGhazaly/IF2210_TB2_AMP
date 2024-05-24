@@ -34,7 +34,7 @@ public class ActionsController {
         }else{
             FieldController.petakLadangCurr = (PetakLadang) this.gameObject.getPlayer2().getPetakLadang();
         }
-        myField.setStyle("-fx-background-color: white; -fx-background-radius: 5px; -fx-t~ext-fill: black;");
+        myField.setStyle("-fx-background-color: white; -fx-background-radius: 5px; -fx-text-fill: black;");
         oppField.setStyle("-fx-background-color: green; -fx-background-radius: 5px; -fx-text-fill: white;");
         FieldController.reloadImage();
     }
