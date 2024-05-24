@@ -327,7 +327,7 @@ public class FieldController implements Initializable {
                                                         }
                                                         deckCurr.removeAktifElement(id1-1);
                                                         for (int n=0;n<produkHasil.size();n++){
-                                                            deckCurr.addAktifElementRandom(produkHasil.get(n));
+                                                            deckCurr.addAktifElement(produkHasil.get(n));
                                                         }
                                                         petakLadangCurr.removeElement((id2-1)/5,(id2-1)%5);
                                                     }else if (deckCard.getName().equals("DESTROY")){
@@ -474,6 +474,10 @@ public class FieldController implements Initializable {
 //                                    draggedPane.getChildren().add(temp);
 //                                }
                                 success = true;
+                                String musicFile = "src/main/resources/assets/farmingSound.mp3";
+                                Media sound = new Media(new File(musicFile).toURI().toString());
+                                MediaPlayer mediaPlayer = new MediaPlayer(sound);
+                                mediaPlayer.play();
                             }
                         }
                         event.setDropCompleted(success);

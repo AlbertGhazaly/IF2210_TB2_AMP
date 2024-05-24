@@ -5,6 +5,8 @@ import card.Produk;
 import gamestatus.GameStatus;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.scene.control.Label;
@@ -14,6 +16,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.image.Image;
 import card.Hewan;
 import card.Tanaman;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import petakladang.KartuLadang;
 import javafx.scene.layout.HBox;
 import javafx.scene.control.Alert;
@@ -109,6 +113,10 @@ public class ObjectInfoController implements Initializable {
                         gameStatus.getObjek().getCurrentPlayer().getPetakLadang().removeElement(Srow, Scol);
 
                         FieldController.reloadImage();
+                        String musicFile = "src/main/resources/assets/farmingSound.mp3";
+                        Media sound = new Media(new File(musicFile).toURI().toString());
+                        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+                        mediaPlayer.play();
 
                         ActionsController.enableAllButtons();
                     } else {
@@ -210,6 +218,12 @@ public class ObjectInfoController implements Initializable {
         SKartuPilihan = null;
         CardInfo.setVisible(false);
 
+        String musicFile = "src/main/resources/assets/clickSound.mp3";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+
         ActionsController.enableAllButtons();
+
     }
 }

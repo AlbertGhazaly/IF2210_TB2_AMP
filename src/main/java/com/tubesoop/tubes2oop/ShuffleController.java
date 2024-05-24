@@ -1,27 +1,25 @@
 package com.tubesoop.tubes2oop;
 
-import exception.SelectShuffleCardLessException;
 import exception.SelectShuffleCardOverException;
 import gameobject.GameObject;
-import card.Card;
 import gamestatus.GameStatus;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import player.Player;
 import javafx.scene.layout.AnchorPane;
+
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.scene.image.ImageView;
 import state.*;
-import javafx.stage.Stage;
 import javafx.scene.input.MouseEvent;
-import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import gamestatus.*;
+
 public class ShuffleController implements Initializable {
     GameObject gameObject;
     private static GameStatus gameStatus;
@@ -107,6 +105,10 @@ public class ShuffleController implements Initializable {
     @FXML
     public static void shuffleCard() {
         try {
+            String musicFile = "src/main/resources/assets/clickSound.mp3";
+            Media sound = new Media(new File(musicFile).toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play();
             dImageCard1.setImage(null);
             dImageCard2.setImage(null);
             dImageCard3.setImage(null);
@@ -185,46 +187,42 @@ public class ShuffleController implements Initializable {
     }
     @FXML
     public void handleFinish() {
+        String musicFile = "src/main/resources/assets/clickSound.mp3";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         ActionsController.enableAllButtons();
 
         try {
-            if ((6-gameStatus.getObjek().getCurrentPlayer().getDeck().getAktifSize()) >= 4){
-                if (selectedNum != 4){
-                    throw new SelectShuffleCardLessException();
-                }
-            }else{
-                if (selectedNum > (6-gameStatus.getObjek().getCurrentPlayer().getDeck().getAktifSize())){
-                    throw new SelectShuffleCardOverException();
-                }else if (selectedNum < (6-gameStatus.getObjek().getCurrentPlayer().getDeck().getAktifSize())){
-                    throw new SelectShuffleCardLessException();
-                }
+            if (selectedNum > (6-gameStatus.getObjek().getCurrentPlayer().getDeck().getAktifSize())){
+                throw new SelectShuffleCardOverException();
             }
             // Hide the shuffleCard pane
             if (isCard1Selected){
                 System.out.println("insert card 1");
                 System.out.println(this.gameShuffle.getCards().get(0).getName());
-                this.gameObject.getCurrentPlayer().getDeck().addAktifElementRandom(this.gameShuffle.getCards().get(0));
+                this.gameObject.getCurrentPlayer().getDeck().addAktifElement(this.gameShuffle.getCards().get(0));
             }else{
                 this.gameObject.getCurrentPlayer().getDeck().addPasifElement(this.gameShuffle.getCards().get(0));
             }
             if (isCard2Selected){
                 System.out.println("insert card 2");
                 System.out.println(this.gameShuffle.getCards().get(1).getName());
-                this.gameObject.getCurrentPlayer().getDeck().addAktifElementRandom(this.gameShuffle.getCards().get(1));
+                this.gameObject.getCurrentPlayer().getDeck().addAktifElement(this.gameShuffle.getCards().get(1));
             }else{
                 this.gameObject.getCurrentPlayer().getDeck().addPasifElement(this.gameShuffle.getCards().get(1));
             }
             if (isCard3Selected){
                 System.out.println("insert card 3");
                 System.out.println(this.gameShuffle.getCards().get(2).getName());
-                this.gameObject.getCurrentPlayer().getDeck().addAktifElementRandom(this.gameShuffle.getCards().get(2));
+                this.gameObject.getCurrentPlayer().getDeck().addAktifElement(this.gameShuffle.getCards().get(2));
             }else{
                 this.gameObject.getCurrentPlayer().getDeck().addPasifElement(this.gameShuffle.getCards().get(2));
             }
             if (isCard4Selected){
                 System.out.println("insert card 4");
                 System.out.println(this.gameShuffle.getCards().get(3).getName());
-                this.gameObject.getCurrentPlayer().getDeck().addAktifElementRandom(this.gameShuffle.getCards().get(3));
+                this.gameObject.getCurrentPlayer().getDeck().addAktifElement(this.gameShuffle.getCards().get(3));
             }else{
                 this.gameObject.getCurrentPlayer().getDeck().addPasifElement(this.gameShuffle.getCards().get(3));
             }

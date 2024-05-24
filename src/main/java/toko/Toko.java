@@ -106,7 +106,7 @@ public class Toko implements Entity {
                     for (int i = 0; i < GameObject.produkList.size(); i++) {
                         if (GameObject.produkList.get(i).getName().equals(barang)) {
                             // Menambahkan barang ke deck aktif pemain
-                            player.getDeck().addAktifElementRandom(new Produk(GameObject.produkList.get(i)));
+                            player.getDeck().addAktifElement(new Produk(GameObject.produkList.get(i)));
                             int harga = hargaBarang.get(barang);
                             player.setGulden(player.getGulden() - harga);
                             // Mengurangi stok barang

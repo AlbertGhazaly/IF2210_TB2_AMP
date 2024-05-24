@@ -4,10 +4,13 @@ import gameobject.GameObject;
 import gamestatus.GameStatus;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import petakladang.PetakLadang;
 import javafx.scene.control.Button;
 import toko.Toko;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -48,25 +51,45 @@ public class ActionsController implements Initializable {
         this.gameObject = gameObject;
     }
     public void openToko() {
+        String musicFile = "src/main/resources/assets/clickSound.mp3";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         TokoController.alandToko.setVisible(true);
 
     }
     public void save() {
+        String musicFile = "src/main/resources/assets/clickSound.mp3";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         SaveController.saveModalStatic.setVisible(true);
         SaveController.succesStatic.setVisible(false);
         SaveController.failedStatic.setVisible(false);
     }
     public void load() {
+        String musicFile = "src/main/resources/assets/clickSound.mp3";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         LoadController.LoadModalStatic.setVisible(true);
         LoadController.succesStatic.setVisible(false);
         LoadController.failedStatic.setVisible(false);
     }
     public  void plugin(){
+        String musicFile = "src/main/resources/assets/clickSound.mp3";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         PluginController.pluginModalStatic.setVisible(true);
         PluginController.failedStatic.setVisible(false);
         PluginController.succesStatic.setVisible(false);
     }
     public void openOpp(){
+        String musicFile = "src/main/resources/assets/clickSound.mp3";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         if (GameStatus.turn%2==0){
             FieldController.petakLadangCurr = (PetakLadang) this.gameObject.getPlayer1().getPetakLadang();
         }else{
@@ -77,6 +100,10 @@ public class ActionsController implements Initializable {
         FieldController.reloadImage();
     }
     public void openMine(){
+        String musicFile = "src/main/resources/assets/clickSound.mp3";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
         if (GameStatus.turn%2==0){
             FieldController.petakLadangCurr = (PetakLadang) this.gameObject.getPlayer2().getPetakLadang();
         }else{
