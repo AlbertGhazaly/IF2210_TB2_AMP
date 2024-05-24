@@ -91,6 +91,7 @@ public class ShuffleController implements Initializable {
     }
     public void shuffle(){
         this.shuffleCard();
+
     }
     public static void openShuffleCard() {
         selectedNum = 0;
@@ -184,6 +185,14 @@ public class ShuffleController implements Initializable {
     }
     @FXML
     public void handleFinish() {
+        TurnController.STurnButton.setDisable(false);
+        ActionsController.SmyField.setDisable(false);
+        ActionsController.SoppField.setDisable(false);
+        ActionsController.SshopButton.setDisable(false);
+        ActionsController.SsaveStateButton.setDisable(false);
+        ActionsController.SloadStateButton.setDisable(false);
+        ActionsController.SloadPluginButton.setDisable(false);
+
         try {
             if ((6-gameStatus.getObjek().getCurrentPlayer().getDeck().getAktifSize()) >= 4){
                 if (selectedNum != 4){

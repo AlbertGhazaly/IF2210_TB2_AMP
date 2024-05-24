@@ -23,13 +23,13 @@ public class StartGameController implements Initializable {
         SstartButton.setVisible(false);
         ShuffleController.SshuffleCard.setVisible(true);
         FieldController.SFieldMain.setVisible(true);
-        TurnController.STurnButton.setDisable(false);
-        ActionsController.SmyField.setDisable(false);
-        ActionsController.SoppField.setDisable(false);
-        ActionsController.SshopButton.setDisable(false);
-        ActionsController.SsaveStateButton.setDisable(false);
-        ActionsController.SloadStateButton.setDisable(false);
-        ActionsController.SloadPluginButton.setDisable(false);
+//        TurnController.STurnButton.setDisable(true);
+//        ActionsController.SmyField.setDisable(true);
+//        ActionsController.SoppField.setDisable(true);
+//        ActionsController.SshopButton.setDisable(true);
+//        ActionsController.SsaveStateButton.setDisable(true);
+//        ActionsController.SloadStateButton.setDisable(true);
+//        ActionsController.SloadPluginButton.setDisable(true);
     }
 
 }
