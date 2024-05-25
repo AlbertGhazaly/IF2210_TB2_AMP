@@ -6,6 +6,7 @@ module com.tubesoop.tubes2oop {
     requires org.controlsfx.controls;
     requires java.desktop;
     requires java.compiler;
+    requires com.fasterxml.jackson.databind;
 
     opens com.tubesoop.tubes2oop to javafx.fxml;
     exports com.tubesoop.tubes2oop;
