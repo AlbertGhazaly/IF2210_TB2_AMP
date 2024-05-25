@@ -1,5 +1,7 @@
 package entity;
 
+import gamestatus.GameStatus;
+
 import java.io.File;
 import java.io.IOException;
 
