@@ -15,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.File;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.scene.image.ImageView;
 import state.*;
@@ -240,6 +241,11 @@ public class ShuffleController implements Initializable {
             card3.setStyle("-fx-border-color: none;");
             card4.setStyle("-fx-border-color: none;");
             shuffleCard.setVisible(false);
+            Random random = new Random();
+            if (random.nextDouble() < 1) {
+                FieldController.attackOnBeruang(gameStatus.getObjek());
+                ActionsController.disableAllButtons();
+            }
         }catch (Exception e){
             e.printStackTrace();
             FieldController.showErrorDialog(e);

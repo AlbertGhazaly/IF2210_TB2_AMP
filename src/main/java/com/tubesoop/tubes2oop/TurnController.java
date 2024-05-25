@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 
 public class TurnController implements Initializable {
     private GameStatus gameStatus;
-    private static final double BERUANG_ATTACK_PROBABILITY = 0.1;
+    private static final double BERUANG_ATTACK_PROBABILITY = 1;
 
     @FXML
     private Label turnLabel;
@@ -38,12 +38,6 @@ public class TurnController implements Initializable {
     @FXML
     protected void onNextButtonClick() {
         ActionsController.disableAllButtons();
-
-        // Menambahkan probabilitas serangan beruang
-        Random random = new Random();
-        if (random.nextDouble() < BERUANG_ATTACK_PROBABILITY) {
-            FieldController.attackOnBeruang(gameStatus.getObjek());
-        }
 
         if (numberOfTurn < 20) {
             gameStatus.turn++;

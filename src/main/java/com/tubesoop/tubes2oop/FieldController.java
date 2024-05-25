@@ -534,9 +534,7 @@ public class FieldController implements Initializable {
         int lamaWaktuMenyerang = 10;
         List<int[]> petakDiserang = beruang.getPetakDiserang();
         ArrayList<Integer> indexToAttack = new ArrayList<>();
-        boolean trapFound = false;
 
-        // Cek apakah ada Trap di petak yang diserang
         for (int[] petak : petakDiserang) {
             int row = petak[0];
             int col = petak[1];
@@ -544,26 +542,7 @@ public class FieldController implements Initializable {
 
             if (index >= 0 && index < Main.fieldPane.getChildren().size()) {
                 indexToAttack.add(index);
-
-                // Validasi keberadaan Trap
-                KartuLadang<Card> kartuLadang = objek.getCurrentPlayer().getPetakLadang().getElement(row, col);
-                if (kartuLadang != null) {
-                    for (Item item : kartuLadang.getItems()) {
-//                        if (item instanceof Trap) {
-//                            trapFound = true;
-//                            break;
-//                        }
-                    }
-                }
-
-                if (trapFound) break;
             }
-        }
-
-        // Jika Trap ditemukan, batalkan serangan dan berikan kartu Beruang
-        if (trapFound) {
-            System.out.println("Trap found! Attack cancelled. Player received a Beruang card.");
-            return;
         }
 
         for (int index : indexToAttack) {
@@ -577,15 +556,51 @@ public class FieldController implements Initializable {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
         scheduler.schedule(() -> {
             Platform.runLater(() -> {
-                beruang.HapusElementPetakDiserang(objek.getCurrentPlayer().getPetakLadang());
-                for (int index : indexToAttack) {
-                    Pane paneToReset = (Pane) Main.fieldPane.getChildren().get(index);
-                    paneToReset.setStyle("");
-                    paneToReset.getChildren().clear();
+                boolean trapFound = false;
+
+                // Cek apakah ada Trap di petak yang diserang
+                for (int[] petak : petakDiserang) {
+                    int row = petak[0];
+                    int col = petak[1];
+
+                    // Validasi keberadaan Trap
+                    KartuLadang<Card> kartuLadang = objek.getCurrentPlayer().getPetakLadang().getElement(row, col);
+                    if (kartuLadang != null) {
+                        for (Item item : kartuLadang.getItems()) {
+                            if (item.getName().equalsIgnoreCase("TRAP")) {
+                                trapFound = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (trapFound) {
+                        break;
+                    }
                 }
-                System.out.println("Attack finished, waktu menyerang: " + lamaWaktuMenyerang + " seconds");
+
+                // Jika Trap ditemukan, batalkan serangan dan berikan kartu Beruang
+                if (trapFound) {
+                    System.out.println("Trap found! Attack cancelled. Player received a Beruang card.");
+                    // kasih kartu Beruang kepada currentPlayer
+                    objek.getCurrentPlayer().getDeck().addAktifElement(new Hewan("BERUANG",
+                            "assets/hewan/bear.png",
+                            "omnivora",
+                            0, 25));
+                    for (int index : indexToAttack) {
+                        Pane paneToReset = (Pane) Main.fieldPane.getChildren().get(index);
+                        paneToReset.setStyle("");
+                    }
+                    reloadImage();
+                } else {
+                    beruang.HapusElementPetakDiserang(objek.getCurrentPlayer().getPetakLadang(), objek, indexToAttack);
+                    System.out.println("Attack finished, waktu menyerang: " + lamaWaktuMenyerang + " seconds");
+
+                }
+                ActionsController.enableAllButtons();
             });
             scheduler.shutdown();
         }, lamaWaktuMenyerang, TimeUnit.SECONDS);
     }
+
+
 }
