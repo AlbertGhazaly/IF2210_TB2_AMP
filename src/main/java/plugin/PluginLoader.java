@@ -7,6 +7,7 @@ import java.lang.reflect.Method;
 public class PluginLoader {
     // Metode untuk memuat dan memanggil metode yang mengembalikan String
     public static String loadAndInvoke(String jarPath) throws Exception {
+        jarPath = jarPath.replace("\\", "/");
         URL[] urls = { new URL("file:" + jarPath) };
         URLClassLoader classLoader = URLClassLoader.newInstance(urls);
 
