@@ -1,5 +1,11 @@
 package com.tubesoop.tubes2oop;
+import javafx.application.Platform;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.scene.shape.Circle;
+import javafx.util.Duration;
+import javafx.application.Platform;
 import java.util.ArrayList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -34,21 +40,11 @@ import java.io.File;
 import com.tubesoop.tubes2oop.ObjectInfoController;
 import petakladang.*;
 import state.SeranganBeruang;
-import java.util.Random;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-import javafx.scene.layout.Pane;
-import java.util.Random;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-import javafx.scene.layout.Pane;
-import javax.lang.model.type.ArrayType;
 
 public class FieldController implements Initializable {
     private static GameObject gameObject;
     public static Player currPlayer;
+    private static List<Integer> previousAttackIndices = new ArrayList<>();
 
     /* Inisiasi Player */
     @FXML private static Player player1;
@@ -88,8 +84,14 @@ public class FieldController implements Initializable {
     @FXML private Pane pane4;
     @FXML private Pane pane5;
     @FXML private Pane pane6;
-
+    @FXML
+    Circle circleCountdown;
     @FXML Pane FieldMain;
+    @FXML
+    private Label countdownLabel;
+    @FXML
+    private Label sisawaktuText;
+    private Timeline countdownTimeline;
     static Pane SFieldMain;
 
     private static FieldController instance;
@@ -528,69 +530,116 @@ public class FieldController implements Initializable {
         }
     }
 
-    public static void attackOnBeruang() {
-        Random random = new Random();
-        int randomNum = random.nextInt(10) + 1;
-
-        // Terjadi serangan beruang
-        if (randomNum != -1) {
-            int[][] subGridSizes = {{3, 2}, {2, 3}, {2, 2}, {2, 1}, {1, 2}, {1, 1}};
-            int[] selectedSize = subGridSizes[random.nextInt(subGridSizes.length)];
-
-            int numRows = selectedSize[0];
-            int numCols = selectedSize[1];
-            int numPetakAttack = numRows * numCols;
-
-            int[][] indexToAttack = new int[numPetakAttack][2];
-
-            int startRow = random.nextInt(4 - numRows + 1);
-            int startCol = random.nextInt(5 - numCols + 1);
-
-            int currentIndex = 0;
-            for (int i = startRow; i < startRow + numRows; i++) {
-                for (int j = startCol; j < startCol + numCols; j++) {
-                    indexToAttack[currentIndex][0] = i;
-                    indexToAttack[currentIndex][1] = j;
-                    currentIndex++;
-                }
+    public void startCountdown(int duration) {
+        circleCountdown.setVisible(true);
+        sisawaktuText.setVisible(true);
+        countdownLabel.setVisible(true);
+        countdownLabel.setText(String.valueOf(duration));
+        System.out.println("Countdown started, duration: " + duration + " seconds");
+        countdownTimeline = new Timeline(new KeyFrame(Duration.seconds(0.1), event -> {
+            double currentTime = Double.parseDouble(countdownLabel.getText());
+            currentTime -= 0.1;
+            countdownLabel.setText(String.format("%.1f", currentTime));
+            if (currentTime <= 0) {
+                countdownTimeline.stop();
+                circleCountdown.setVisible(false);
+                sisawaktuText.setVisible(false);
+                countdownLabel.setVisible(false);
             }
+        }));
+        countdownTimeline.setCycleCount(Timeline.INDEFINITE);
+        countdownTimeline.play();
+    }
 
-            // Mengganti background petak yang akan diserang
-            for (int i = 0; i < numPetakAttack; i++) {
-                int row = indexToAttack[i][0];
-                int col = indexToAttack[i][1];
-                int index = row * 5 + col;
-                Pane paneToAttack = (Pane) Main.fieldPane.getChildren().get(index);
-                paneToAttack.setStyle("-fx-background-color: red; -fx-background-radius: 10px");
-            }
-
-            // Menghasilkan waktu penyerangan beruang (30 - 60 detik)
-            int attackDuration = random.nextInt(1) + 5;
-
-
-
-            // Setelah waktu penyerangan, petak kembali ke warna normal
-            ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-            scheduler.schedule(() -> {
-                for (int i = 0; i < numPetakAttack; i++) {
-                    int row = indexToAttack[i][0];
-                    int col = indexToAttack[i][1];
-                    int index = row * 5 + col;
-                    Pane paneToAttack = (Pane) Main.fieldPane.getChildren().get(index);
-                    paneToAttack.setStyle("-fx-background-color: rgba(255, 255, 255, 0.5); -fx-border-radius: 10px; -fx-background-radius: 10px");
-                }
-
-                scheduler.shutdown();
-            }, attackDuration, TimeUnit.SECONDS);
+    public void stopCountdown() {
+        if (countdownTimeline != null) {
+            countdownTimeline.stop();
         }
     }
 
-    private static boolean isIndexAlreadyUsed(int[][] indexToAttack, int row, int col) {
-        for (int[] index : indexToAttack) {
-            if (index[0] == row && index[1] == col) {
-                return true;
+    public static void attackOnBeruang(GameObject objek) {
+        // Reset gaya petak dari serangan sebelumnya
+        for (int index : previousAttackIndices) {
+            Pane paneToReset = (Pane) Main.fieldPane.getChildren().get(index);
+            paneToReset.setStyle(""); // Atur kembali ke gaya default atau semula
+        }
+        previousAttackIndices.clear();
+
+        var beruang = new SeranganBeruang();
+        beruang.execute(objek);
+
+        int lamaWaktuMenyerang = beruang.getLamaWaktuMenyerang(); // waktu menyerang dalam detik
+        List<int[]> petakDiserang = beruang.getPetakDiserang();
+        ArrayList<Integer> indexToAttack = new ArrayList<>();
+
+        for (int[] petak : petakDiserang) {
+            int row = petak[0];
+            int col = petak[1];
+            int index = row * 5 + col;
+
+            if (index >= 0 && index < Main.fieldPane.getChildren().size()) {
+                indexToAttack.add(index);
             }
         }
-        return false;
+
+        for (int index : indexToAttack) {
+            Pane paneToAttack = (Pane) Main.fieldPane.getChildren().get(index);
+            paneToAttack.setStyle("-fx-background-color: red; -fx-border-radius: 25");
+        }
+
+        previousAttackIndices.addAll(indexToAttack);
+
+        instance.startCountdown(lamaWaktuMenyerang); // Panggil startCountdown menggunakan instance
+
+        // Schedule a task to execute after waktuMenyerang milliseconds
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        scheduler.schedule(() -> {
+            Platform.runLater(() -> {
+                boolean trapFound = false;
+
+                // Cek apakah ada Trap di petak yang diserang
+                for (int[] petak : petakDiserang) {
+                    int row = petak[0];
+                    int col = petak[1];
+
+                    // Validasi keberadaan Trap
+                    KartuLadang<Card> kartuLadang = objek.getCurrentPlayer().getPetakLadang().getElement(row, col);
+                    if (kartuLadang != null) {
+                        for (Item item : kartuLadang.getItems()) {
+                            if (item.getName().equalsIgnoreCase("TRAP")) {
+                                trapFound = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (trapFound) {
+                        break;
+                    }
+                }
+
+                // Jika Trap ditemukan, batalkan serangan dan berikan kartu Beruang
+                if (trapFound) {
+                    System.out.println("Trap found! Attack cancelled. Player received a Beruang card.");
+                    // Berikan kartu Beruang kepada currentPlayer
+                    objek.getCurrentPlayer().getDeck().addAktifElement(new Hewan("BERUANG",
+                            "assets/hewan/bear.png",
+                            "omnivora",
+                            0, 25));
+                    for (int index : indexToAttack) {
+                        Pane paneToReset = (Pane) Main.fieldPane.getChildren().get(index);
+                        paneToReset.setStyle("");
+                    }
+                    reloadImage();
+                    ActionsController.enableAllButtons();
+                } else {
+                    beruang.HapusElementPetakDiserang(objek.getCurrentPlayer().getPetakLadang(), objek, indexToAttack);
+                    System.out.println("Attack finished, waktu menyerang: " + lamaWaktuMenyerang + " seconds");
+                    ActionsController.enableAllButtons();
+                }
+            });
+            scheduler.shutdown();
+        }, lamaWaktuMenyerang, TimeUnit.SECONDS);
     }
 }
+
+
