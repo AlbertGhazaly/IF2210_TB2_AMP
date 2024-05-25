@@ -18,9 +18,9 @@ class HewanTest {
 
     @Test
     void testParameterizedConstructor() {
-        var hewan = new Hewan("Sapi", "sapi.png", "Mamalia", 500, 400);
+        var hewan = new Hewan("Sapi", "sapi.png", "Mamalia", 300, 400);
         assertEquals("Mamalia", hewan.getKategori());
-        assertEquals(500, hewan.getBerat());
+        assertEquals(300, hewan.getBerat());
         assertEquals(400, hewan.getBeratPanen());
         assertEquals("Sapi", hewan.getName());
         assertEquals("sapi.png", hewan.getImgPath());

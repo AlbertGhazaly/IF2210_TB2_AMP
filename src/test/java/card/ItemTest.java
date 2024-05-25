@@ -11,31 +11,22 @@ class ItemTest {
         assertNull(item.getName());
         assertNull(item.getImgPath());
         assertNull(item.getPosition());
-        assertEquals(0, item.getHarga());
     }
 
     @Test
     void testParameterizedConstructor() {
-        Item item = new Item("Potion", "potion.png", 100);
+        Item item = new Item("Potion", "potion.png");
         assertEquals("Potion", item.getName());
         assertEquals("potion.png", item.getImgPath());
         assertNull(item.getPosition());
-        assertEquals(100, item.getHarga());
     }
 
     @Test
     void testCopyConstructor() {
-        Item original = new Item("Elixir", "elixir.png", 200);
+        Item original = new Item("Elixir", "elixir.png");
         Item copy = new Item(original);
         assertEquals(original.getName(), copy.getName());
         assertEquals(original.getImgPath(), copy.getImgPath());
         assertEquals(original.getPosition(), copy.getPosition());
-        assertEquals(original.getHarga(), copy.getHarga());
-    }
-
-    @Test
-    void testGetHarga() {
-        Item item = new Item("Sword", "sword.png", 300);
-        assertEquals(300, item.getHarga());
     }
 }
