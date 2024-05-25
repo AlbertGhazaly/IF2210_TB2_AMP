@@ -15,7 +15,7 @@
         <Label layoutX="39.0" layoutY="126.0" prefHeight="15.0" prefWidth="48.0" text="Format" />
         <ChoiceBox fx:id="choiceBox" layoutX="102.0" layoutY="122.0" prefHeight="25.0" prefWidth="471.0" />
         <Label layoutX="39.0" layoutY="185.0" text="Folder" />
-        <Button layoutX="39.0" layoutY="231.0" mnemonicParsing="false" onAction="#executeLoad" prefHeight="25.0" prefWidth="538.0" text="Load" />
+        <Button layoutX="39.0" layoutY="231.0" mnemonicParsing="false" onAction="#execute" prefHeight="25.0" prefWidth="538.0" text="Load" />
         <TextField fx:id="Folder" layoutX="102.0" layoutY="181.0" prefHeight="25.0" prefWidth="471.0" />
         <Label fx:id="succes" layoutX="39.0" layoutY="273.0" prefHeight="17.0" prefWidth="165.0" text="State loaded successfully" textFill="#00da28">
             <font>

@@ -1,0 +1,29 @@
+<HashMap>
+  <deck>
+    <pasifSize>39</pasifSize>
+    <aktifSize>2</aktifSize>
+    <aktifElements>
+      <name>BERUANG</name>
+      <position>A01</position>
+    </aktifElements>
+    <aktifElements>
+      <name>PROTECT</name>
+      <position>B01</position>
+    </aktifElements>
+  </deck>
+  <gulden>500</gulden>
+  <petakLadang>
+    <petakLadangElements>
+      <name>DOMBA</name>
+      <attributes>
+        <berat>0</berat>
+        <type>Hewan</type>
+      </attributes>
+      <position>A01</position>
+      <items>ACCELERATE</items>
+      <items>DELAY</items>
+      <items>PROTECT</items>
+    </petakLadangElements>
+    <nEff>1</nEff>
+  </petakLadang>
+</HashMap>

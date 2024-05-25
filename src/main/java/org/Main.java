@@ -14,9 +14,9 @@ public class Main {
         saveload.setGameStatus(gameStatus);
         try{
             gameStatus.loadState("tes", "txt");
-            saveload.save("andi");
-            saveload.load("andi");
-            gameStatus.saveState("alan", "txt");
+            saveload.save("tes");
+//            saveload.load("andi");
+//            gameStatus.saveState("alan", "txt");
         }catch (Exception e){
             e.printStackTrace();
         }

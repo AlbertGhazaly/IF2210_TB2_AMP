@@ -586,7 +586,7 @@ public class FieldController implements Initializable {
 
         for (int index : indexToAttack) {
             Pane paneToAttack = (Pane) Main.fieldPane.getChildren().get(index);
-            paneToAttack.setStyle("-fx-background-color: red; -fx-border-radius: 25");
+            paneToAttack.setStyle("-fx-background-color: red; -fx-border-radius: 25; -fx-background-radius: 10");
         }
 
         previousAttackIndices.addAll(indexToAttack);
@@ -629,7 +629,7 @@ public class FieldController implements Initializable {
                             0, 25));
                     for (int index : indexToAttack) {
                         Pane paneToReset = (Pane) Main.fieldPane.getChildren().get(index);
-                        paneToReset.setStyle("");
+                        paneToReset.setStyle("-fx-border-radius: 25; -fx-background-radius: 10");
                     }
                     reloadImage();
                     ActionsController.enableAllButtons();

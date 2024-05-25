@@ -88,9 +88,9 @@ public class Deck<T extends Card> {
             0,1,3
             ));
   public void insertPassiveDeck(int n){
-      if (n==40){
-          this.deckPasif.clear();
-      }
+
+      this.deckPasif.clear();
+
       int i = 0;
       while (this.deckPasif.size()<n){
           if (komposisi.get(i)<6){

@@ -46,6 +46,7 @@ public class GameStatus{
             System.err.println("Failed to create directory: " + e.getMessage());
         }
 
+
         if(Ext.equals("txt")) {
             objek.getPlayer1().save(folder + "/player1." + Ext);
             objek.getPlayer2().save(folder + "/player2." + Ext);

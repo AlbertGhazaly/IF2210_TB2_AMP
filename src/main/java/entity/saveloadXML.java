@@ -99,40 +99,40 @@ public class saveloadXML implements Entity {
 
         int aktifSize = deckNode.path("aktifSize").asInt();
         JsonNode aktifElementsNode = deckNode.path("aktifElements");
+        if(aktifSize>0){
+            for (Iterator<JsonNode> it = aktifElementsNode.elements(); it.hasNext(); ) {
+                JsonNode aktifElement = it.next();
+                String position = aktifElement.path("position").asText();
+                String name = aktifElement.path("name").asText();
 
-        for (Iterator<JsonNode> it = aktifElementsNode.elements(); it.hasNext(); ) {
-            JsonNode aktifElement = it.next();
-            String position = aktifElement.path("position").asText();
-            String name = aktifElement.path("name").asText();
-
-            // Menambahkan kartu deck aktif
-            if (player.isIn(GameObject.hewanList, name)) {
-                for (Hewan hewan : GameObject.hewanList) {
-                    if (hewan.getName().equals(name)) {
-                        player.getDeck().addAktifElement(new Hewan(hewan), Card.convertStringtoRow(position), Card.convertStringtoCol(position));
+                // Menambahkan kartu deck aktif
+                if (player.isIn(GameObject.hewanList, name)) {
+                    for (Hewan hewan : GameObject.hewanList) {
+                        if (hewan.getName().equals(name)) {
+                            player.getDeck().addAktifElement(new Hewan(hewan), Card.convertStringtoRow(position), Card.convertStringtoCol(position));
+                        }
                     }
-                }
-            } else if (player.isIn(GameObject.tanamanList, name)) {
-                for (Tanaman tanaman : GameObject.tanamanList) {
-                    if (tanaman.getName().equals(name)) {
-                        player.getDeck().addAktifElement(new Tanaman(tanaman), Card.convertStringtoRow(position), Card.convertStringtoCol(position));
+                } else if (player.isIn(GameObject.tanamanList, name)) {
+                    for (Tanaman tanaman : GameObject.tanamanList) {
+                        if (tanaman.getName().equals(name)) {
+                            player.getDeck().addAktifElement(new Tanaman(tanaman), Card.convertStringtoRow(position), Card.convertStringtoCol(position));
+                        }
                     }
-                }
-            } else if (player.isIn(GameObject.produkList, name)) {
-                for (Produk produk : GameObject.produkList) {
-                    if (produk.getName().equals(name)) {
-                        player.getDeck().addAktifElement(new Produk(produk), Card.convertStringtoRow(position), Card.convertStringtoCol(position));
+                } else if (player.isIn(GameObject.produkList, name)) {
+                    for (Produk produk : GameObject.produkList) {
+                        if (produk.getName().equals(name)) {
+                            player.getDeck().addAktifElement(new Produk(produk), Card.convertStringtoRow(position), Card.convertStringtoCol(position));
+                        }
                     }
-                }
-            } else if (player.isIn(GameObject.itemList, name)) {
-                for (Item item : GameObject.itemList) {
-                    if (item.getName().equals(name)) {
-                        player.getDeck().addAktifElement(new Item(item), Card.convertStringtoRow(position), Card.convertStringtoCol(position));
+                } else if (player.isIn(GameObject.itemList, name)) {
+                    for (Item item : GameObject.itemList) {
+                        if (item.getName().equals(name)) {
+                            player.getDeck().addAktifElement(new Item(item), Card.convertStringtoRow(position), Card.convertStringtoCol(position));
+                        }
                     }
                 }
             }
         }
-
         // Membaca petak ladang
         JsonNode petakLadangNode = rootNode.path("petakLadang");
         int nEff = petakLadangNode.path("nEff").asInt();

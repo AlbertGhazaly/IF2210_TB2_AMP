@@ -33,49 +33,39 @@ public class SeranganBeruang implements State {
         int maxRow = 3;
         int maxCol = 4;
 
-        // Tentukan jumlah petak yang diserang secara acak antara 2 hingga 6
-        int jumlahPetakDiserang = random.nextInt(5) + 2; // menghasilkan angka antara 2 dan 6
-
         // Bersihkan daftar petak yang diserang sebelum mengisinya
         petakDiserang.clear();
 
-        // Pilih petak awal secara acak
-        int tempDiserangRow = random.nextInt(maxRow - minRow + 1) + minRow;
-        int tempDiserangCol = random.nextInt(maxCol - minCol + 1) + minCol;
-        petakDiserang.add(new int[]{tempDiserangRow, tempDiserangCol});
+        // Tentukan jumlah petak yang diserang secara acak antara 2, 4, atau 6
+        int[] possibleValues = {2, 4, 6};
+        int jumlahPetakDiserang = possibleValues[random.nextInt(possibleValues.length)];
 
-        int count = 1;
+        // Tentukan lebar dan tinggi bidang datar berdasarkan jumlah petak yang diserang
+        int width, height;
+        if (jumlahPetakDiserang == 2) {
+            width = 2;
+            height = 1;
+        } else if (jumlahPetakDiserang == 4) {
+            width = 2;
+            height = 2;
+        } else { // jumlahPetakDiserang == 6
+            width = 3;
+            height = 2;
+        }
 
-        // Tambahkan petak lainnya
-        while (count < jumlahPetakDiserang) {
-            int[] current = petakDiserang.get(random.nextInt(count)); // Pilih sel yang ada secara acak
-            int newRow = current[0];
-            int newCol = current[1];
+        // Pilih titik awal bidang datar secara acak
+        int startRow = random.nextInt(maxRow - height + 1);
+        int startCol = random.nextInt(maxCol - width + 1);
 
-            // Pilih arah secara acak
-            int direction = random.nextInt(4);
-            switch (direction) {
-                case 0: // Up
-                    newRow -= 1;
-                    break;
-                case 1: // Down
-                    newRow += 1;
-                    break;
-                case 2: // Left
-                    newCol -= 1;
-                    break;
-                case 3: // Right
-                    newCol += 1;
-                    break;
-            }
-
-            // Pastikan petak baru berada dalam batasan dan belum ada dalam daftar
-            if (newRow >= minRow && newRow <= maxRow && newCol >= minCol && newCol <= maxCol && !containsCell(newRow, newCol)) {
-                petakDiserang.add(new int[]{newRow, newCol});
-                count++;
+        // Tambahkan semua petak dalam bidang datar ke dalam daftar petak yang diserang
+        for (int row = startRow; row < startRow + height; row++) {
+            for (int col = startCol; col < startCol + width; col++) {
+                petakDiserang.add(new int[]{row, col});
             }
         }
     }
+
+
 
     public void setLamaWaktuMenyerang(Random random){
         int minWaktu = 30;
@@ -115,9 +105,9 @@ public class SeranganBeruang implements State {
             Pane paneToReset = (Pane) Main.fieldPane.getChildren().get(index);
             if (ladang.getElement(index / 5, index % 5) != null) {
                 // Set style to default without clearing the children
-                paneToReset.setStyle("");
+                paneToReset.setStyle("-fx-border-radius: 25; -fx-background-radius: 10");
             } else {
-                paneToReset.setStyle("");
+                paneToReset.setStyle("-fx-border-radius: 25; -fx-background-radius: 10");
                 paneToReset.getChildren().clear();
             }
         }

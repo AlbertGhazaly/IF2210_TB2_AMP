@@ -1,5 +1,7 @@
 package com.tubesoop.tubes2oop;
 
+import entity.saveloadJSON;
+import entity.saveloadXML;
 import deck.Deck;
 import gamestatus.*;
 import javafx.collections.ObservableList;
@@ -70,7 +72,7 @@ public class LoadController implements Initializable {
         succes.setVisible(false);
     }
 
-    public void executeLoad() {
+    public void execute() {
         failed.setVisible(false);
         succes.setVisible(false);
         String folder = Folder.getText();
@@ -82,7 +84,18 @@ public class LoadController implements Initializable {
                 gameStatus.getObjek().getPlayer2().getDeck().DeckClear();
                 gameStatus.getObjek().getPlayer1().getPetakLadang().petakLadangClear();
                 gameStatus.getObjek().getPlayer2().getPetakLadang().petakLadangClear();
-                gameStatus.loadState(folder,Ext);
+
+                if(Ext.equals("txt")){
+                    gameStatus.loadState(folder,Ext);
+                } else if ( Ext.equals("xml")){
+                    saveloadXML saveload = new saveloadXML();
+                    saveload.setGameStatus(gameStatus);
+                    saveload.load(folder);
+                } else {
+                    saveloadJSON saveload = new saveloadJSON();
+                    saveload.setGameStatus(gameStatus);
+                    saveload.load(folder);
+                }
                 succes.setVisible(true);
             } catch (Exception e) {
                 failed.setVisible(true);
