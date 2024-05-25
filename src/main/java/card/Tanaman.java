@@ -27,4 +27,8 @@ public class Tanaman extends Card{
     public void setdurasiPanen(int durasiPanen) {
         this.durasiPanen = durasiPanen;
     }
+
+    public void setUmur(int umur) {
+        this.umur = umur;
+    }
 }

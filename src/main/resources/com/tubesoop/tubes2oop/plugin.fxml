@@ -12,9 +12,9 @@
                 <Font size="34.0" />
             </font>
         </Label>
-        <Button layoutY="2.0" mnemonicParsing="false" onAction="#kembali" prefHeight="25.0" prefWidth="66.0" text="Kembali" />
+        <Button fx:id="Kembali" layoutY="2.0" mnemonicParsing="false" onAction="#kembali" prefHeight="25.0" prefWidth="66.0" text="Kembali" onMouseEntered="#setExitMerah" onMouseExited="#setExitNormal"/>
         <Label layoutX="127.0" layoutY="167.0" prefHeight="17.0" prefWidth="66.0" text="File Plugin :" />
-        <Button layoutX="39.0" layoutY="215.0" mnemonicParsing="false" onAction="#execute" prefHeight="25.0" prefWidth="538.0" text="Upload" />
+        <Button layoutX="39.0" layoutY="215.0" mnemonicParsing="false" onAction="#execute" prefHeight="25.0" prefWidth="538.0" text="Upload"/>
         <Label fx:id="succes" layoutX="39.0" layoutY="273.0" prefHeight="17.0" prefWidth="155.0" text="Plugin loaded succesfully" textFill="#00da28">
             <font>
                 <Font name="System Bold" size="12.0" />

@@ -39,6 +39,9 @@ public class Toko implements Entity {
      *
      * @return int stok toko dalam permainan.
      */
+    public Map<String, Integer> getMapStok(){
+        return stok;
+    }
     public int getStok(String key) {
         if (!this.stok.containsKey(key)){
             return 0;
