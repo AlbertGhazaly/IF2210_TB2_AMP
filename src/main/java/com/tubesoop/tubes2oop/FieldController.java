@@ -557,7 +557,7 @@ public class FieldController implements Initializable {
         }
     }
 
-    public static void attackOnBeruang(GameObject objek) {
+    public static synchronized void attackOnBeruang(GameObject objek) {
         // Reset gaya petak dari serangan sebelumnya
         for (int index : previousAttackIndices) {
             Pane paneToReset = (Pane) Main.fieldPane.getChildren().get(index);
