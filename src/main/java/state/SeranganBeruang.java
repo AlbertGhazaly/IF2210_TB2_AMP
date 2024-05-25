@@ -1,6 +1,11 @@
 package state;
 
+import card.Card;
+import card.Item;
+import com.tubesoop.tubes2oop.Main;
 import gameobject.GameObject;
+import javafx.scene.layout.Pane;
+import petakladang.KartuLadang;
 import petakladang.PetakLadang;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,23 +27,32 @@ public class SeranganBeruang implements State {
         return lamaWaktuMenyerang;
     }
 
-    public void setPetakDiserang(Random random, int jumlahPetakDiserang) {
+    public void setPetakDiserang(Random random) {
         int minRow = 0;
         int minCol = 0;
         int maxRow = 3;
         int maxCol = 4;
 
+        // Tentukan jumlah petak yang diserang secara acak antara 2 hingga 6
+        int jumlahPetakDiserang = random.nextInt(5) + 2; // menghasilkan angka antara 2 dan 6
+
+        // Bersihkan daftar petak yang diserang sebelum mengisinya
+        petakDiserang.clear();
+
+        // Pilih petak awal secara acak
         int tempDiserangRow = random.nextInt(maxRow - minRow + 1) + minRow;
         int tempDiserangCol = random.nextInt(maxCol - minCol + 1) + minCol;
-
         petakDiserang.add(new int[]{tempDiserangRow, tempDiserangCol});
+
         int count = 1;
 
+        // Tambahkan petak lainnya
         while (count < jumlahPetakDiserang) {
-            int[] current = petakDiserang.get(random.nextInt(count)); // Randomly pick an existing cell
+            int[] current = petakDiserang.get(random.nextInt(count)); // Pilih sel yang ada secara acak
             int newRow = current[0];
             int newCol = current[1];
 
+            // Pilih arah secara acak
             int direction = random.nextInt(4);
             switch (direction) {
                 case 0: // Up
@@ -55,6 +69,7 @@ public class SeranganBeruang implements State {
                     break;
             }
 
+            // Pastikan petak baru berada dalam batasan dan belum ada dalam daftar
             if (newRow >= minRow && newRow <= maxRow && newCol >= minCol && newCol <= maxCol && !containsCell(newRow, newCol)) {
                 petakDiserang.add(new int[]{newRow, newCol});
                 count++;
@@ -78,31 +93,42 @@ public class SeranganBeruang implements State {
     }
 
 
-    public void HapusElementPetakDiserang(PetakLadang ladang) {
+    public void HapusElementPetakDiserang(PetakLadang ladang, GameObject objek, ArrayList<Integer> indexToAttack) {
         for (int[] petak : petakDiserang) {
-            ladang.removeElement(petak[0], petak[1]);
+            boolean protect = false;
+            int row = petak[0];
+            int col = petak[1];
+            KartuLadang<Card> kartuLadang = objek.getCurrentPlayer().getPetakLadang().getElement(row, col);
+            if (kartuLadang != null) {
+                for (Item item : kartuLadang.getItems()) {
+                    if (item.getName().equalsIgnoreCase("PROTECT")) {
+                        protect = true;
+                        break;
+                    }
+                }
+            }
+            if (!protect) {
+                ladang.removeElement(row, col);
+            }
+        }
+        for (int index : indexToAttack) {
+            Pane paneToReset = (Pane) Main.fieldPane.getChildren().get(index);
+            if (ladang.getElement(index / 5, index % 5) != null) {
+                // Set style to default without clearing the children
+                paneToReset.setStyle("");
+            } else {
+                paneToReset.setStyle("");
+                paneToReset.getChildren().clear();
+            }
         }
     }
+
 
     @Override
     public void execute(GameObject objek) {
         Random random = new Random();
-        PetakLadang petakLadang = objek.getCurrentPlayer().getPetakLadang();
 
         setLamaWaktuMenyerang(random);
-
-        int minPetak = 2;
-        int maxPetak = 7;
-        int jumlahPetakDiserang = random.nextInt(maxPetak - minPetak + 1) + minPetak;
-
-        setPetakDiserang(random, jumlahPetakDiserang);
-
-        try {
-            Thread.sleep(lamaWaktuMenyerang);
-        } catch (InterruptedException e) {
-            System.err.println("Sleep was interrupted!");
-        }
-
-        HapusElementPetakDiserang(petakLadang);
+        setPetakDiserang(random);
     }
 }
