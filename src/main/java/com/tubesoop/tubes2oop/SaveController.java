@@ -4,6 +4,7 @@ import gamestatus.*;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ButtonBase;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -14,6 +15,9 @@ import java.util.*;
 
 public class SaveController implements Initializable {
     public GameStatus gameStatus;
+
+    @FXML
+    private ButtonBase Kembali;
 
     @FXML
     private ChoiceBox<String> choiceBox;
@@ -32,12 +36,14 @@ public class SaveController implements Initializable {
     static Label succesStatic;
     static Label failedStatic;
     static AnchorPane saveModalStatic;
+    static ChoiceBox<String> choiceBoxStatic;
 
     public void setGameStatus(GameStatus gameStatus) {
         this.gameStatus = gameStatus;
     }
 
     public void initialize(URL location, ResourceBundle resources) {
+        choiceBoxStatic = choiceBox;
         succesStatic = succes;
         failedStatic = failed;
         succesStatic.setVisible(false);
@@ -78,5 +84,12 @@ public class SaveController implements Initializable {
         } else {
             failed.setVisible(true);
         }
+    }
+
+    public void setExitMerah(){
+        Kembali.setStyle("-fx-background-color: red;");
+    }
+    public void setExitNormal(){
+        Kembali.setStyle("");
     }
 }

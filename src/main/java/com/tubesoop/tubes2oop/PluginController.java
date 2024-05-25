@@ -1,22 +1,22 @@
 package com.tubesoop.tubes2oop;
 
-import gamestatus.*;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ButtonBase;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import java.awt.event.ActionEvent;
+import plugin.PluginLoader;
+
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
 public class PluginController implements Initializable {
-    public GameStatus gameStatus;
+
+
     @FXML
     private AnchorPane PluginModal;
     @FXML
@@ -27,15 +27,11 @@ public class PluginController implements Initializable {
     private Label path;
 
     @FXML
-    AnchorPane saveModal;
+    private ButtonBase Kembali;
 
     static Label succesStatic;
     static Label failedStatic;
     static AnchorPane pluginModalStatic;
-
-    public void setGameStatus(GameStatus gameStatus) {
-        this.gameStatus = gameStatus;
-    }
 
 
     public void initialize(URL location, ResourceBundle resources) {
@@ -53,23 +49,43 @@ public class PluginController implements Initializable {
         succes.setVisible(false);
         failed.setVisible(false);
     }
+    public void setExitMerah(){
+        Kembali.setStyle("-fx-background-color: red;");
+    }
+    public void setExitNormal(){
+        Kembali.setStyle("");
+    }
 
     public void execute() {
         failed.setVisible(false);
         succes.setVisible(false);
         String pathFile = path.getText();
+        System.out.println(pathFile);
+        String kelas = "";
         if (pathFile.length()!=0) {
             try {
+                System.out.println(1);
+                kelas = PluginLoader.loadAndInvoke(path.getText());
                 succes.setVisible(true);
+                if ("XML".equals(kelas)){
+                    SaveController.choiceBoxStatic.getItems().add("xml");
+                    LoadController.choiceBoxStatic.getItems().add("xml");
+                }
+                if ("JSON".equals(kelas)){
+                    SaveController.choiceBoxStatic.getItems().add("json");
+                    LoadController.choiceBoxStatic.getItems().add("json");
+                }
             } catch (Exception e) {
+                System.out.println(-1);
                 failed.setVisible(true);
             }
         } else {
+            System.out.println(0);
             failed.setVisible(true);
         }
     }
 
-    public void handleChooseFile(javafx.event.ActionEvent actionEvent) {
+    public void handleChooseFile() throws IOException {
         FileChooser fileChooser = new FileChooser();
 
         // Set extension filters

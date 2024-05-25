@@ -2,6 +2,7 @@ package org;
 
 import card.Item;
 import entity.saveloadJSON;
+import entity.saveloadXML;
 import gameobject.GameObject;
 import gamestatus.GameStatus;
 import toko.Toko;
@@ -9,11 +10,11 @@ import toko.Toko;
 public class Main {
     public static void main(String[] args) {
         GameStatus gameStatus = new GameStatus();
-        saveloadJSON saveload = new saveloadJSON();
+        saveloadXML saveload = new saveloadXML();
         saveload.setGameStatus(gameStatus);
         try{
-//            gameStatus.loadState("tes", "txt");
-//            saveload.save("andi");
+            gameStatus.loadState("tes", "txt");
+            saveload.save("andi");
             saveload.load("andi");
             gameStatus.saveState("alan", "txt");
         }catch (Exception e){

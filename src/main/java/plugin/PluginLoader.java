@@ -1,4 +1,4 @@
-package entity;
+package plugin;
 
 import java.net.URL;
 import java.net.URLClassLoader;
