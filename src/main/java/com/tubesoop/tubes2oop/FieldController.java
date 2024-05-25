@@ -1,7 +1,11 @@
 package com.tubesoop.tubes2oop;
 import javafx.application.Platform;
 
-
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.scene.shape.Circle;
+import javafx.util.Duration;
+import javafx.application.Platform;
 import java.util.ArrayList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -80,8 +84,14 @@ public class FieldController implements Initializable {
     @FXML private Pane pane4;
     @FXML private Pane pane5;
     @FXML private Pane pane6;
-
+    @FXML
+    Circle circleCountdown;
     @FXML Pane FieldMain;
+    @FXML
+    private Label countdownLabel;
+    @FXML
+    private Label sisawaktuText;
+    private Timeline countdownTimeline;
     static Pane SFieldMain;
 
     private static FieldController instance;
@@ -520,6 +530,33 @@ public class FieldController implements Initializable {
         }
     }
 
+    public void startCountdown(int duration) {
+        circleCountdown.setVisible(true);
+        sisawaktuText.setVisible(true);
+        countdownLabel.setVisible(true);
+        countdownLabel.setText(String.valueOf(duration));
+        System.out.println("Countdown started, duration: " + duration + " seconds");
+        countdownTimeline = new Timeline(new KeyFrame(Duration.seconds(0.1), event -> {
+            double currentTime = Double.parseDouble(countdownLabel.getText());
+            currentTime -= 0.1;
+            countdownLabel.setText(String.format("%.1f", currentTime));
+            if (currentTime <= 0) {
+                countdownTimeline.stop();
+                circleCountdown.setVisible(false);
+                sisawaktuText.setVisible(false);
+                countdownLabel.setVisible(false);
+            }
+        }));
+        countdownTimeline.setCycleCount(Timeline.INDEFINITE);
+        countdownTimeline.play();
+    }
+
+    public void stopCountdown() {
+        if (countdownTimeline != null) {
+            countdownTimeline.stop();
+        }
+    }
+
     public static void attackOnBeruang(GameObject objek) {
         // Reset gaya petak dari serangan sebelumnya
         for (int index : previousAttackIndices) {
@@ -531,7 +568,7 @@ public class FieldController implements Initializable {
         var beruang = new SeranganBeruang();
         beruang.execute(objek);
 
-        int lamaWaktuMenyerang = 10;
+        int lamaWaktuMenyerang = beruang.getLamaWaktuMenyerang(); // waktu menyerang dalam detik
         List<int[]> petakDiserang = beruang.getPetakDiserang();
         ArrayList<Integer> indexToAttack = new ArrayList<>();
 
@@ -551,6 +588,8 @@ public class FieldController implements Initializable {
         }
 
         previousAttackIndices.addAll(indexToAttack);
+
+        instance.startCountdown(lamaWaktuMenyerang); // Panggil startCountdown menggunakan instance
 
         // Schedule a task to execute after waktuMenyerang milliseconds
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
@@ -581,7 +620,7 @@ public class FieldController implements Initializable {
                 // Jika Trap ditemukan, batalkan serangan dan berikan kartu Beruang
                 if (trapFound) {
                     System.out.println("Trap found! Attack cancelled. Player received a Beruang card.");
-                    // kasih kartu Beruang kepada currentPlayer
+                    // Berikan kartu Beruang kepada currentPlayer
                     objek.getCurrentPlayer().getDeck().addAktifElement(new Hewan("BERUANG",
                             "assets/hewan/bear.png",
                             "omnivora",
@@ -591,16 +630,16 @@ public class FieldController implements Initializable {
                         paneToReset.setStyle("");
                     }
                     reloadImage();
+                    ActionsController.enableAllButtons();
                 } else {
                     beruang.HapusElementPetakDiserang(objek.getCurrentPlayer().getPetakLadang(), objek, indexToAttack);
                     System.out.println("Attack finished, waktu menyerang: " + lamaWaktuMenyerang + " seconds");
-
+                    ActionsController.enableAllButtons();
                 }
-                ActionsController.enableAllButtons();
             });
             scheduler.shutdown();
         }, lamaWaktuMenyerang, TimeUnit.SECONDS);
     }
-
-
 }
+
+

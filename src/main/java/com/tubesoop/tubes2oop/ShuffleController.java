@@ -116,7 +116,7 @@ public class ShuffleController implements Initializable {
             dImageCard4.setImage(null);
             gameShuffle.insertCardBack(gameStatus.getObjek());
             gameStatus.execute();
-            System.out.println("Deck pasif: "+gameStatus.getObjek().getCurrentPlayer().getDeck().getPasifSize());
+            System.out.println("Deck pasif: " + gameStatus.getObjek().getCurrentPlayer().getDeck().getPasifSize());
 
             dImageCard1.setImage(new Image(Main.class.getClassLoader().getResourceAsStream(gameShuffle.getCards().get(0).getImgPath())));
             dImageCard2.setImage(new Image(Main.class.getClassLoader().getResourceAsStream(gameShuffle.getCards().get(1).getImgPath())));
@@ -125,9 +125,8 @@ public class ShuffleController implements Initializable {
         } catch (Exception ex) {
             System.out.println("Invalid URL or unable to load image.");
         }
-
-
     }
+
 
     @FXML
     public void selectCard1toDeck(MouseEvent event){
@@ -242,7 +241,7 @@ public class ShuffleController implements Initializable {
             card4.setStyle("-fx-border-color: none;");
             shuffleCard.setVisible(false);
             Random random = new Random();
-            if (random.nextDouble() < 1) {
+            if (random.nextDouble() < 0.2) {
                 FieldController.attackOnBeruang(gameStatus.getObjek());
                 ActionsController.disableAllButtons();
             }

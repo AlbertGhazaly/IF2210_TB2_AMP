@@ -43,6 +43,8 @@ public class TurnController implements Initializable {
             gameStatus.turn++;
             numberOfTurn = gameStatus.turn;
             updateTurnLabel();
+
+            // Tambahkan umur pada tanaman
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 5; j++) {
                     if (this.gameStatus.getObjek().getPlayer1().getPetakLadang().getElement(i, j) != null) {
@@ -72,7 +74,13 @@ public class TurnController implements Initializable {
                 WinnerController.SWinner.setText("Player 2");
             }
         }
+
+
     }
+
+
+
+
 
     public void setGameStatus(GameStatus gameStatus) {
         this.gameStatus = gameStatus;
