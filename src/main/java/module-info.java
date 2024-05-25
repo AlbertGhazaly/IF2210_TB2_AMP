@@ -7,6 +7,8 @@ module com.tubesoop.tubes2oop {
     requires java.desktop;
     requires java.compiler;
     requires com.fasterxml.jackson.databind;
+    requires com.fasterxml.jackson.dataformat.xml;
+    requires jdk.compiler;
 
     opens com.tubesoop.tubes2oop to javafx.fxml;
     exports com.tubesoop.tubes2oop;

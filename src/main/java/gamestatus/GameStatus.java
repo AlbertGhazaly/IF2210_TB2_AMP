@@ -4,6 +4,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import entity.Entity;
+import entity.saveloadJSON;
+import entity.saveloadXML;
 import state.*;
 import gameobject.GameObject;
 import toko.*;
@@ -11,6 +14,7 @@ public class GameStatus{
     public static int turn;
     private State status;
     private GameObject objek;
+    private Entity saveload;
     public GameStatus(){
         GameStatus.turn = 1;
         this.status = new Shuffle();
@@ -42,21 +46,30 @@ public class GameStatus{
             System.err.println("Failed to create directory: " + e.getMessage());
         }
 
-        objek.getPlayer1().save(folder + "/player1." + Ext);
-        objek.getPlayer2().save(folder + "/player2." + Ext);
-        objek.geToko().save(folder + "/gamestate." + Ext);
+        if(Ext.equals("txt")) {
+            objek.getPlayer1().save(folder + "/player1." + Ext);
+            objek.getPlayer2().save(folder + "/player2." + Ext);
+            objek.geToko().save(folder + "/gamestate." + Ext);
+        } else if (Ext.equals("xml")){
+            saveload = new saveloadXML();
+            saveload.save(folder);
+        } else if (Ext.equals("json")){
+            saveload = new saveloadJSON();
+            saveload.save(folder);
+        }
     }
     public void loadState(String folder, String Ext) throws IOException {
-        if (folder.length() == 0){
-            objek.getPlayer1().load("player1." + Ext);
-            objek.getPlayer2().load("player2." + Ext);
-            objek.geToko().load("gamestate." + Ext);
-        } else {
+        if(Ext.equals("txt")) {
             objek.getPlayer1().load(folder + "/player1." + Ext);
             objek.getPlayer2().load(folder + "/player2." + Ext);
             objek.geToko().load(folder + "/gamestate." + Ext);
+        } else if (Ext.equals("xml")){
+            saveload = new saveloadXML();
+            saveload.load(folder);
+        } else if (Ext.equals("json")){
+            saveload = new saveloadJSON();
+            saveload.load(folder);
         }
-
     }
     public State getStatus() {
     return status;
