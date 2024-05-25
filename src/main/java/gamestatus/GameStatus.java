@@ -50,6 +50,7 @@ public class GameStatus{
             objek.getPlayer1().save(folder + "/player1." + Ext);
             objek.getPlayer2().save(folder + "/player2." + Ext);
             objek.geToko().save(folder + "/gamestate." + Ext);
+
         } else if (Ext.equals("xml")){
             saveload = new saveloadXML();
             saveload.save(folder);
@@ -59,10 +60,14 @@ public class GameStatus{
         }
     }
     public void loadState(String folder, String Ext) throws IOException {
+        System.out.println("Ext: "+Ext);
         if(Ext.equals("txt")) {
             objek.getPlayer1().load(folder + "/player1." + Ext);
             objek.getPlayer2().load(folder + "/player2." + Ext);
             objek.geToko().load(folder + "/gamestate." + Ext);
+            System.out.println("Player1 deck: "+objek.getPlayer1().getDeck().getAktifSize());
+            System.out.println("Player ladang1: "+objek.getPlayer1().getPetakLadang().getNEff());
+
         } else if (Ext.equals("xml")){
             saveload = new saveloadXML();
             saveload.load(folder);

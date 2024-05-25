@@ -43,8 +43,8 @@ public class ActionsController implements Initializable {
         SoppField.setDisable(true);
         SshopButton.setDisable(true);
         SsaveStateButton.setDisable(true);
-        SloadStateButton.setDisable(true);
-        SloadPluginButton.setDisable(true);
+        SloadStateButton.setDisable(false);
+        SloadPluginButton.setDisable(false);
     }
 
     public void setGameObject(GameObject gameObject) {

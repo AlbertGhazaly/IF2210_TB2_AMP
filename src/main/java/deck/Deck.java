@@ -107,7 +107,15 @@ public class Deck<T extends Card> {
           i += 1;
       }
   }
+  public void DeckClear(){
+      this.deckPasif.clear();
+      this.deckAktif.clear();
+      for (int i = 0;i<DECK_ACTIVE_SIZE;i++){
+          this.deckAktif.add(null);
+      }
+      insertPassiveDeck(DECK_PASSIVE_ROW_SIZE);
 
+  }
   public void swapIndex(int i, int j){
       Card temp = this.deckAktif.get(i);
       this.deckAktif.set(i,this.deckAktif.get(j));

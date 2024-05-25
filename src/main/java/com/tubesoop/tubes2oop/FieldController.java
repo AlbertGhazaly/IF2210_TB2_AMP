@@ -40,6 +40,7 @@ import java.io.File;
 import com.tubesoop.tubes2oop.ObjectInfoController;
 import petakladang.*;
 import state.SeranganBeruang;
+import com.tubesoop.tubes2oop.PlayerStatusController;
 
 public class FieldController implements Initializable {
     private static GameObject gameObject;
@@ -222,6 +223,7 @@ public class FieldController implements Initializable {
             }
         }
         labelDeckStatic.setText(String.valueOf(currPlayer.getDeck().getPasifSize()) + "/40");
+        PlayerStatusController.updatePlayersGulden();
     }
 
     public static void showErrorDialog(Exception e) {

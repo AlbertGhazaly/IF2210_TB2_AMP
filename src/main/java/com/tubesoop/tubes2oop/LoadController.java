@@ -1,5 +1,6 @@
 package com.tubesoop.tubes2oop;
 
+import deck.Deck;
 import gamestatus.*;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -69,14 +70,18 @@ public class LoadController implements Initializable {
         succes.setVisible(false);
     }
 
-    public void execute() {
+    public void executeLoad() {
         failed.setVisible(false);
         succes.setVisible(false);
         String folder = Folder.getText();
         String Ext = choiceBox.getSelectionModel().getSelectedItem();
+
         if (!(folder.length()==0)) {
             try {
-                gameStatus = new GameStatus();
+                gameStatus.getObjek().getPlayer1().getDeck().DeckClear();
+                gameStatus.getObjek().getPlayer2().getDeck().DeckClear();
+                gameStatus.getObjek().getPlayer1().getPetakLadang().petakLadangClear();
+                gameStatus.getObjek().getPlayer2().getPetakLadang().petakLadangClear();
                 gameStatus.loadState(folder,Ext);
                 succes.setVisible(true);
             } catch (Exception e) {
@@ -85,6 +90,7 @@ public class LoadController implements Initializable {
         } else {
             failed.setVisible(true);
         }
+        FieldController.reloadImage();
     }
 
     public void setExitMerah(){

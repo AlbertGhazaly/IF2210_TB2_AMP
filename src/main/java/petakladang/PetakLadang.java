@@ -55,6 +55,15 @@ public KartuLadang getElement(int row, int col) {
     }
     return n;
   }
+  public void petakLadangClear(){
+    this.petakLadang.clear();
+    for (int i = 0; i < MAX_ROW; i++) {
+      this.petakLadang.add(new ArrayList<>());
+      for (int j = 0; j < MAX_COL; j++) {
+        this.petakLadang.get(i).add(null);
+      }
+    }
+  }
   public void swapElement(int id1, int id2){
     int row1= id1/5;
     int col1 = id1 % 5;
