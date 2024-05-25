@@ -1,5 +1,7 @@
 package com.tubesoop.tubes2oop;
 
+import entity.saveloadJSON;
+import entity.saveloadXML;
 import gamestatus.*;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -76,8 +78,17 @@ public class LoadController implements Initializable {
         String Ext = choiceBox.getSelectionModel().getSelectedItem();
         if (!(folder.length()==0)) {
             try {
-                gameStatus = new GameStatus();
-                gameStatus.loadState(folder,Ext);
+                if(Ext.equals("txt")){
+                    gameStatus.loadState(folder,Ext);
+                } else if ( Ext.equals("xml")){
+                    saveloadXML saveload = new saveloadXML();
+                    saveload.setGameStatus(gameStatus);
+                    saveload.load(folder);
+                } else {
+                    saveloadJSON saveload = new saveloadJSON();
+                    saveload.setGameStatus(gameStatus);
+                    saveload.load(folder);
+                }
                 succes.setVisible(true);
             } catch (Exception e) {
                 failed.setVisible(true);

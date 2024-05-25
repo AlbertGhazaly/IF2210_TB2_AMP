@@ -1,0 +1,10 @@
+<ObjectNode>
+  <turn>1</turn>
+  <stok>
+    <SIRIP_HIU>15</SIRIP_HIU>
+    <SUSU>6</SUSU>
+    <DAGING_DOMBA>9</DAGING_DOMBA>
+    <DAGING_BERUANG>3</DAGING_BERUANG>
+    <DAGING_KUDA>30</DAGING_KUDA>
+  </stok>
+</ObjectNode>

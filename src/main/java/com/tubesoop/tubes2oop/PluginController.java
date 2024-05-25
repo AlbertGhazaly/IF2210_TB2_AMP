@@ -87,7 +87,7 @@ public class PluginController implements Initializable {
 
     public void handleChooseFile() throws IOException {
         FileChooser fileChooser = new FileChooser();
-
+        fileChooser.setInitialDirectory(new File("src"));
         // Set extension filters
         fileChooser.getExtensionFilters().add(
                 new FileChooser.ExtensionFilter("JAR Files", "*.jar"));
